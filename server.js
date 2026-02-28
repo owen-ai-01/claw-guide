@@ -48,12 +48,13 @@ const data = {
       ],
     },
     how: {
-      h: 'How to Get Started (Technical Path)',
+      h: '5-Step Setup Path (Technical)',
       steps: [
         ['Prepare environment', 'Install Node.js 22+, verify npm/pnpm, and ensure terminal access.'],
         ['Install OpenClaw', 'Use npm/pnpm/bun global install and run onboarding wizard.'],
-        ['Connect channels & tools', 'Configure your preferred channel, model settings, and required skill integrations.'],
-        ['Run your first workflow', 'Create a simple reminder/content/dev task and verify end-to-end execution.'],
+        ['Configure core settings', 'Set model/provider, workspace basics, and required environment variables.'],
+        ['Connect channels & tools', 'Configure Telegram/Discord/etc. and enable the tools/skills you need.'],
+        ['Run and validate first workflow', 'Create a simple reminder/content/dev task and verify end-to-end execution.'],
       ],
     },
     docs: {
@@ -128,11 +129,12 @@ const data = {
       ],
     },
     how: {
-      h: '如何开始（技术路径）',
+      h: '5 步完成安装与上手（技术路径）',
       steps: [
         ['准备环境', '安装 Node.js 22+，确认 npm/pnpm 可用，并具备终端环境。'],
         ['安装 OpenClaw', '全局安装后运行 onboarding wizard 完成基础初始化。'],
-        ['连接渠道与工具', '配置消息渠道、模型参数、所需 skills。'],
+        ['配置核心参数', '完成模型/Provider、工作目录、环境变量等基础配置。'],
+        ['连接渠道与工具', '按需配置 Telegram/Discord 等渠道，并启用需要的 tools/skills。'],
         ['跑通第一个流程', '先做一个提醒/内容/开发小任务，验证完整链路。'],
       ],
     },
