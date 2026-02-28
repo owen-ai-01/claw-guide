@@ -7,10 +7,12 @@ const data = {
     htmlLang: 'en',
     title: 'Claw Guide - OpenClaw Guides & Tutorials',
     nav: {
+      home: 'Home',
       what: 'What',
       why: 'Why',
-      how: 'How',
+      steps: '5 Steps',
       docs: 'Docs',
+      resources: 'Resources',
       cases: 'Use Cases',
       faq: 'FAQ',
       lang: '中文',
@@ -66,6 +68,15 @@ const data = {
         ['FAQ', 'https://docs.openclaw.ai/help/faq'],
       ],
     },
+    resources: {
+      h: 'Learning Resources',
+      links: [
+        ['Official OpenClaw Docs', 'https://docs.openclaw.ai'],
+        ['OpenClaw GitHub Repo', 'https://github.com/openclaw/openclaw'],
+        ['Showcase', 'https://docs.openclaw.ai/start/showcase'],
+        ['OpenClaw Discord Community', 'https://discord.gg/clawd'],
+      ],
+    },
     cases: {
       h: 'Starter Use Cases',
       items: [
@@ -88,10 +99,12 @@ const data = {
     htmlLang: 'zh-CN',
     title: 'Claw Guide - OpenClaw 中文指南',
     nav: {
+      home: '首页',
       what: '是什么',
       why: '为什么',
-      how: '如何开始',
+      steps: '5 步上手',
       docs: '文档',
+      resources: '资源',
       cases: '案例',
       faq: '常见问题',
       lang: 'English',
@@ -145,6 +158,15 @@ const data = {
         ['安装与更新', 'https://docs.openclaw.ai/install/updating'],
         ['模型与故障切换', 'https://docs.openclaw.ai/concepts/models'],
         ['FAQ', 'https://docs.openclaw.ai/help/faq'],
+      ],
+    },
+    resources: {
+      h: '学习资源',
+      links: [
+        ['OpenClaw 官方文档', 'https://docs.openclaw.ai'],
+        ['OpenClaw GitHub 仓库', 'https://github.com/openclaw/openclaw'],
+        ['案例展示 Showcase', 'https://docs.openclaw.ai/start/showcase'],
+        ['OpenClaw Discord 社区', 'https://discord.gg/clawd'],
       ],
     },
     cases: {
@@ -234,10 +256,12 @@ function render(lang = 'en') {
       <nav>
         <div class="brand">Claw Guide</div>
         <div class="menu">
+          <a href="#top">${t.nav.home}</a>
           <a href="#what">${t.nav.what}</a>
           <a href="#why">${t.nav.why}</a>
-          <a href="#how">${t.nav.how}</a>
+          <a href="#how">${t.nav.steps}</a>
           <a href="#docs">${t.nav.docs}</a>
+          <a href="#resources">${t.nav.resources}</a>
           <a href="#cases">${t.nav.cases}</a>
           <a href="#faq">${t.nav.faq}</a>
         </div>
@@ -246,7 +270,7 @@ function render(lang = 'en') {
     </div>
   </div>
 
-  <main class="container">
+  <main class="container" id="top">
     <section class="hero">
       <span class="badge">${t.hero.badge}</span>
       <h1>${t.hero.h1}</h1>
@@ -284,6 +308,13 @@ function render(lang = 'en') {
       <h2>${t.docs.h}</h2>
       <div class="link-list">
         ${t.docs.links.map(l => `<a class="link-item" href="${l[1]}" target="_blank" rel="noreferrer">${l[0]} ↗</a>`).join('')}
+      </div>
+    </section>
+
+    <section id="resources">
+      <h2>${t.resources.h}</h2>
+      <div class="link-list">
+        ${t.resources.links.map(l => `<a class="link-item" href="${l[1]}" target="_blank" rel="noreferrer">${l[0]} ↗</a>`).join('')}
       </div>
     </section>
 
