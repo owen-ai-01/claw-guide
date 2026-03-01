@@ -5,11 +5,13 @@ const port = process.env.PORT || 3000;
 const data = {
   en: {
     htmlLang: 'en',
-    title: 'Claw Guide - OpenClaw Guides & Tutorials',
+    title: 'Claw Guide - OpenClaw Setup Guide for Developers & Teams',
+    description:
+      'Bilingual OpenClaw guide with a developer quickstart, architecture map, and a guided path for non-technical teams.',
     nav: {
       home: 'Home',
       what: 'What',
-      why: 'Why',
+      path: 'Paths',
       steps: '5 Steps',
       docs: 'Docs',
       resources: 'Resources',
@@ -20,17 +22,17 @@ const data = {
     },
     hero: {
       badge: 'Global OpenClaw Learning Hub',
-      h1: 'Learn OpenClaw. Build Practical AI Workflows.',
-      p: 'Bilingual (EN/中文) guides for installing, configuring, and shipping with OpenClaw. From first setup to production-style workflows.',
+      h1: 'Ship OpenClaw Faster with a Clear Bilingual Roadmap',
+      p: 'Follow a technical self-serve path or choose a guided implementation path for non-technical teams. English + 中文, one consistent structure.',
       ctas: [
-        { text: 'Start Installation', href: '#how' },
+        { text: 'Technical Quickstart', href: '#how' },
+        { text: 'Need Guided Setup', href: '#paths' },
         { text: 'Official Docs', href: 'https://docs.openclaw.ai', external: true },
-        { text: 'GitHub', href: 'https://github.com/owen-ai-01/claw-guide', external: true },
       ],
       stats: [
         ['Runtime', 'Node.js ≥ 22'],
         ['Languages', 'English + Chinese'],
-        ['Audience', 'Developers first'],
+        ['Paths', 'Self-serve + guided'],
       ],
     },
     what: {
@@ -41,12 +43,11 @@ const data = {
         ['Built for practical shipping', 'Not a demo toy: structured around real tasks, repeatable processes, and long-term operations.'],
       ],
     },
-    why: {
-      h: 'Why Claw Guide?',
+    paths: {
+      h: 'Choose Your Path',
       cards: [
-        ['Actionable over theoretical', 'We focus on copy-paste commands, checklists, and troubleshooting paths.'],
-        ['Bilingual navigation', 'Default English with /zh route to reduce friction for Chinese-speaking builders.'],
-        ['Bridge to advanced learning', 'Free technical foundation now, premium deep tutorials and videos later for non-technical users.'],
+        ['Technical users (self-serve)', 'Use the 5-step setup path, then expand with docs and use-case templates.', '#how', 'Start self-serve'],
+        ['Non-technical teams (guided)', 'Use this free overview first, then move to upcoming paid walkthroughs for done-with-you setup.', '#faq', 'See guided options'],
       ],
     },
     how: {
@@ -91,17 +92,19 @@ const data = {
       items: [
         ['Can beginners use this?', 'Yes. Technical users can follow the step-by-step path. Non-technical users can use upcoming guided content.'],
         ['Is this official OpenClaw docs?', 'No. This is a practical companion guide that links to official docs and adds implementation playbooks.'],
-        ['Will there be paid courses?', 'Yes. Planned for deeper non-technical onboarding, case libraries, and video walkthroughs.'],
+        ['Do you support guided setup?', 'Yes. A paid guided implementation path is being prepared for non-technical builders and small teams.'],
       ],
     },
   },
   zh: {
     htmlLang: 'zh-CN',
-    title: 'Claw Guide - OpenClaw 中文指南',
+    title: 'Claw Guide - OpenClaw 出海部署与实战指南',
+    description:
+      'OpenClaw 中英双语实战导航：技术用户可自助 5 步上手，非技术团队可走引导式落地路径。',
     nav: {
       home: '首页',
       what: '是什么',
-      why: '为什么',
+      path: '路径',
       steps: '5 步上手',
       docs: '文档',
       resources: '资源',
@@ -112,17 +115,17 @@ const data = {
     },
     hero: {
       badge: '全球化 OpenClaw 学习站',
-      h1: '系统学习 OpenClaw，落地 AI 工作流',
-      p: '提供中英双语（默认英文 + /zh 中文）教程，覆盖安装、配置、实战与排错，帮助你从 0 到可用。',
+      h1: '用清晰双语路线，更快落地 OpenClaw',
+      p: '你可以选择技术自助路径，也可以选择面向非技术团队的引导式落地路径；中英结构保持一致。',
       ctas: [
-        { text: '开始安装', href: '#how' },
+        { text: '技术快速上手', href: '#how' },
+        { text: '需要引导式落地', href: '#paths' },
         { text: '官方文档', href: 'https://docs.openclaw.ai', external: true },
-        { text: 'GitHub', href: 'https://github.com/owen-ai-01/claw-guide', external: true },
       ],
       stats: [
         ['运行环境', 'Node.js ≥ 22'],
         ['语言', '英文 + 中文'],
-        ['目标人群', '技术用户优先'],
+        ['路径', '自助 + 引导'],
       ],
     },
     what: {
@@ -133,12 +136,11 @@ const data = {
         ['面向真实业务落地', '不是演示型项目，而是围绕可复用流程与长期运营构建。'],
       ],
     },
-    why: {
-      h: '为什么是 Claw Guide？',
+    paths: {
+      h: '选择你的路径',
       cards: [
-        ['重实操，不空谈', '提供可复制命令、检查清单、排错路径。'],
-        ['中英双语结构', '默认英文，/zh 中文路由，降低全球化学习门槛。'],
-        ['免费 + 付费进阶体系', '先让技术用户跑通；后续补充非技术用户可用的付费教程与视频。'],
+        ['技术用户（自助）', '按 5 步路径完成安装与验证，再通过文档和场景模板扩展能力。', '#how', '开始自助上手'],
+        ['非技术团队（引导）', '先使用免费总览，再进入后续付费的陪跑式教程与交付流程。', '#faq', '查看引导方案'],
       ],
     },
     how: {
@@ -181,9 +183,9 @@ const data = {
     faq: {
       h: '常见问题',
       items: [
-        ['新手能用吗？', '可以。技术用户按步骤即可跑通；非技术用户后续可通过引导课程快速上手。'],
+        ['新手能用吗？', '可以。技术用户按步骤即可跑通；非技术用户可通过后续引导课程快速上手。'],
         ['这是官方文档官网吗？', '不是。这里是实战导航站，会结合官方文档并补充落地方案。'],
-        ['会有付费内容吗？', '会。后续会提供更系统的非技术教程、视频和案例包。'],
+        ['有引导式落地服务吗？', '有。正在筹备面向非技术创业者和小团队的付费引导与实战交付流程。'],
       ],
     },
   },
@@ -195,6 +197,7 @@ function ext(link) {
 
 function render(lang = 'en') {
   const t = data[lang] || data.en;
+  const canonicalPath = lang === 'zh' ? '/zh' : '/';
 
   return `<!doctype html>
 <html lang="${t.htmlLang}">
@@ -202,7 +205,14 @@ function render(lang = 'en') {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${t.title}</title>
-  <meta name="description" content="${t.hero.p}" />
+  <meta name="description" content="${t.description}" />
+  <meta property="og:title" content="${t.title}" />
+  <meta property="og:description" content="${t.description}" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="${canonicalPath}" />
+  <link rel="alternate" hreflang="en" href="/" />
+  <link rel="alternate" hreflang="zh-CN" href="/zh" />
+  <link rel="alternate" hreflang="x-default" href="/" />
   <style>
     :root { --bg:#0b1020; --card:#131a2f; --text:#e7ecff; --muted:#9bb0ff; --accent:#5b8cff; --line: rgba(155,176,255,.2); }
     * { box-sizing: border-box; scroll-behavior: smooth; }
@@ -230,10 +240,13 @@ function render(lang = 'en') {
 
     section { padding: 30px 0; }
     h2 { margin:0 0 14px; font-size: clamp(22px, 3.6vw, 30px); }
-    .grid3 { display:grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap:12px; }
+    .grid3, .grid2 { display:grid; gap:12px; }
+    .grid3 { grid-template-columns: repeat(3,minmax(0,1fr)); }
+    .grid2 { grid-template-columns: repeat(2,minmax(0,1fr)); }
     .card { border:1px solid var(--line); background: rgba(19,26,47,.86); border-radius:12px; padding:14px; }
     .card h3 { margin:0 0 8px; font-size:16px; }
     .card p { margin:0; color:#b8c6ff; font-size:14px; line-height:1.6; }
+    .mini-cta { display:inline-block; margin-top:10px; color:#d7e2ff; font-size:13px; text-decoration:none; border-bottom:1px dashed rgba(215,226,255,.45); }
 
     .steps { display:grid; gap:10px; }
     .step { border:1px solid var(--line); border-radius:12px; padding:12px; background:#0e1530; }
@@ -246,7 +259,7 @@ function render(lang = 'en') {
 
     @media (max-width: 860px) {
       .menu { display:none; }
-      .stats, .grid3 { grid-template-columns:1fr; }
+      .stats, .grid3, .grid2 { grid-template-columns:1fr; }
     }
   </style>
 </head>
@@ -258,7 +271,7 @@ function render(lang = 'en') {
         <div class="menu">
           <a href="#top">${t.nav.home}</a>
           <a href="#what">${t.nav.what}</a>
-          <a href="#why">${t.nav.why}</a>
+          <a href="#paths">${t.nav.path}</a>
           <a href="#how">${t.nav.steps}</a>
           <a href="#docs">${t.nav.docs}</a>
           <a href="#resources">${t.nav.resources}</a>
@@ -290,10 +303,10 @@ function render(lang = 'en') {
       </div>
     </section>
 
-    <section id="why">
-      <h2>${t.why.h}</h2>
-      <div class="grid3">
-        ${t.why.cards.map(c => `<article class="card"><h3>${c[0]}</h3><p>${c[1]}</p></article>`).join('')}
+    <section id="paths">
+      <h2>${t.paths.h}</h2>
+      <div class="grid2">
+        ${t.paths.cards.map(c => `<article class="card"><h3>${c[0]}</h3><p>${c[1]}</p><a class="mini-cta" href="${c[2]}">${c[3]} →</a></article>`).join('')}
       </div>
     </section>
 
@@ -334,7 +347,7 @@ function render(lang = 'en') {
   </main>
 
   <footer class="container">
-    Claw Guide · Bilingual structure ready (${lang === 'zh' ? '/zh' : '/'})
+    Claw Guide · Bilingual structure synced (${lang === 'zh' ? '/zh' : '/'})
   </footer>
 </body>
 </html>`;
