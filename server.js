@@ -420,6 +420,7 @@ function render(lang = 'en') {
         </a>
 
         <div class="menu" aria-label="Primary Navigation">
+          <a href="#launch-tracks">${t.nav.launch}</a>
           <a href="#learn">${t.nav.learn}</a>
           <a href="#roadmap">${t.nav.roadmap}</a>
           <a href="#docs">${t.nav.docs}</a>
@@ -457,6 +458,7 @@ function render(lang = 'en') {
     </section>
 
     <section class="quick-links" aria-label="Quick section links">
+      <a class="q-item" href="#launch-tracks">${t.nav.launch}</a>
       <a class="q-item" href="#learn">${t.nav.learn}</a>
       <a class="q-item" href="#roadmap">${t.nav.roadmap}</a>
       <a class="q-item" href="#docs">${t.nav.docs}</a>
