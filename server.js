@@ -23,8 +23,8 @@ const data = {
     },
     hero: {
       badge: 'Bilingual OpenClaw Implementation Hub',
-      h1: 'Launch OpenClaw With a Clear Structure, Not Guesswork',
-      p: 'A practical guide for indie builders and small teams: understand the architecture, follow the setup sequence, and move from first run to repeatable automation.',
+      h1: 'Build with OpenClaw, Faster.',
+      p: 'A clear bilingual guide to launch your OpenClaw setup in 5 practical steps.',
       ctas: [
         { text: 'See Launch Roadmap', href: '#roadmap' },
         { text: 'Read Official Docs', href: 'https://docs.openclaw.ai', external: true },
@@ -115,8 +115,8 @@ const data = {
     },
     hero: {
       badge: 'OpenClaw 双语落地中枢',
-      h1: '用清晰结构落地 OpenClaw，而不是靠摸索',
-      p: '面向独立开发者和小团队的实战指南：先建立整体认知，再按步骤配置，最后把一次成功变成可复用流程。',
+      h1: '更快把 OpenClaw 跑起来。',
+      p: '中英双语实战指南，按 5 个步骤快速完成从安装到可用。',
       ctas: [
         { text: '查看落地路线图', href: '#roadmap' },
         { text: '阅读官方文档', href: 'https://docs.openclaw.ai', external: true },
@@ -317,12 +317,12 @@ function render(lang = 'en') {
 
     h1 {
       margin:0 0 10px;
-      font-size:clamp(30px, 5.4vw, 54px);
-      line-height:1.08;
-      letter-spacing:-.02em;
+      font-size:clamp(40px, 7.2vw, 72px);
+      line-height:1.02;
+      letter-spacing:-.03em;
     }
 
-    .lead { color:var(--muted); font-size:17px; max-width:770px; margin:0; }
+    .lead { color:var(--muted); font-size:18px; max-width:680px; margin:0; }
 
     .ctas { margin-top:18px; display:flex; gap:9px; flex-wrap:wrap; }
     .btn {
