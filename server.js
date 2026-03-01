@@ -37,7 +37,7 @@ const data = {
       ],
     },
     launch: {
-      h: 'Choose Your Launch Track',
+      h: 'Launch Tracks',
       cards: [
         ['Technical Track', 'Follow the 5-step roadmap, connect one channel, and ship your first working automation this week.', '#roadmap', 'Start Technical Track'],
         ['Operator Track', 'For non-technical founders/teams: start from curated resources and move to guided implementation.', '#resources', 'See Operator Path'],
@@ -129,7 +129,7 @@ const data = {
       ],
     },
     launch: {
-      h: '选择上线路径',
+      h: 'Launch Tracks（技术路径 / 运营路径）',
       cards: [
         ['技术开发路径', '按 5 步路线图打通一个渠道，并在本周完成第一个可用自动化流程。', '#roadmap', '进入技术路径'],
         ['运营落地路径', '面向非技术创业者/团队：先走资源路径，后续进入引导式实施。', '#resources', '查看运营路径'],
@@ -420,7 +420,6 @@ function render(lang = 'en') {
         </a>
 
         <div class="menu" aria-label="Primary Navigation">
-          <a href="#launch">${t.nav.launch}</a>
           <a href="#learn">${t.nav.learn}</a>
           <a href="#roadmap">${t.nav.roadmap}</a>
           <a href="#docs">${t.nav.docs}</a>
@@ -458,7 +457,6 @@ function render(lang = 'en') {
     </section>
 
     <section class="quick-links" aria-label="Quick section links">
-      <a class="q-item" href="#launch">${t.nav.launch}</a>
       <a class="q-item" href="#learn">${t.nav.learn}</a>
       <a class="q-item" href="#roadmap">${t.nav.roadmap}</a>
       <a class="q-item" href="#docs">${t.nav.docs}</a>
@@ -467,7 +465,7 @@ function render(lang = 'en') {
       <a class="q-item" href="#faq">${t.nav.faq}</a>
     </section>
 
-    <section id="launch">
+    <section id="launch-tracks">
       <h2>${t.launch.h}</h2>
       <div class="grid2">
         ${t.launch.cards.map(c => `<article class="card"><h3>${c[0]}</h3><p>${c[1]}</p><a class="btn primary" style="display:inline-block;margin-top:10px;" href="${c[2]}">${c[3]}</a></article>`).join('')}
