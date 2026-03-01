@@ -14,6 +14,7 @@ const data = {
       roadmap: 'Roadmap',
       docs: 'Docs',
       resources: 'Resources',
+      highlights: 'Highlights',
       faq: 'FAQ',
       start: 'Start Now',
       lang: '中文',
@@ -69,6 +70,14 @@ const data = {
         ['Discord Community', 'https://discord.gg/clawd'],
       ],
     },
+    highlights: {
+      h: 'What Makes This Guide Useful',
+      cards: [
+        ['Structured-first', 'Prioritizes information architecture so new visitors immediately know where to click and why.'],
+        ['Action-first', 'Every section maps to the next operational action, not just passive reading.'],
+        ['Bilingual parity', 'English and Chinese keep the same layout and intent to reduce cognitive switching cost.'],
+      ],
+    },
     faq: {
       h: 'FAQ',
       items: [
@@ -88,6 +97,7 @@ const data = {
       roadmap: '路线图',
       docs: '官方文档',
       resources: '资源',
+      highlights: '重点亮点',
       faq: 'FAQ',
       start: '立即开始',
       lang: 'English',
@@ -141,6 +151,14 @@ const data = {
         ['OpenClaw GitHub 仓库', 'https://github.com/openclaw/openclaw'],
         ['Showcase 案例', 'https://docs.openclaw.ai/start/showcase'],
         ['Discord 社区', 'https://discord.gg/clawd'],
+      ],
+    },
+    highlights: {
+      h: '为什么这个指南更易用',
+      cards: [
+        ['先结构后细节', '先把信息架构理顺，让访客一眼知道“去哪里、做什么”。'],
+        ['先行动后阅读', '每个区块都对应下一步动作，不只是信息堆砌。'],
+        ['双语结构一致', '中英文保持同一逻辑，减少跨语言切换时的认知成本。'],
       ],
     },
     faq: {
@@ -316,6 +334,27 @@ function render(lang = 'en') {
     section { padding:26px 0; }
     h2 { margin:0 0 14px; font-size:clamp(22px,3.4vw,32px); }
 
+    .quick-links {
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      padding-top:4px;
+    }
+
+    .q-item {
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:13px;
+      color:#d6e1ff;
+      background:rgba(255,255,255,.02);
+    }
+
+    .q-item:hover {
+      border-color:rgba(143,173,255,.45);
+      background:rgba(111,165,255,.1);
+    }
+
     .grid3, .grid2 { display:grid; gap:12px; }
     .grid3 { grid-template-columns:repeat(3,minmax(0,1fr)); }
     .grid2 { grid-template-columns:repeat(2,minmax(0,1fr)); }
@@ -366,6 +405,7 @@ function render(lang = 'en') {
           <a href="#roadmap">${t.nav.roadmap}</a>
           <a href="#docs">${t.nav.docs}</a>
           <a href="#resources">${t.nav.resources}</a>
+          <a href="#highlights">${t.nav.highlights}</a>
           <a href="#faq">${t.nav.faq}</a>
         </div>
 
@@ -397,6 +437,15 @@ function render(lang = 'en') {
       </aside>
     </section>
 
+    <section class="quick-links" aria-label="Quick section links">
+      <a class="q-item" href="#learn">${t.nav.learn}</a>
+      <a class="q-item" href="#roadmap">${t.nav.roadmap}</a>
+      <a class="q-item" href="#docs">${t.nav.docs}</a>
+      <a class="q-item" href="#resources">${t.nav.resources}</a>
+      <a class="q-item" href="#highlights">${t.nav.highlights}</a>
+      <a class="q-item" href="#faq">${t.nav.faq}</a>
+    </section>
+
     <section id="learn">
       <h2>${t.learn.h}</h2>
       <div class="grid3">
@@ -422,6 +471,13 @@ function render(lang = 'en') {
       <h2>${t.resources.h}</h2>
       <div class="grid2">
         ${t.resources.links.map(l => `<a class="link-item" href="${l[1]}" target="_blank" rel="noreferrer">${l[0]} ↗</a>`).join('')}
+      </div>
+    </section>
+
+    <section id="highlights">
+      <h2>${t.highlights.h}</h2>
+      <div class="grid3">
+        ${t.highlights.cards.map(c => `<article class="card"><h3>${c[0]}</h3><p>${c[1]}</p></article>`).join('')}
       </div>
     </section>
 
