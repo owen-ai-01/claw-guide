@@ -28,6 +28,7 @@ const data = {
         { text: 'See Launch Roadmap', href: '#roadmap' },
         { text: 'Read Official Docs', href: 'https://docs.openclaw.ai', external: true },
       ],
+      sideTitle: 'Quick Value Snapshot',
       trust: [
         ['Focus', 'Navigation + Hero + Visual clarity'],
         ['Audience', 'Developers + non-technical operators'],
@@ -111,6 +112,7 @@ const data = {
         { text: '查看落地路线图', href: '#roadmap' },
         { text: '阅读官方文档', href: 'https://docs.openclaw.ai', external: true },
       ],
+      sideTitle: '价值速览',
       trust: [
         ['优化重点', '导航结构 + Hero表达 + 视觉样式'],
         ['适用人群', '技术开发者 + 非技术操盘者'],
@@ -250,8 +252,9 @@ function render(lang = 'en') {
     .brand small { display:block; color:#b5c3eb; font-weight:500; font-size:12px; margin-top:1px; }
 
     .menu { display:flex; align-items:center; gap:16px; color:#d8e3ff; font-size:14px; }
-    .menu a { opacity:.88; }
+    .menu a { opacity:.88; padding:6px 0; border-bottom:2px solid transparent; }
     .menu a:hover { opacity:1; }
+    .menu a.active { opacity:1; color:#fff; border-bottom-color: var(--brand); }
 
     .nav-actions { display:flex; align-items:center; gap:8px; }
     .chip {
@@ -430,7 +433,7 @@ function render(lang = 'en') {
       </article>
 
       <aside class="hero-side" aria-label="Key Value">
-        <p class="side-title">Quick Value Snapshot</p>
+        <p class="side-title">${t.hero.sideTitle}</p>
         <div class="trust-grid">
           ${t.hero.trust.map(item => `<div class="trust-item"><b>${item[0]}</b><span>${item[1]}</span></div>`).join('')}
         </div>
@@ -492,6 +495,35 @@ function render(lang = 'en') {
   <footer class="container">
     Claw Guide · Updated information architecture (${lang === 'zh' ? '/zh' : '/'})
   </footer>
+
+  <script>
+    (function () {
+      const menuLinks = Array.from(document.querySelectorAll('.menu a[href^="#"]'));
+      const sections = menuLinks
+        .map(a => document.querySelector(a.getAttribute('href')))
+        .filter(Boolean);
+      if (!sections.length) return;
+
+      const setActive = (id) => {
+        menuLinks.forEach(a => {
+          const active = a.getAttribute('href') === id;
+          a.classList.toggle('active', active);
+          if (active) a.setAttribute('aria-current', 'true');
+          else a.removeAttribute('aria-current');
+        });
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        const target = entries
+          .filter(e => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0]?.target;
+        if (target?.id) setActive('#' + target.id);
+      }, { rootMargin: '-35% 0px -55% 0px', threshold: [0.2, 0.45, 0.7] });
+
+      sections.forEach(section => observer.observe(section));
+      setActive('#top');
+    })();
+  </script>
 </body>
 </html>`;
 }
