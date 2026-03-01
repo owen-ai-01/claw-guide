@@ -10,6 +10,7 @@ const data = {
       'Bilingual OpenClaw launch guide with streamlined navigation, clearer hero messaging, and a practical setup roadmap.',
     nav: {
       logoTag: 'Build & Ship',
+      launch: 'Launch Tracks',
       learn: 'Learn',
       roadmap: 'Roadmap',
       docs: 'Docs',
@@ -33,6 +34,13 @@ const data = {
         ['Focus', 'Navigation + Hero + Visual clarity'],
         ['Audience', 'Developers + non-technical operators'],
         ['Output', 'Actionable setup sequence'],
+      ],
+    },
+    launch: {
+      h: 'Choose Your Launch Track',
+      cards: [
+        ['Technical Track', 'Follow the 5-step roadmap, connect one channel, and ship your first working automation this week.', '#roadmap', 'Start Technical Track'],
+        ['Operator Track', 'For non-technical founders/teams: start from curated resources and move to guided implementation.', '#resources', 'See Operator Path'],
       ],
     },
     learn: {
@@ -94,6 +102,7 @@ const data = {
     description: '中英双语 OpenClaw 落地指南：更清晰的导航、更聚焦的 Hero 表达、更实用的实施路径。',
     nav: {
       logoTag: 'Build & Ship',
+      launch: '上线路径',
       learn: '你将学到',
       roadmap: '路线图',
       docs: '官方文档',
@@ -117,6 +126,13 @@ const data = {
         ['优化重点', '导航结构 + Hero表达 + 视觉样式'],
         ['适用人群', '技术开发者 + 非技术操盘者'],
         ['目标产出', '可执行的上手与迭代路径'],
+      ],
+    },
+    launch: {
+      h: '选择上线路径',
+      cards: [
+        ['技术开发路径', '按 5 步路线图打通一个渠道，并在本周完成第一个可用自动化流程。', '#roadmap', '进入技术路径'],
+        ['运营落地路径', '面向非技术创业者/团队：先走资源路径，后续进入引导式实施。', '#resources', '查看运营路径'],
       ],
     },
     learn: {
@@ -404,6 +420,7 @@ function render(lang = 'en') {
         </a>
 
         <div class="menu" aria-label="Primary Navigation">
+          <a href="#launch">${t.nav.launch}</a>
           <a href="#learn">${t.nav.learn}</a>
           <a href="#roadmap">${t.nav.roadmap}</a>
           <a href="#docs">${t.nav.docs}</a>
@@ -441,12 +458,20 @@ function render(lang = 'en') {
     </section>
 
     <section class="quick-links" aria-label="Quick section links">
+      <a class="q-item" href="#launch">${t.nav.launch}</a>
       <a class="q-item" href="#learn">${t.nav.learn}</a>
       <a class="q-item" href="#roadmap">${t.nav.roadmap}</a>
       <a class="q-item" href="#docs">${t.nav.docs}</a>
       <a class="q-item" href="#resources">${t.nav.resources}</a>
       <a class="q-item" href="#highlights">${t.nav.highlights}</a>
       <a class="q-item" href="#faq">${t.nav.faq}</a>
+    </section>
+
+    <section id="launch">
+      <h2>${t.launch.h}</h2>
+      <div class="grid2">
+        ${t.launch.cards.map(c => `<article class="card"><h3>${c[0]}</h3><p>${c[1]}</p><a class="btn primary" style="display:inline-block;margin-top:10px;" href="${c[2]}">${c[3]}</a></article>`).join('')}
+      </div>
     </section>
 
     <section id="learn">
