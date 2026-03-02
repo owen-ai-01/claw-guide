@@ -28,6 +28,10 @@ const data = {
       p: 'Launch OpenClaw faster with a bilingual 5-step implementation guide.',
       microcopy: 'No signup required. Run your first loop first, then expand.',
       audienceSplit: 'Technical? Start with 5 steps. Non-technical? Choose your path for guided rollout.',
+      quickPicks: [
+        ['I can set up myself (30-60 min)', '#roadmap'],
+        ['I need guided path (non-technical)', '#launch-tracks'],
+      ],
       ctaHint: 'Primary path takes about 30-60 minutes for your first runnable loop.',
       ctas: [
         { text: 'Start in 5 Steps', href: '#roadmap' },
@@ -98,6 +102,7 @@ const data = {
       items: [
         ['Is this an official documentation mirror?', 'No. It is a companion guide focused on practical implementation flow and curation.'],
         ['Can non-technical founders use this?', 'Yes. Follow the structure and prioritize one channel + one workflow first.'],
+        ['Which path should I choose first?', 'If you can install/configure by yourself, start with the 5-step roadmap. If not, start from Launch Tracks and resources for guided rollout.'],
         ['What should I do after first setup?', 'Lock a weekly operating rhythm: memory maintenance, workflow checks, and incremental skill expansion.'],
       ],
     },
@@ -125,6 +130,10 @@ const data = {
       p: '用中英双语 5 步指南，更快把 OpenClaw 从安装推进到可用。',
       microcopy: '无需注册，先跑通第一条流程，再逐步扩展。',
       audienceSplit: '技术同学：先走5步；非技术同学：先选路径进入引导式落地。',
+      quickPicks: [
+        ['我能自助上手（30-60分钟）', '#roadmap'],
+        ['我是非技术，先看引导路径', '#launch-tracks'],
+      ],
       ctaHint: '主路径通常约 30-60 分钟可跑通首条流程。',
       ctas: [
         { text: '从5步开始落地', href: '#roadmap' },
@@ -195,6 +204,7 @@ const data = {
       items: [
         ['这是官方文档镜像吗？', '不是。这里是偏实战的配套导航，重点在落地流程与资源编排。'],
         ['非技术创业者能用吗？', '可以。建议先只做“一个渠道 + 一个流程”的最小闭环。'],
+        ['我应该先选哪条路径？', '能自助安装配置就先走 5 步路线图；如果偏非技术，先从上线路径与资源区进入引导式落地。'],
         ['跑通后下一步做什么？', '建立每周固定节奏：记忆维护、流程回顾、技能逐步扩展。'],
       ],
     },
@@ -406,6 +416,16 @@ function render(lang = 'en') {
     .lead { color:var(--muted); font-size:18px; max-width:680px; margin:0; }
     .microcopy { margin:10px 0 0; color:#cbd9ff; font-size:13px; opacity:.95; }
     .audience-split { margin:8px 0 0; color:#dbe6ff; font-size:13px; opacity:.98; font-weight:600; }
+    .audience-quick-links { margin-top:8px; display:flex; gap:8px; flex-wrap:wrap; }
+    .mini-chip {
+      border:1px solid rgba(143,173,255,.35);
+      border-radius:999px;
+      padding:6px 10px;
+      font-size:12px;
+      color:#d8e3ff;
+      background:rgba(255,255,255,.03);
+    }
+    .mini-chip:hover { border-color:rgba(143,173,255,.55); background:rgba(111,165,255,.1); }
 
     .ctas { margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; }
     .cta-hint { margin:10px 0 0; color:#9fb5ee; font-size:12px; }
@@ -532,6 +552,9 @@ function render(lang = 'en') {
         <p class="lead">${t.hero.p}</p>
         <p class="microcopy">${t.hero.microcopy}</p>
         <p class="audience-split">${t.hero.audienceSplit}</p>
+        <div class="audience-quick-links">
+          ${t.hero.quickPicks.map(q => `<a class="mini-chip" href="${q[1]}">${q[0]}</a>`).join('')}
+        </div>
 
         <div class="ctas">
           ${t.hero.ctas.map(c => `<a class="btn ${c.href.startsWith('#') ? 'primary' : ''}" href="${c.href}"${ext(c)}>${c.text}</a>`).join('')}
