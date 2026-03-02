@@ -17,7 +17,7 @@ const data = {
       resources: 'Resources',
       highlights: 'Highlights',
       faq: 'FAQ',
-      start: 'Start Now',
+      start: 'Start in 5 Steps',
       lang: '中文',
       langHref: '/zh',
     },
@@ -26,7 +26,7 @@ const data = {
       h1: 'Build with OpenClaw, Faster.',
       p: 'A clear bilingual guide to launch your OpenClaw setup in 5 practical steps.',
       ctas: [
-        { text: 'See Launch Roadmap', href: '#roadmap' },
+        { text: 'Start in 5 Steps', href: '#roadmap' },
         { text: 'Read Official Docs', href: 'https://docs.openclaw.ai', external: true },
       ],
       sideTitle: 'Quick Value Snapshot',
@@ -109,7 +109,7 @@ const data = {
       resources: '资源',
       highlights: '重点亮点',
       faq: 'FAQ',
-      start: '立即开始',
+      start: '从5步开始',
       lang: 'English',
       langHref: '/',
     },
@@ -118,7 +118,7 @@ const data = {
       h1: '更快把 OpenClaw 跑起来。',
       p: '中英双语实战指南，按 5 个步骤快速完成从安装到可用。',
       ctas: [
-        { text: '查看落地路线图', href: '#roadmap' },
+        { text: '从5步开始落地', href: '#roadmap' },
         { text: '阅读官方文档', href: 'https://docs.openclaw.ai', external: true },
       ],
       sideTitle: '价值速览',
@@ -479,7 +479,7 @@ function render(lang = 'en') {
 
         <div class="nav-actions">
           <a class="chip" href="${t.nav.langHref}" aria-label="${lang === 'zh' ? '切换到英文页面' : 'Switch to Chinese page'}">${t.nav.lang}</a>
-          <a class="chip primary" href="#launch-tracks" aria-label="${lang === 'zh' ? '开始查看上线路径' : 'Start with launch tracks'}">${t.nav.start}</a>
+          <a class="chip primary" href="#roadmap" aria-label="${lang === 'zh' ? '开始5步落地路线' : 'Start with the 5-step roadmap'}">${t.nav.start}</a>
         </div>
       </nav>
     </div>
