@@ -510,14 +510,14 @@ function render(lang = 'en') {
     <section id="docs">
       <h2>${t.docs.h}</h2>
       <div class="link-list">
-        ${t.docs.links.map(l => `<a class="link-item" href="${l[1]}" target="_blank" rel="noreferrer">${l[0]} ↗</a>`).join('')}
+        ${t.docs.links.map(l => `<a class="link-item" href="${l[1]}" target="_blank" rel="noopener noreferrer">${l[0]} ↗</a>`).join('')}
       </div>
     </section>
 
     <section id="resources">
       <h2>${t.resources.h}</h2>
       <div class="grid2">
-        ${t.resources.links.map(l => `<a class="link-item" href="${l[1]}" target="_blank" rel="noreferrer">${l[0]} ↗</a>`).join('')}
+        ${t.resources.links.map(l => `<a class="link-item" href="${l[1]}" target="_blank" rel="noopener noreferrer">${l[0]} ↗</a>`).join('')}
       </div>
     </section>
 
@@ -572,25 +572,33 @@ function render(lang = 'en') {
 </html>`;
 }
 
+const htmlEn = render('en');
+const htmlZh = render('zh');
+
+const htmlHeaders = {
+  'content-type': 'text/html; charset=utf-8',
+  'cache-control': 'public, max-age=300',
+};
+
 const server = http.createServer((req, res) => {
   const url = (req.url || '/').split('?')[0];
 
   if (url === '/health') {
-    res.writeHead(200, { 'content-type': 'application/json; charset=utf-8' });
+    res.writeHead(200, { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' });
     return res.end(JSON.stringify({ ok: true, service: 'claw-guide' }));
   }
 
   if (url === '/zh' || url === '/zh/') {
-    res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
-    return res.end(render('zh'));
+    res.writeHead(200, htmlHeaders);
+    return res.end(htmlZh);
   }
 
   if (url === '/' || url === '/index.html') {
-    res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
-    return res.end(render('en'));
+    res.writeHead(200, htmlHeaders);
+    return res.end(htmlEn);
   }
 
-  res.writeHead(404, { 'content-type': 'text/plain; charset=utf-8' });
+  res.writeHead(404, { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store' });
   res.end('Not Found');
 });
 
