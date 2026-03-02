@@ -191,7 +191,7 @@ const data = {
 };
 
 function ext(link) {
-  return link.external ? ' target="_blank" rel="noreferrer"' : '';
+  return link.external ? ' target="_blank" rel="noopener noreferrer"' : '';
 }
 
 function render(lang = 'en') {
@@ -208,6 +208,8 @@ function render(lang = 'en') {
   <meta property="og:title" content="${t.title}" />
   <meta property="og:description" content="${t.description}" />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="${canonicalPath}" />
+  <meta property="og:locale" content="${lang === 'zh' ? 'zh_CN' : 'en_US'}" />
   <link rel="canonical" href="${canonicalPath}" />
   <link rel="alternate" hreflang="en" href="/" />
   <link rel="alternate" hreflang="zh-CN" href="/zh" />
@@ -241,6 +243,20 @@ function render(lang = 'en') {
 
     a { color:inherit; text-decoration:none; }
     .container { width:min(1180px, 92%); margin:0 auto; }
+
+    .skip-link {
+      position:absolute;
+      left:14px;
+      top:-44px;
+      background:#ffffff;
+      color:#111827;
+      padding:8px 12px;
+      border-radius:8px;
+      font-size:13px;
+      z-index:60;
+      transition:top .2s ease;
+    }
+    .skip-link:focus { top:10px; }
 
     .nav-wrap {
       position:sticky;
@@ -413,6 +429,7 @@ function render(lang = 'en') {
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#top">${lang === 'zh' ? '跳到正文' : 'Skip to main content'}</a>
   <header class="nav-wrap">
     <div class="container">
       <nav>
