@@ -129,7 +129,7 @@ const data = {
       ],
     },
     launch: {
-      h: 'Launch Tracks（技术路径 / 运营路径）',
+      h: '上线路径（技术路径 / 运营路径）',
       cards: [
         ['技术开发路径', '按 5 步路线图打通一个渠道，并在本周完成第一个可用自动化流程。', '#roadmap', '进入技术路径'],
         ['运营落地路径', '面向非技术创业者/团队：先走资源路径，后续进入引导式实施。', '#resources', '查看运营路径'],
@@ -247,6 +247,21 @@ function render(lang = 'en') {
         'https://docs.openclaw.ai',
         'https://github.com/openclaw/openclaw',
       ],
+    })}
+  </script>
+  <script type="application/ld+json">
+    ${JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      inLanguage: lang === 'zh' ? 'zh-CN' : 'en',
+      mainEntity: t.faq.items.map(item => ({
+        '@type': 'Question',
+        name: item[0],
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: item[1],
+        },
+      })),
     })}
   </script>
   <style>
@@ -600,7 +615,7 @@ function render(lang = 'en') {
       }, { rootMargin: '-35% 0px -55% 0px', threshold: [0.2, 0.45, 0.7] });
 
       sections.forEach(section => observer.observe(section));
-      setActive('#top-main');
+      setActive('#launch-tracks');
     })();
   </script>
 </body>
