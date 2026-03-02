@@ -687,7 +687,8 @@ function render(lang = 'en') {
           acc[x.area] = (acc[x.area] || 0) + 1;
           return acc;
         }, {});
-        return { total: all.length, byArea };
+        const recent = all.slice(-5).reverse();
+        return { total: all.length, byArea, recent };
       };
 
       const ensurePanel = () => {
@@ -706,7 +707,12 @@ function render(lang = 'en') {
         if (!panel) return;
         const s = summarize();
         const lines = Object.entries(s.byArea).map(([k, v]) => k + ': ' + v).join(' · ');
-        panel.innerHTML = '<b>CTA Metrics (local)</b><div style="margin-top:4px">total: ' + s.total + '</div><div style="margin-top:2px;opacity:.9">' + (lines || 'no clicks yet') + '</div>';
+        const recentHtml = s.recent.length
+          ? '<div style="margin-top:6px;opacity:.92"><b style="font-weight:600">recent 5:</b><ol style="margin:4px 0 0 16px;padding:0">' +
+              s.recent.map(x => '<li style="margin:1px 0">' + (x.label || 'unknown') + ' <span style="opacity:.7">(' + (x.area || '-') + ')</span></li>').join('') +
+            '</ol></div>'
+          : '<div style="margin-top:6px;opacity:.75">recent 5: none</div>';
+        panel.innerHTML = '<b>CTA Metrics (local)</b><div style="margin-top:4px">total: ' + s.total + '</div><div style="margin-top:2px;opacity:.9">' + (lines || 'no clicks yet') + '</div>' + recentHtml;
       };
 
       renderPanel();
