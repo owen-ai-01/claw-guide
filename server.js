@@ -244,6 +244,10 @@ function render(lang = 'en') {
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${t.title}" />
   <meta name="twitter:description" content="${t.description}" />
+  <meta property="og:image" content="https://via.placeholder.com/1200x630/060915/6fa5ff?text=Claw+Guide" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:image" content="https://via.placeholder.com/1200x630/060915/6fa5ff?text=Claw+Guide" />
   <link rel="canonical" href="${canonicalUrl}" />
   <link rel="alternate" hreflang="en" href="${siteUrl}/" />
   <link rel="alternate" hreflang="zh-CN" href="${siteUrl}/zh" />
@@ -332,6 +336,17 @@ function render(lang = 'en') {
       transition:top .2s ease;
     }
     .skip-link:focus { top:10px; }
+
+    /* Enhanced focus visibility for keyboard navigation */
+    .btn:focus-visible,
+    .mini-chip:focus-visible,
+    .q-item:focus-visible,
+    .chip:focus-visible,
+    .link-item:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+      border-color: var(--brand);
+    }
 
     .nav-wrap {
       position:sticky;
@@ -756,12 +771,16 @@ function render(lang = 'en') {
 </html>`;
 }
 
+// Pre‑render at startup for performance
 const htmlEn = render('en');
 const htmlZh = render('zh');
 
 const htmlHeaders = {
   'content-type': 'text/html; charset=utf-8',
   'cache-control': 'public, max-age=300',
+  'x-robots-tag': 'index, follow',
+  'x-content-type-options': 'nosniff',
+  'x-frame-options': 'DENY',
 };
 
 const server = http.createServer((req, res) => {
@@ -774,34 +793,45 @@ const server = http.createServer((req, res) => {
     console.log(`[${new Date().toISOString()}] ${method} ${url} -> ${res.statusCode} (${ms}ms)`);
   });
 
-  if (url === '/health') {
-    res.writeHead(200, { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' });
-    return res.end(JSON.stringify({ ok: true, service: 'claw-guide' }));
-  }
+  try {
+    if (url === '/health') {
+      res.writeHead(200, { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' });
+      return res.end(JSON.stringify({ ok: true, service: 'claw-guide' }));
+    }
 
-  if (url === '/robots.txt') {
-    res.writeHead(200, { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'public, max-age=300' });
-    return res.end(`User-agent: *\nAllow: /\nSitemap: ${siteUrl}/sitemap.xml\n`);
-  }
+    if (url === '/favicon.ico') {
+      res.writeHead(204, { 'cache-control': 'public, max-age=86400' });
+      return res.end();
+    }
 
-  if (url === '/sitemap.xml') {
-    const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${siteUrl}/</loc></url>\n  <url><loc>${siteUrl}/zh</loc></url>\n</urlset>`;
-    res.writeHead(200, { 'content-type': 'application/xml; charset=utf-8', 'cache-control': 'public, max-age=300' });
-    return res.end(xml);
-  }
+    if (url === '/robots.txt') {
+      res.writeHead(200, { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'public, max-age=300' });
+      return res.end(`User-agent: *\nAllow: /\nSitemap: ${siteUrl}/sitemap.xml\n`);
+    }
 
-  if (url === '/zh' || url === '/zh/') {
-    res.writeHead(200, htmlHeaders);
-    return res.end(htmlZh);
-  }
+    if (url === '/sitemap.xml') {
+      const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${siteUrl}/</loc></url>\n  <url><loc>${siteUrl}/zh</loc></url>\n</urlset>`;
+      res.writeHead(200, { 'content-type': 'application/xml; charset=utf-8', 'cache-control': 'public, max-age=300' });
+      return res.end(xml);
+    }
 
-  if (url === '/' || url === '/index.html') {
-    res.writeHead(200, htmlHeaders);
-    return res.end(htmlEn);
-  }
+    if (url === '/zh' || url === '/zh/') {
+      res.writeHead(200, htmlHeaders);
+      return res.end(htmlZh);
+    }
 
-  res.writeHead(404, { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store' });
-  res.end('Not Found');
+    if (url === '/' || url === '/index.html') {
+      res.writeHead(200, htmlHeaders);
+      return res.end(htmlEn);
+    }
+
+    res.writeHead(404, { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store' });
+    res.end('Not Found');
+  } catch (err) {
+    console.error(`[${new Date().toISOString()}] Error handling ${url}:`, err);
+    res.writeHead(500, { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'no-store' });
+    res.end('Internal Server Error');
+  }
 });
 
 server.listen(port, () => {
