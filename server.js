@@ -232,6 +232,7 @@ function render(lang = 'en') {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#060915" />
   <title>${t.title}</title>
   <meta name="description" content="${t.description}" />
   <meta property="og:title" content="${t.title}" />
@@ -290,6 +291,20 @@ function render(lang = 'en') {
           '@type': 'Answer',
           text: item[1],
         },
+      })),
+    })}
+  </script>
+  <script type="application/ld+json">
+    ${JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: lang === 'zh' ? '5步落地路线图' : '5-Step Launch Roadmap',
+      description: lang === 'zh' ? 'OpenClaw 快速落地的5个实操步骤。' : '5 practical steps to launch OpenClaw faster.',
+      step: t.roadmap.steps.map((step, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        name: step[0],
+        text: step[1],
       })),
     })}
   </script>
@@ -545,7 +560,7 @@ function render(lang = 'en') {
 
     @media (max-width: 960px) {
       .hero { grid-template-columns:1fr; }
-      .menu { display:none; }
+      .menu { display:flex; flex-wrap:wrap; gap:0.5rem; }
       .grid3, .grid2 { grid-template-columns:1fr; }
     }
   </style>
@@ -668,7 +683,7 @@ function render(lang = 'en') {
   </main>
 
   <footer class="container">
-    Claw Guide · Updated information architecture (${lang === 'zh' ? '/zh' : '/'})
+    Claw Guide · Updated information architecture (${lang === 'zh' ? '/zh' : '/'}) · Built: ${new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Shanghai' })}
   </footer>
 
   <script>
