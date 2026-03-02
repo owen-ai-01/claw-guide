@@ -34,6 +34,7 @@ const data = {
         ['Focus', 'Navigation + Hero + Visual clarity'],
         ['Audience', 'Developers + non-technical operators'],
         ['Output', 'Actionable setup sequence'],
+        ['Time to first flow', 'Usually 30-60 minutes to complete the first runnable loop'],
       ],
     },
     launch: {
@@ -126,6 +127,7 @@ const data = {
         ['优化重点', '导航结构 + Hero表达 + 视觉样式'],
         ['适用人群', '技术开发者 + 非技术操盘者'],
         ['目标产出', '可执行的上手与迭代路径'],
+        ['首次跑通时间', '通常 30-60 分钟可完成第一条可运行流程'],
       ],
     },
     launch: {
@@ -215,6 +217,8 @@ function render(lang = 'en') {
   <meta property="og:title" content="${t.title}" />
   <meta property="og:description" content="${t.description}" />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Claw Guide" />
+  <meta name="robots" content="index,follow" />
   <meta property="og:url" content="${canonicalPath}" />
   <meta property="og:locale" content="${lang === 'zh' ? 'zh_CN' : 'en_US'}" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -632,7 +636,14 @@ const htmlHeaders = {
 };
 
 const server = http.createServer((req, res) => {
+  const startedAt = Date.now();
+  const method = req.method || 'GET';
   const url = (req.url || '/').split('?')[0];
+
+  res.on('finish', () => {
+    const ms = Date.now() - startedAt;
+    console.log(`[${new Date().toISOString()}] ${method} ${url} -> ${res.statusCode} (${ms}ms)`);
+  });
 
   if (url === '/health') {
     res.writeHead(200, { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' });
