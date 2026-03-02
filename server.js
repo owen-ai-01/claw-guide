@@ -214,6 +214,32 @@ function render(lang = 'en') {
   <link rel="alternate" hreflang="en" href="/" />
   <link rel="alternate" hreflang="zh-CN" href="/zh" />
   <link rel="alternate" hreflang="x-default" href="/" />
+  <script type="application/ld+json">
+    ${JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'Claw Guide',
+      url: canonicalPath,
+      inLanguage: lang === 'zh' ? 'zh-CN' : 'en',
+      description: t.description,
+      publisher: {
+        '@type': 'Organization',
+        name: 'Claw Guide',
+      },
+    })}
+  </script>
+  <script type="application/ld+json">
+    ${JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'Claw Guide',
+      url: canonicalPath,
+      sameAs: [
+        'https://docs.openclaw.ai',
+        'https://github.com/openclaw/openclaw',
+      ],
+    })}
+  </script>
   <style>
     :root {
       --bg:#060915;
