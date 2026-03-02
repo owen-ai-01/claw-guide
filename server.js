@@ -36,7 +36,7 @@ const data = {
       ctas: [
         { text: 'Start in 5 Steps', href: '#roadmap' },
         { text: 'Choose Your Path', href: '#launch-tracks' },
-        { text: 'Open Official Getting Started', href: 'https://docs.openclaw.ai/start/getting-started', external: true },
+        { text: 'See Docs Entry Points', href: '#docs' },
       ],
       sideTitle: 'Quick Value Snapshot',
       trust: [
@@ -138,7 +138,7 @@ const data = {
       ctas: [
         { text: '从5步开始落地', href: '#roadmap' },
         { text: '选择你的路径', href: '#launch-tracks' },
-        { text: '打开官方快速开始', href: 'https://docs.openclaw.ai/start/getting-started', external: true },
+        { text: '查看文档入口', href: '#docs' },
       ],
       sideTitle: '价值速览',
       trust: [
@@ -769,6 +769,17 @@ const server = http.createServer((req, res) => {
   if (url === '/health') {
     res.writeHead(200, { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' });
     return res.end(JSON.stringify({ ok: true, service: 'claw-guide' }));
+  }
+
+  if (url === '/robots.txt') {
+    res.writeHead(200, { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'public, max-age=300' });
+    return res.end(`User-agent: *\nAllow: /\nSitemap: ${siteUrl}/sitemap.xml\n`);
+  }
+
+  if (url === '/sitemap.xml') {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${siteUrl}/</loc></url>\n  <url><loc>${siteUrl}/zh</loc></url>\n</urlset>`;
+    res.writeHead(200, { 'content-type': 'application/xml; charset=utf-8', 'cache-control': 'public, max-age=300' });
+    return res.end(xml);
   }
 
   if (url === '/zh' || url === '/zh/') {
