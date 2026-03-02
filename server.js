@@ -24,7 +24,7 @@ const data = {
     hero: {
       badge: 'Bilingual OpenClaw Implementation Hub',
       h1: 'Build with OpenClaw, Faster.',
-      p: 'A clear bilingual guide to launch your OpenClaw setup in 5 practical steps.',
+      p: 'Launch OpenClaw faster with a bilingual 5-step implementation guide.',
       ctas: [
         { text: 'Start in 5 Steps', href: '#roadmap' },
         { text: 'Read Official Docs', href: 'https://docs.openclaw.ai', external: true },
@@ -116,7 +116,7 @@ const data = {
     hero: {
       badge: 'OpenClaw 双语落地中枢',
       h1: '更快把 OpenClaw 跑起来。',
-      p: '中英双语实战指南，按 5 个步骤快速完成从安装到可用。',
+      p: '用中英双语 5 步指南，更快把 OpenClaw 从安装推进到可用。',
       ctas: [
         { text: '从5步开始落地', href: '#roadmap' },
         { text: '阅读官方文档', href: 'https://docs.openclaw.ai', external: true },
