@@ -32,6 +32,7 @@ const data = {
       ctas: [
         { text: 'Start in 5 Steps', href: '#roadmap' },
         { text: 'Choose Your Path', href: '#launch-tracks' },
+        { text: 'Open Official Getting Started', href: 'https://docs.openclaw.ai/start/getting-started', external: true },
       ],
       sideTitle: 'Quick Value Snapshot',
       trust: [
@@ -128,6 +129,7 @@ const data = {
       ctas: [
         { text: '从5步开始落地', href: '#roadmap' },
         { text: '选择你的路径', href: '#launch-tracks' },
+        { text: '打开官方快速开始', href: 'https://docs.openclaw.ai/start/getting-started', external: true },
       ],
       sideTitle: '价值速览',
       trust: [
