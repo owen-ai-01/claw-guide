@@ -586,7 +586,7 @@ function render(lang = 'en') {
         </div>
 
         <div class="nav-actions">
-          <a class="chip" href="${t.nav.langHref}" aria-label="${lang === 'zh' ? '切换到英文页面' : 'Switch to Chinese page'}">${t.nav.lang}</a>
+          <a class="chip" href="${t.nav.langHref}" aria-label="${lang === 'zh' ? '切换到英文页面' : 'Switch to Chinese page'}" lang="${lang === 'zh' ? 'en' : 'zh-CN'}">${t.nav.lang}</a>
           <a class="chip primary" href="#roadmap" aria-label="${lang === 'zh' ? '开始5步落地路线' : 'Start with the 5-step roadmap'}">${t.nav.start}</a>
         </div>
       </nav>
