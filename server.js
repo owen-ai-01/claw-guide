@@ -27,6 +27,7 @@ const data = {
       h1: 'Build with OpenClaw, Faster.',
       p: 'Launch OpenClaw faster with a bilingual 5-step implementation guide.',
       microcopy: 'No signup required. Run your first loop first, then expand.',
+      audienceSplit: 'Technical? Start with 5 steps. Non-technical? Choose your path for guided rollout.',
       ctaHint: 'Primary path takes about 30-60 minutes for your first runnable loop.',
       ctas: [
         { text: 'Start in 5 Steps', href: '#roadmap' },
@@ -122,6 +123,7 @@ const data = {
       h1: '更快把 OpenClaw 跑起来。',
       p: '用中英双语 5 步指南，更快把 OpenClaw 从安装推进到可用。',
       microcopy: '无需注册，先跑通第一条流程，再逐步扩展。',
+      audienceSplit: '技术同学：先走5步；非技术同学：先选路径进入引导式落地。',
       ctaHint: '主路径通常约 30-60 分钟可跑通首条流程。',
       ctas: [
         { text: '从5步开始落地', href: '#roadmap' },
@@ -401,8 +403,9 @@ function render(lang = 'en') {
 
     .lead { color:var(--muted); font-size:18px; max-width:680px; margin:0; }
     .microcopy { margin:10px 0 0; color:#cbd9ff; font-size:13px; opacity:.95; }
+    .audience-split { margin:8px 0 0; color:#dbe6ff; font-size:13px; opacity:.98; font-weight:600; }
 
-    .ctas { margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; }
+    .ctas { margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; }
     .cta-hint { margin:10px 0 0; color:#9fb5ee; font-size:12px; }
     .btn {
       border-radius:12px;
@@ -526,6 +529,7 @@ function render(lang = 'en') {
         <h1>${t.hero.h1}</h1>
         <p class="lead">${t.hero.p}</p>
         <p class="microcopy">${t.hero.microcopy}</p>
+        <p class="audience-split">${t.hero.audienceSplit}</p>
 
         <div class="ctas">
           ${t.hero.ctas.map(c => `<a class="btn ${c.href.startsWith('#') ? 'primary' : ''}" href="${c.href}"${ext(c)}>${c.text}</a>`).join('')}
