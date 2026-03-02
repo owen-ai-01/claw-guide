@@ -666,16 +666,50 @@ function render(lang = 'en') {
       const SELECTOR = '.btn, .mini-chip, .q-item, .chip';
       const STORAGE_KEY = 'claw_guide_click_events';
       const lang = document.documentElement.lang || 'en';
+      const debugMode = new URLSearchParams(location.search).get('debugMetrics') === '1';
 
       window.__clawMetrics = window.__clawMetrics || { events: [] };
 
-      const persist = (event) => {
-        try {
-          const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-          existing.push(event);
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(existing.slice(-120)));
-        } catch (_) {}
+      const readAll = () => {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }
+        catch (_) { return []; }
       };
+
+      const persist = (event) => {
+        const existing = readAll();
+        existing.push(event);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(existing.slice(-120)));
+      };
+
+      const summarize = () => {
+        const all = readAll();
+        const byArea = all.reduce((acc, x) => {
+          acc[x.area] = (acc[x.area] || 0) + 1;
+          return acc;
+        }, {});
+        return { total: all.length, byArea };
+      };
+
+      const ensurePanel = () => {
+        if (!debugMode) return null;
+        let panel = document.getElementById('metrics-debug-panel');
+        if (panel) return panel;
+        panel = document.createElement('div');
+        panel.id = 'metrics-debug-panel';
+        panel.style.cssText = 'position:fixed;right:12px;bottom:12px;z-index:9999;padding:10px 12px;border-radius:10px;background:rgba(10,14,30,.9);color:#dbe6ff;border:1px solid rgba(143,173,255,.35);font:12px/1.4 ui-sans-serif,system-ui;max-width:300px;';
+        document.body.appendChild(panel);
+        return panel;
+      };
+
+      const renderPanel = () => {
+        const panel = ensurePanel();
+        if (!panel) return;
+        const s = summarize();
+        const lines = Object.entries(s.byArea).map(([k, v]) => k + ': ' + v).join(' · ');
+        panel.innerHTML = '<b>CTA Metrics (local)</b><div style="margin-top:4px">total: ' + s.total + '</div><div style="margin-top:2px;opacity:.9">' + (lines || 'no clicks yet') + '</div>';
+      };
+
+      renderPanel();
 
       document.addEventListener('click', (e) => {
         const el = e.target.closest(SELECTOR);
@@ -696,8 +730,9 @@ function render(lang = 'en') {
 
         window.__clawMetrics.events.push(event);
         persist(event);
+        renderPanel();
 
-        if (window.__clawDebugMetrics) {
+        if (window.__clawDebugMetrics || debugMode) {
           console.debug('[claw-guide metric]', event);
         }
       });
