@@ -210,6 +210,9 @@ function render(lang = 'en') {
   <meta property="og:type" content="website" />
   <meta property="og:url" content="${canonicalPath}" />
   <meta property="og:locale" content="${lang === 'zh' ? 'zh_CN' : 'en_US'}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="${t.title}" />
+  <meta name="twitter:description" content="${t.description}" />
   <link rel="canonical" href="${canonicalPath}" />
   <link rel="alternate" hreflang="en" href="/" />
   <link rel="alternate" hreflang="zh-CN" href="/zh" />
@@ -475,8 +478,8 @@ function render(lang = 'en') {
         </div>
 
         <div class="nav-actions">
-          <a class="chip" href="${t.nav.langHref}">${t.nav.lang}</a>
-          <a class="chip primary" href="#launch-tracks">${t.nav.start}</a>
+          <a class="chip" href="${t.nav.langHref}" aria-label="${lang === 'zh' ? '切换到英文页面' : 'Switch to Chinese page'}">${t.nav.lang}</a>
+          <a class="chip primary" href="#launch-tracks" aria-label="${lang === 'zh' ? '开始查看上线路径' : 'Start with launch tracks'}">${t.nav.start}</a>
         </div>
       </nav>
     </div>
