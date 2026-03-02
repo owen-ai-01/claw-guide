@@ -455,11 +455,11 @@ function render(lang = 'en') {
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#top">${lang === 'zh' ? '跳到正文' : 'Skip to main content'}</a>
+  <a class="skip-link" href="#top-main">${lang === 'zh' ? '跳到正文' : 'Skip to main content'}</a>
   <header class="nav-wrap">
     <div class="container">
       <nav>
-        <a class="brand" href="#top" aria-label="Claw Guide Home">
+        <a class="brand" href="#top-main" aria-label="Claw Guide Home">
           <span class="brand-dot"></span>
           <span>Claw Guide<small>${t.nav.logoTag}</small></span>
         </a>
@@ -482,7 +482,7 @@ function render(lang = 'en') {
     </div>
   </header>
 
-  <main class="container" id="top">
+  <main class="container" id="top-main">
     <section class="hero" aria-label="Hero">
       <article class="hero-main">
         <span class="badge">${t.hero.badge}</span>
@@ -591,7 +591,7 @@ function render(lang = 'en') {
       }, { rootMargin: '-35% 0px -55% 0px', threshold: [0.2, 0.45, 0.7] });
 
       sections.forEach(section => observer.observe(section));
-      setActive('#top');
+      setActive('#top-main');
     })();
   </script>
 </body>
