@@ -34,7 +34,7 @@ const data = {
       ],
       ctaHint: 'Primary path takes about 30-60 minutes for your first runnable loop.',
       ctas: [
-        { text: 'Start in 5 Steps', href: '#roadmap' },
+        { text: 'See Launch Roadmap', href: '#roadmap' },
         { text: 'Choose Your Path', href: '#launch-tracks' },
         { text: 'See Docs Entry Points', href: '#docs' },
       ],
@@ -136,7 +136,7 @@ const data = {
       ],
       ctaHint: '主路径通常约 30-60 分钟可跑通首条流程。',
       ctas: [
-        { text: '从5步开始落地', href: '#roadmap' },
+        { text: '查看上线路线图', href: '#roadmap' },
         { text: '选择你的路径', href: '#launch-tracks' },
         { text: '查看文档入口', href: '#docs' },
       ],
@@ -464,6 +464,17 @@ function render(lang = 'en') {
       font-size:15px;
       padding:12px 18px;
     }
+    .btn.secondary {
+      border:1px solid var(--line);
+      background:rgba(13,20,48,.6);
+      color:#dbe6ff;
+      font-size:14px;
+      padding:11px 16px;
+    }
+    .btn.secondary:hover {
+      border-color:rgba(143,173,255,.45);
+      background:rgba(20,30,68,.7);
+    }
 
     .side-title { margin:0 0 10px; font-size:14px; color:#c8d6fb; }
     .trust-grid { display:grid; gap:10px; }
@@ -580,7 +591,10 @@ function render(lang = 'en') {
         </div>
 
         <div class="ctas">
-          ${t.hero.ctas.map(c => `<a class="btn ${c.href.startsWith('#') ? 'primary' : ''}" href="${c.href}"${ext(c)}>${c.text}</a>`).join('')}
+          ${t.hero.ctas.map(c => {
+            const isPrimary = c.href === '#roadmap';
+            return `<a class="btn ${isPrimary ? 'primary' : 'secondary'}" href="${c.href}"${ext(c)}>${c.text}</a>`;
+          }).join('')}
         </div>
         <p class="cta-hint">${t.hero.ctaHint}</p>
       </article>
@@ -800,8 +814,18 @@ const server = http.createServer((req, res) => {
     }
 
     if (url === '/favicon.ico') {
-      res.writeHead(204, { 'cache-control': 'public, max-age=86400' });
-      return res.end();
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+        <rect width="64" height="64" rx="12" fill="#060915"/>
+        <path d="M 32 16 C 24 16 18 22 18 30 C 18 38 24 44 32 44 C 40 44 46 38 46 30 C 46 22 40 16 32 16 Z" fill="none" stroke="#6fa5ff" stroke-width="4"/>
+        <path d="M 32 22 L 32 38" stroke="#7f7bff" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="32" cy="30" r="2" fill="#4de6bc"/>
+      </svg>`;
+      res.writeHead(200, {
+        'content-type': 'image/svg+xml',
+        'cache-control': 'public, max-age=86400',
+        'content-length': Buffer.byteLength(svg)
+      });
+      return res.end(svg);
     }
 
     if (url === '/robots.txt') {
