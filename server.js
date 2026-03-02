@@ -1,6 +1,7 @@
 import http from 'http';
 
 const port = process.env.PORT || 3000;
+const siteUrl = (process.env.SITE_URL || `http://127.0.0.1:${port}`).replace(/\/$/, '');
 
 const data = {
   en: {
@@ -29,7 +30,7 @@ const data = {
       ctaHint: 'Primary path takes about 30-60 minutes for your first runnable loop.',
       ctas: [
         { text: 'Start in 5 Steps', href: '#roadmap' },
-        { text: 'Read Official Docs', href: 'https://docs.openclaw.ai', external: true },
+        { text: 'Choose Your Path', href: '#launch-tracks' },
       ],
       sideTitle: 'Quick Value Snapshot',
       trust: [
@@ -124,7 +125,7 @@ const data = {
       ctaHint: '主路径通常约 30-60 分钟可跑通首条流程。',
       ctas: [
         { text: '从5步开始落地', href: '#roadmap' },
-        { text: '阅读官方文档', href: 'https://docs.openclaw.ai', external: true },
+        { text: '选择你的路径', href: '#launch-tracks' },
       ],
       sideTitle: '价值速览',
       trust: [
@@ -210,6 +211,7 @@ function renderExternalLinks(links, className = 'link-item', lang = 'en') {
 function render(lang = 'en') {
   const t = data[lang] || data.en;
   const canonicalPath = lang === 'zh' ? '/zh' : '/';
+  const canonicalUrl = `${siteUrl}${canonicalPath}`;
 
   return `<!doctype html>
 <html lang="${t.htmlLang}">
@@ -223,21 +225,21 @@ function render(lang = 'en') {
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Claw Guide" />
   <meta name="robots" content="index,follow" />
-  <meta property="og:url" content="${canonicalPath}" />
+  <meta property="og:url" content="${canonicalUrl}" />
   <meta property="og:locale" content="${lang === 'zh' ? 'zh_CN' : 'en_US'}" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${t.title}" />
   <meta name="twitter:description" content="${t.description}" />
-  <link rel="canonical" href="${canonicalPath}" />
-  <link rel="alternate" hreflang="en" href="/" />
-  <link rel="alternate" hreflang="zh-CN" href="/zh" />
-  <link rel="alternate" hreflang="x-default" href="/" />
+  <link rel="canonical" href="${canonicalUrl}" />
+  <link rel="alternate" hreflang="en" href="${siteUrl}/" />
+  <link rel="alternate" hreflang="zh-CN" href="${siteUrl}/zh" />
+  <link rel="alternate" hreflang="x-default" href="${siteUrl}/" />
   <script type="application/ld+json">
     ${JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'WebSite',
       name: 'Claw Guide',
-      url: canonicalPath,
+      url: canonicalUrl,
       inLanguage: lang === 'zh' ? 'zh-CN' : 'en',
       description: t.description,
       publisher: {
@@ -251,7 +253,7 @@ function render(lang = 'en') {
       '@context': 'https://schema.org',
       '@type': 'Organization',
       name: 'Claw Guide',
-      url: canonicalPath,
+      url: canonicalUrl,
       sameAs: [
         'https://docs.openclaw.ai',
         'https://github.com/openclaw/openclaw',
