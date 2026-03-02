@@ -661,6 +661,47 @@ function render(lang = 'en') {
       sections.forEach(section => observer.observe(section));
       setActive('#launch-tracks');
     })();
+
+    (function () {
+      const SELECTOR = '.btn, .mini-chip, .q-item, .chip';
+      const STORAGE_KEY = 'claw_guide_click_events';
+      const lang = document.documentElement.lang || 'en';
+
+      window.__clawMetrics = window.__clawMetrics || { events: [] };
+
+      const persist = (event) => {
+        try {
+          const existing = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+          existing.push(event);
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(existing.slice(-120)));
+        } catch (_) {}
+      };
+
+      document.addEventListener('click', (e) => {
+        const el = e.target.closest(SELECTOR);
+        if (!el) return;
+
+        const href = el.getAttribute('href') || '';
+        const event = {
+          event: 'cta_click',
+          lang: lang.startsWith('zh') ? 'zh' : 'en',
+          label: (el.textContent || '').trim().slice(0, 80),
+          href,
+          area: el.classList.contains('mini-chip') ? 'hero_quick_pick' :
+                el.classList.contains('q-item') ? 'quick_links' :
+                el.classList.contains('chip') ? 'nav_action' : 'content_cta',
+          ts: Date.now(),
+          path: location.pathname,
+        };
+
+        window.__clawMetrics.events.push(event);
+        persist(event);
+
+        if (window.__clawDebugMetrics) {
+          console.debug('[claw-guide metric]', event);
+        }
+      });
+    })();
   </script>
 </body>
 </html>`;
