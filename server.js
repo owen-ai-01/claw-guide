@@ -194,9 +194,10 @@ function ext(link) {
   return link.external ? ' target="_blank" rel="noopener noreferrer"' : '';
 }
 
-function renderExternalLinks(links, className = 'link-item') {
+function renderExternalLinks(links, className = 'link-item', lang = 'en') {
+  const srHint = lang === 'zh' ? '（新标签页打开）' : '(opens in a new tab)';
   return links
-    .map(l => `<a class="${className}" href="${l[1]}" target="_blank" rel="noopener noreferrer">${l[0]} ↗</a>`)
+    .map(l => `<a class="${className}" href="${l[1]}" target="_blank" rel="noopener noreferrer" aria-label="${l[0]} ${srHint}" title="${l[0]} ${srHint}">${l[0]} ↗</a>`)
     .join('');
 }
 
@@ -560,14 +561,14 @@ function render(lang = 'en') {
     <section id="docs">
       <h2>${t.docs.h}</h2>
       <div class="link-list">
-        ${renderExternalLinks(t.docs.links)}
+        ${renderExternalLinks(t.docs.links, 'link-item', lang)}
       </div>
     </section>
 
     <section id="resources">
       <h2>${t.resources.h}</h2>
       <div class="grid2">
-        ${renderExternalLinks(t.resources.links)}
+        ${renderExternalLinks(t.resources.links, 'link-item', lang)}
       </div>
     </section>
 
