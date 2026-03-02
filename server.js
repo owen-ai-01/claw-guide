@@ -194,6 +194,12 @@ function ext(link) {
   return link.external ? ' target="_blank" rel="noopener noreferrer"' : '';
 }
 
+function renderExternalLinks(links, className = 'link-item') {
+  return links
+    .map(l => `<a class="${className}" href="${l[1]}" target="_blank" rel="noopener noreferrer">${l[0]} ↗</a>`)
+    .join('');
+}
+
 function render(lang = 'en') {
   const t = data[lang] || data.en;
   const canonicalPath = lang === 'zh' ? '/zh' : '/';
@@ -539,14 +545,14 @@ function render(lang = 'en') {
     <section id="docs">
       <h2>${t.docs.h}</h2>
       <div class="link-list">
-        ${t.docs.links.map(l => `<a class="link-item" href="${l[1]}" target="_blank" rel="noopener noreferrer">${l[0]} ↗</a>`).join('')}
+        ${renderExternalLinks(t.docs.links)}
       </div>
     </section>
 
     <section id="resources">
       <h2>${t.resources.h}</h2>
       <div class="grid2">
-        ${t.resources.links.map(l => `<a class="link-item" href="${l[1]}" target="_blank" rel="noopener noreferrer">${l[0]} ↗</a>`).join('')}
+        ${renderExternalLinks(t.resources.links)}
       </div>
     </section>
 
