@@ -424,8 +424,13 @@ function render(lang = 'en') {
       font-size:12px;
       color:#d8e3ff;
       background:rgba(255,255,255,.03);
+      transition: border-color 0.2s ease, background 0.2s ease;
     }
-    .mini-chip:hover { border-color:rgba(143,173,255,.55); background:rgba(111,165,255,.1); }
+    .mini-chip:hover { 
+      border-color:var(--brand);
+      background:rgba(111,165,255,.15);
+      box-shadow:0 4px 12px rgba(111,165,255,.25);
+    }
 
     .ctas { margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; }
     .cta-hint { margin:10px 0 0; color:#9fb5ee; font-size:12px; }
@@ -473,11 +478,14 @@ function render(lang = 'en') {
       font-size:13px;
       color:#d6e1ff;
       background:rgba(255,255,255,.02);
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
     }
 
     .q-item:hover {
-      border-color:rgba(143,173,255,.45);
-      background:rgba(111,165,255,.1);
+      border-color:var(--brand);
+      background:rgba(111,165,255,.15);
+      transform: translateY(-1px);
+      box-shadow:0 6px 16px rgba(111,165,255,.2);
     }
 
     .grid3, .grid2 { display:grid; gap:12px; }
