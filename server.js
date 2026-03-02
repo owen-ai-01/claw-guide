@@ -25,6 +25,7 @@ const data = {
       badge: 'Bilingual OpenClaw Implementation Hub',
       h1: 'Build with OpenClaw, Faster.',
       p: 'Launch OpenClaw faster with a bilingual 5-step implementation guide.',
+      microcopy: 'No signup required. Run your first loop first, then expand.',
       ctas: [
         { text: 'Start in 5 Steps', href: '#roadmap' },
         { text: 'Read Official Docs', href: 'https://docs.openclaw.ai', external: true },
@@ -118,6 +119,7 @@ const data = {
       badge: 'OpenClaw 双语落地中枢',
       h1: '更快把 OpenClaw 跑起来。',
       p: '用中英双语 5 步指南，更快把 OpenClaw 从安装推进到可用。',
+      microcopy: '无需注册，先跑通第一条流程，再逐步扩展。',
       ctas: [
         { text: '从5步开始落地', href: '#roadmap' },
         { text: '阅读官方文档', href: 'https://docs.openclaw.ai', external: true },
@@ -394,6 +396,7 @@ function render(lang = 'en') {
     }
 
     .lead { color:var(--muted); font-size:18px; max-width:680px; margin:0; }
+    .microcopy { margin:10px 0 0; color:#cbd9ff; font-size:13px; opacity:.95; }
 
     .ctas { margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; }
     .btn {
@@ -517,6 +520,7 @@ function render(lang = 'en') {
         <span class="badge">${t.hero.badge}</span>
         <h1>${t.hero.h1}</h1>
         <p class="lead">${t.hero.p}</p>
+        <p class="microcopy">${t.hero.microcopy}</p>
 
         <div class="ctas">
           ${t.hero.ctas.map(c => `<a class="btn ${c.href.startsWith('#') ? 'primary' : ''}" href="${c.href}"${ext(c)}>${c.text}</a>`).join('')}
