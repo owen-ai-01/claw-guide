@@ -240,7 +240,7 @@ function render(lang = 'en') {
     }
 
     a { color:inherit; text-decoration:none; }
-    .container { width:min(1100px, 92%); margin:0 auto; }
+    .container { width:min(1180px, 92%); margin:0 auto; }
 
     .nav-wrap {
       position:sticky;
@@ -302,8 +302,8 @@ function render(lang = 'en') {
       box-shadow:0 10px 28px rgba(6,9,21,.35);
     }
 
-    .hero-main { padding:26px; }
-    .hero-side { padding:18px; background:var(--panel-strong); }
+    .hero-main { padding:34px; }
+    .hero-side { padding:20px; background:var(--panel-strong); }
 
     .badge {
       display:inline-flex;
@@ -324,10 +324,10 @@ function render(lang = 'en') {
 
     .lead { color:var(--muted); font-size:18px; max-width:680px; margin:0; }
 
-    .ctas { margin-top:18px; display:flex; gap:9px; flex-wrap:wrap; }
+    .ctas { margin-top:20px; display:flex; gap:10px; flex-wrap:wrap; }
     .btn {
-      border-radius:10px;
-      padding:10px 14px;
+      border-radius:12px;
+      padding:11px 16px;
       border:1px solid var(--line);
       font-weight:600;
       font-size:14px;
@@ -336,7 +336,9 @@ function render(lang = 'en') {
       border:none;
       background:linear-gradient(135deg,var(--brand),var(--brand-2));
       color:#fff;
-      box-shadow:0 8px 20px rgba(111,165,255,.36);
+      box-shadow:0 10px 26px rgba(111,165,255,.42);
+      font-size:15px;
+      padding:12px 18px;
     }
 
     .side-title { margin:0 0 10px; font-size:14px; color:#c8d6fb; }
@@ -431,7 +433,7 @@ function render(lang = 'en') {
 
         <div class="nav-actions">
           <a class="chip" href="${t.nav.langHref}">${t.nav.lang}</a>
-          <a class="chip primary" href="#roadmap">${t.nav.start}</a>
+          <a class="chip primary" href="#launch-tracks">${t.nav.start}</a>
         </div>
       </nav>
     </div>
