@@ -66,7 +66,7 @@ const data = {
     roadmap: {
       h: 'Launch Roadmap (5 Practical Steps)',
       steps: [
-        ['Environment baseline', 'Prepare Node.js 22+, package manager, and a stable host/runtime environment. Minimal command: `node -v && npm -v`.'],
+        ['Environment baseline', 'Prepare Node.js 22+, package manager, and a stable host/runtime environment. Minimal command: `node -v && npm -v`. Pass condition: you can see both version outputs.'],
         ['Core installation', 'Install OpenClaw and complete onboarding with minimum working configuration.'],
         ['Model + channel wiring', 'Set provider/model defaults, then connect at least one messaging channel end-to-end.'],
         ['Operational setup', 'Add memory routines, heartbeat/cron basics, and 2-3 high-value skills for daily work.'],
@@ -172,7 +172,7 @@ const data = {
     roadmap: {
       h: '落地路线图（5 个实操步骤）',
       steps: [
-        ['环境基线', '准备 Node.js 22+、包管理器，以及稳定的运行环境。最小命令：`node -v && npm -v`。'],
+        ['环境基线', '准备 Node.js 22+、包管理器，以及稳定的运行环境。最小命令：`node -v && npm -v`。通过标准：能看到 node 与 npm 版本号输出。'],
         ['核心安装', '完成 OpenClaw 安装与 onboarding，先跑通最小可用配置。'],
         ['模型与渠道打通', '配置 provider/model，然后至少打通一个消息渠道。'],
         ['运营能力补齐', '接入 memory 机制、heartbeat/cron 基础，并启用 2-3 个高价值 skills。'],

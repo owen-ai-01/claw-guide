@@ -1,0 +1,4 @@
+*.log
+.server.log
+.cloudflared.log
+node_modules/
