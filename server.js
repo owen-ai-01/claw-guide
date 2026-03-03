@@ -71,6 +71,10 @@ const data = {
         ['Operational setup', 'Add memory routines, heartbeat/cron basics, and 2-3 high-value skills for daily work.'],
         ['Quality checkpoint', 'Run a real task loop, verify reliability, and document your own playbook for repeat use.'],
       ],
+      actions: [
+        ['Open official docs', '#docs'],
+        ['Browse launch resources', '#resources'],
+      ],
     },
     docs: {
       h: 'Official Docs Entry Points',
@@ -171,6 +175,10 @@ const data = {
         ['模型与渠道打通', '配置 provider/model，然后至少打通一个消息渠道。'],
         ['运营能力补齐', '接入 memory 机制、heartbeat/cron 基础，并启用 2-3 个高价值 skills。'],
         ['质量验收', '跑一轮真实任务，验证稳定性，并沉淀你自己的执行 SOP。'],
+      ],
+      actions: [
+        ['打开官方文档', '#docs'],
+        ['查看上手资源', '#resources'],
       ],
     },
     docs: {
@@ -573,6 +581,7 @@ function render(lang = 'en') {
     .steps { display:grid; gap:10px; }
     .step { padding:14px; }
     .step b { display:block; margin-bottom:7px; }
+    .roadmap-actions { margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; }
     .muted { color:#bfd0f8; }
 
     .link-list, .faq-list { display:grid; gap:10px; }
@@ -614,7 +623,7 @@ function render(lang = 'en') {
         </div>
 
         <div class="nav-actions">
-          <a class="chip" href="${t.nav.langHref}" aria-label="${lang === 'zh' ? '切换到英文页面' : 'Switch to Chinese page'}" lang="${lang === 'zh' ? 'en' : 'zh-CN'}">${t.nav.lang}</a>
+          <a class="chip" href="${t.nav.langHref}" rel="alternate" hreflang="${lang === 'zh' ? 'en' : 'zh-CN'}" aria-label="${lang === 'zh' ? '切换到英文页面' : 'Switch to Chinese page'}" lang="${lang === 'zh' ? 'en' : 'zh-CN'}">${t.nav.lang}</a>
           <a class="chip primary" href="#roadmap" aria-label="${lang === 'zh' ? '开始5步落地路线' : 'Start with the 5-step roadmap'}">${t.nav.start}</a>
         </div>
       </nav>
@@ -678,6 +687,9 @@ function render(lang = 'en') {
       <h2>${t.roadmap.h}</h2>
       <div class="steps">
         ${t.roadmap.steps.map((s, i) => `<article class="step"><b>${i + 1}. ${s[0]}</b><div class="muted">${s[1]}</div></article>`).join('')}
+      </div>
+      <div class="roadmap-actions" aria-label="${lang === 'zh' ? '下一步操作' : 'Next actions'}">
+        ${t.roadmap.actions.map((a, i) => `<a class="btn ${i === 0 ? 'primary' : 'secondary'}" href="${a[1]}">${a[0]}</a>`).join('')}
       </div>
     </section>
 
