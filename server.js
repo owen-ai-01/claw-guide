@@ -1,7 +1,7 @@
 import http from 'http';
 
 const port = process.env.PORT || 3000;
-const startedAt = Date.now();
+const appStartedAt = Date.now();
 const appVersion = process.env.APP_VERSION || 'dev';
 const siteUrl = (process.env.SITE_URL || `http://127.0.0.1:${port}`).replace(/\/$/, '');
 
@@ -234,6 +234,7 @@ function render(lang = 'en') {
   const t = data[lang] || data.en;
   const canonicalPath = lang === 'zh' ? '/zh' : '/';
   const canonicalUrl = `${siteUrl}${canonicalPath}`;
+  const ogImageUrl = `${siteUrl}/og-image.svg`;
 
   return `<!doctype html>
 <html lang="${t.htmlLang}">
@@ -254,10 +255,10 @@ function render(lang = 'en') {
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${t.title}" />
   <meta name="twitter:description" content="${t.description}" />
-  <meta property="og:image" content="https://via.placeholder.com/1200x630/060915/6fa5ff?text=Claw+Guide" />
+  <meta property="og:image" content="${ogImageUrl}" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta name="twitter:image" content="https://via.placeholder.com/1200x630/060915/6fa5ff?text=Claw+Guide" />
+  <meta name="twitter:image" content="${ogImageUrl}" />
   <link rel="canonical" href="${canonicalUrl}" />
   <link rel="alternate" hreflang="en" href="${siteUrl}/" />
   <link rel="alternate" hreflang="zh-CN" href="${siteUrl}/zh" />
@@ -856,12 +857,12 @@ const htmlHeaders = {
 };
 
 const server = http.createServer((req, res) => {
-  const startedAt = Date.now();
+  const requestStartedAt = Date.now();
   const method = req.method || 'GET';
   const url = (req.url || '/').split('?')[0];
 
   res.on('finish', () => {
-    const ms = Date.now() - startedAt;
+    const ms = Date.now() - requestStartedAt;
     console.log(`[${new Date().toISOString()}] ${method} ${url} -> ${res.statusCode} (${ms}ms)`);
   });
 
@@ -872,7 +873,7 @@ const server = http.createServer((req, res) => {
         ok: true,
         service: 'claw-guide',
         version: appVersion,
-        uptimeSec: Math.floor((Date.now() - startedAt) / 1000),
+        uptimeSec: Math.floor((Date.now() - appStartedAt) / 1000),
         now: new Date().toISOString(),
       }));
     }
@@ -886,6 +887,37 @@ const server = http.createServer((req, res) => {
       </svg>`;
       res.writeHead(200, {
         'content-type': 'image/svg+xml',
+        'cache-control': 'public, max-age=86400',
+        'content-length': Buffer.byteLength(svg)
+      });
+      return res.end(svg);
+    }
+
+    if (url === '/og-image.svg') {
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+        <defs>
+          <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#060915" />
+            <stop offset="100%" stop-color="#121d3f" />
+          </linearGradient>
+          <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#6fa5ff" />
+            <stop offset="100%" stop-color="#7f7bff" />
+          </linearGradient>
+        </defs>
+        <rect width="1200" height="630" fill="url(#bg)" />
+        <circle cx="1020" cy="120" r="180" fill="#6fa5ff" fill-opacity="0.14" />
+        <circle cx="180" cy="40" r="220" fill="#7f7bff" fill-opacity="0.12" />
+        <rect x="84" y="104" width="240" height="240" rx="36" fill="url(#accent)" />
+        <text x="130" y="248" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="136" font-weight="700" fill="#ffffff">C</text>
+        <text x="360" y="240" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="84" font-weight="800" fill="#ecf1ff">Claw Guide</text>
+        <text x="360" y="312" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="38" fill="#c8d7ff">Faster OpenClaw Launch Playbook</text>
+        <text x="360" y="366" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="32" fill="#a9bff9">OpenClaw 快速落地路线图</text>
+        <rect x="360" y="416" width="430" height="64" rx="12" fill="#1a2a5f" stroke="#6fa5ff" stroke-opacity="0.45" />
+        <text x="392" y="458" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="30" fill="#dbe7ff">Bilingual • Practical • Actionable</text>
+      </svg>`;
+      res.writeHead(200, {
+        'content-type': 'image/svg+xml; charset=utf-8',
         'cache-control': 'public, max-age=86400',
         'content-length': Buffer.byteLength(svg)
       });
