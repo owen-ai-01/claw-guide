@@ -1,6 +1,8 @@
 import http from 'http';
 
 const port = process.env.PORT || 3000;
+const startedAt = Date.now();
+const appVersion = process.env.APP_VERSION || 'dev';
 const siteUrl = (process.env.SITE_URL || `http://127.0.0.1:${port}`).replace(/\/$/, '');
 
 const data = {
@@ -36,7 +38,6 @@ const data = {
       ctas: [
         { text: 'Start Launch Roadmap', href: '#roadmap' },
         { text: 'Choose Your Path', href: '#launch-tracks' },
-        { text: 'See Docs Entry Points', href: '#docs' },
       ],
       sideTitle: 'Quick Value Snapshot',
       trust: [
@@ -138,7 +139,6 @@ const data = {
       ctas: [
         { text: '开始上线路线图', href: '#roadmap' },
         { text: '选择你的路径', href: '#launch-tracks' },
-        { text: '查看文档入口', href: '#docs' },
       ],
       sideTitle: '价值速览',
       trust: [
@@ -242,6 +242,7 @@ function render(lang = 'en') {
   <meta name="robots" content="index,follow" />
   <meta property="og:url" content="${canonicalUrl}" />
   <meta property="og:locale" content="${lang === 'zh' ? 'zh_CN' : 'en_US'}" />
+  <meta property="og:locale:alternate" content="${lang === 'zh' ? 'en_US' : 'zh_CN'}" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${t.title}" />
   <meta name="twitter:description" content="${t.description}" />
@@ -855,7 +856,13 @@ const server = http.createServer((req, res) => {
   try {
     if (url === '/health') {
       res.writeHead(200, { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' });
-      return res.end(JSON.stringify({ ok: true, service: 'claw-guide' }));
+      return res.end(JSON.stringify({
+        ok: true,
+        service: 'claw-guide',
+        version: appVersion,
+        uptimeSec: Math.floor((Date.now() - startedAt) / 1000),
+        now: new Date().toISOString(),
+      }));
     }
 
     if (url === '/favicon.ico') {
