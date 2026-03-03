@@ -112,7 +112,7 @@ const data = {
     title: 'Claw Guide - OpenClaw 快速落地路线图',
     description: '中英双语 OpenClaw 落地指南：更清晰的导航、更聚焦的 Hero 表达、更实用的实施路径。',
     nav: {
-      logoTag: 'Build & Ship',
+      logoTag: '构建与部署',
       launch: '上线路径',
       learn: '你将学到',
       roadmap: '路线图',
@@ -796,6 +796,9 @@ function render(lang = 'en') {
       });
     })();
   </script>
+  <footer style="margin-top: 4rem; padding: 2rem; text-align: center; color: var(--muted); font-size: 0.875rem; border-top: 1px solid var(--line);">
+    <div>© 2025 Claw Guide • <a href="/" style="color: var(--brand);">English</a> | <a href="/zh" style="color: var(--brand);">中文</a> • <a href="https://github.com/openclaw/openclaw" target="_blank" style="color: var(--brand);">OpenClaw GitHub</a></div>
+  </footer>
 </body>
 </html>`;
 }
