@@ -34,7 +34,7 @@ const data = {
       ],
       ctaHint: 'Primary path takes about 30-60 minutes for your first runnable loop.',
       ctas: [
-        { text: 'See Launch Roadmap', href: '#roadmap' },
+        { text: 'Start Launch Roadmap', href: '#roadmap' },
         { text: 'Choose Your Path', href: '#launch-tracks' },
         { text: 'See Docs Entry Points', href: '#docs' },
       ],
@@ -119,7 +119,7 @@ const data = {
       docs: '官方文档',
       resources: '资源',
       highlights: '重点亮点',
-      faq: 'FAQ',
+      faq: '常见问题',
       start: '从5步开始',
       lang: 'English',
       langHref: '/',
@@ -136,7 +136,7 @@ const data = {
       ],
       ctaHint: '主路径通常约 30-60 分钟可跑通首条流程。',
       ctas: [
-        { text: '查看上线路线图', href: '#roadmap' },
+        { text: '开始上线路线图', href: '#roadmap' },
         { text: '选择你的路径', href: '#launch-tracks' },
         { text: '查看文档入口', href: '#docs' },
       ],
@@ -306,6 +306,32 @@ function render(lang = 'en') {
         name: step[0],
         text: step[1],
       })),
+    })}
+  </script>
+  <script type="application/ld+json">
+    ${JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: lang === 'zh' ? '首页' : 'Home',
+          item: siteUrl + '/',
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: t.nav.launch,
+          item: canonicalUrl + '#launch-tracks',
+        },
+        {
+          '@type': 'ListItem',
+          position: 3,
+          name: t.nav.roadmap,
+          item: canonicalUrl + '#roadmap',
+        },
+      ],
     })}
   </script>
   <style>
@@ -576,9 +602,9 @@ function render(lang = 'en') {
         </a>
 
         <div class="menu" aria-label="Primary Navigation">
+          <a href="#roadmap">${t.nav.roadmap}</a>
           <a href="#launch-tracks">${t.nav.launch}</a>
           <a href="#learn">${t.nav.learn}</a>
-          <a href="#roadmap">${t.nav.roadmap}</a>
           <a href="#docs">${t.nav.docs}</a>
           <a href="#resources">${t.nav.resources}</a>
           <a href="#highlights">${t.nav.highlights}</a>
@@ -623,9 +649,9 @@ function render(lang = 'en') {
     </section>
 
     <section class="quick-links" aria-label="Quick section links">
+      <a class="q-item" href="#roadmap">${t.nav.roadmap}</a>
       <a class="q-item" href="#launch-tracks">${t.nav.launch}</a>
       <a class="q-item" href="#learn">${t.nav.learn}</a>
-      <a class="q-item" href="#roadmap">${t.nav.roadmap}</a>
       <a class="q-item" href="#docs">${t.nav.docs}</a>
       <a class="q-item" href="#resources">${t.nav.resources}</a>
       <a class="q-item" href="#highlights">${t.nav.highlights}</a>
