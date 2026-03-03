@@ -16,6 +16,8 @@ async function main() {
     ['canonical /', /<link rel="canonical" href="[^"]*\/"\s*\/>/i],
     ['roadmap step 1', /id="roadmap-step-1"/i],
     ['step1 pass condition', /Pass condition: you can see both version outputs\./i],
+    ['hero technical CTA', /href="#roadmap-step-1"/i],
+    ['hero guided CTA', /href="#launch-tracks"/i],
     ['twitter card', /name="twitter:card" content="summary_large_image"/i],
   ]));
 
@@ -23,6 +25,8 @@ async function main() {
     ['canonical /zh', /<link rel="canonical" href="[^"]*\/zh"\s*\/>/i],
     ['roadmap step 1', /id="roadmap-step-1"/i],
     ['step1 pass condition zh', /通过标准：能看到 node 与 npm 版本号输出。/i],
+    ['hero technical CTA zh', /href="#roadmap-step-1"/i],
+    ['hero guided CTA zh', /href="#launch-tracks"/i],
     ['hreflang zh-CN', /hreflang="zh-CN"/i],
   ]));
 
