@@ -590,6 +590,7 @@ function render(lang = 'en') {
       .grid3, .grid2 { grid-template-columns:1fr; }
     }
   </style>
+  <!-- Analytics placeholder: insert Plausible/GTag script here -->
 </head>
 <body>
   <a class="skip-link" href="#top-main">${lang === 'zh' ? '跳到正文' : 'Skip to main content'}</a>
@@ -737,7 +738,7 @@ function render(lang = 'en') {
       }, { rootMargin: '-35% 0px -55% 0px', threshold: [0.2, 0.45, 0.7] });
 
       sections.forEach(section => observer.observe(section));
-      setActive('#launch-tracks');
+      setActive('#roadmap');
     })();
 
     (function () {
