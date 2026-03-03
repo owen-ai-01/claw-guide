@@ -825,7 +825,7 @@ function render(lang = 'en') {
     })();
   </script>
   <footer style="margin-top: 4rem; padding: 2rem; text-align: center; color: var(--muted); font-size: 0.875rem; border-top: 1px solid var(--line);">
-    <div>© 2025 Claw Guide • <a href="/" style="color: var(--brand);">English</a> | <a href="/zh" style="color: var(--brand);">中文</a> • <a href="https://github.com/openclaw/openclaw" target="_blank" style="color: var(--brand);">OpenClaw GitHub</a></div>
+    <div>© 2026 Claw Guide • <a href="/" style="color: var(--brand);">English</a> | <a href="/zh" style="color: var(--brand);">中文</a> • <a href="https://github.com/openclaw/openclaw" target="_blank" style="color: var(--brand);">OpenClaw GitHub</a></div>
   </footer>
 </body>
 </html>`;
