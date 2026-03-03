@@ -886,7 +886,8 @@ const server = http.createServer((req, res) => {
     }
 
     if (url === '/sitemap.xml') {
-      const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${siteUrl}/</loc></url>\n  <url><loc>${siteUrl}/zh</loc></url>\n</urlset>`;
+      const lastmod = new Date().toISOString();
+      const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${siteUrl}/</loc><lastmod>${lastmod}</lastmod></url>\n  <url><loc>${siteUrl}/zh</loc><lastmod>${lastmod}</lastmod></url>\n</urlset>`;
       res.writeHead(200, { 'content-type': 'application/xml; charset=utf-8', 'cache-control': 'public, max-age=300' });
       return res.end(xml);
     }
