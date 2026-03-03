@@ -31,10 +31,11 @@ const data = {
       microcopy: 'No signup required. Run your first loop first, then expand.',
       audienceSplit: 'Technical? Start with 5 steps. Non-technical? Choose your path for guided rollout.',
       quickPicks: [
-        ['I can set up myself (30-60 min)', '#roadmap'],
+        ['I can set up myself (30-60 min)', '#roadmap-step-1'],
         ['I need guided path (non-technical)', '#launch-tracks'],
       ],
       ctaHint: 'Primary path takes about 30-60 minutes for your first runnable loop.',
+      firstAction: 'First action: open Step 1 and execute one runnable command.',
       ctas: [
         { text: 'Start Launch Roadmap', href: '#roadmap-step-1' },
         { text: 'Choose Your Path', href: '#launch-tracks' },
@@ -136,10 +137,11 @@ const data = {
       microcopy: '无需注册，先跑通第一条流程，再逐步扩展。',
       audienceSplit: '技术同学：先走5步；非技术同学：先选路径进入引导式落地。',
       quickPicks: [
-        ['我能自助上手（30-60分钟）', '#roadmap'],
+        ['我能自助上手（30-60分钟）', '#roadmap-step-1'],
         ['我是非技术，先看引导路径', '#launch-tracks'],
       ],
       ctaHint: '主路径通常约 30-60 分钟可跑通首条流程。',
+      firstAction: '第一步动作：打开 Step 1，并先执行一条可运行命令。',
       ctas: [
         { text: '开始上线路线图', href: '#roadmap-step-1' },
         { text: '选择你的路径', href: '#launch-tracks' },
@@ -500,6 +502,16 @@ function render(lang = 'en') {
 
     .ctas { margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; }
     .cta-hint { margin:10px 0 0; color:#9fb5ee; font-size:12px; }
+    .first-action {
+      margin:8px 0 0;
+      font-size:12px;
+      color:#dbe7ff;
+      background:rgba(111,165,255,.12);
+      border:1px solid rgba(143,173,255,.32);
+      border-radius:10px;
+      padding:8px 10px;
+      display:inline-block;
+    }
     .btn {
       border-radius:12px;
       padding:11px 16px;
@@ -650,6 +662,7 @@ function render(lang = 'en') {
           }).join('')}
         </div>
         <p class="cta-hint">${t.hero.ctaHint}</p>
+        <p class="first-action">${t.hero.firstAction}</p>
       </article>
 
       <aside class="hero-side" aria-label="Key Value">
