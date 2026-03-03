@@ -594,11 +594,11 @@ function render(lang = 'en') {
   <!-- Analytics placeholder: insert Plausible/GTag script here -->
 </head>
 <body>
-  <a class="skip-link" href="#top-main">${lang === 'zh' ? '跳到正文' : 'Skip to main content'}</a>
+  <a class="skip-link" href="#main">${lang === 'zh' ? '跳到正文' : 'Skip to main content'}</a>
   <header class="nav-wrap">
     <div class="container">
       <nav>
-        <a class="brand" href="#top-main" aria-label="Claw Guide Home">
+        <a class="brand" href="#main" aria-label="Claw Guide Home">
           <span class="brand-dot"></span>
           <span>Claw Guide<small>${t.nav.logoTag}</small></span>
         </a>
@@ -621,7 +621,7 @@ function render(lang = 'en') {
     </div>
   </header>
 
-  <main class="container" id="top-main">
+  <main class="container" id="main">
     <section class="hero" aria-label="Hero">
       <article class="hero-main">
         <span class="badge">${t.hero.badge}</span>
