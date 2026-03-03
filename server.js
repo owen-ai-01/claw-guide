@@ -68,7 +68,7 @@ const data = {
       steps: [
         ['Environment baseline', 'Prepare Node.js 22+, package manager, and a stable host/runtime environment. Minimal command: `node -v && npm -v`. Pass condition: you can see both version outputs.'],
         ['Core installation', 'Install OpenClaw and complete onboarding with minimum working configuration. Pass condition: OpenClaw CLI is available and `openclaw --help` returns successfully.'],
-        ['Model + channel wiring', 'Set provider/model defaults, then connect at least one messaging channel end-to-end.'],
+        ['Model + channel wiring', 'Set provider/model defaults, then connect at least one messaging channel end-to-end. Pass condition: you can send and receive one real message in your connected channel.'],
         ['Operational setup', 'Add memory routines, heartbeat/cron basics, and 2-3 high-value skills for daily work.'],
         ['Quality checkpoint', 'Run a real task loop, verify reliability, and document your own playbook for repeat use.'],
       ],
@@ -174,7 +174,7 @@ const data = {
       steps: [
         ['环境基线', '准备 Node.js 22+、包管理器，以及稳定的运行环境。最小命令：`node -v && npm -v`。通过标准：能看到 node 与 npm 版本号输出。'],
         ['核心安装', '完成 OpenClaw 安装与 onboarding，先跑通最小可用配置。通过标准：`openclaw --help` 可正常返回。'],
-        ['模型与渠道打通', '配置 provider/model，然后至少打通一个消息渠道。'],
+        ['模型与渠道打通', '配置 provider/model，然后至少打通一个消息渠道。通过标准：在已连接渠道中完成一次真实消息的收发。'],
         ['运营能力补齐', '接入 memory 机制、heartbeat/cron 基础，并启用 2-3 个高价值 skills。'],
         ['质量验收', '跑一轮真实任务，验证稳定性，并沉淀你自己的执行 SOP。'],
       ],
