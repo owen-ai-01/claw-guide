@@ -36,7 +36,7 @@ const data = {
       ],
       ctaHint: 'Primary path takes about 30-60 minutes for your first runnable loop.',
       ctas: [
-        { text: 'Start Launch Roadmap', href: '#roadmap' },
+        { text: 'Start Launch Roadmap', href: '#roadmap-step-1' },
         { text: 'Choose Your Path', href: '#launch-tracks' },
       ],
       sideTitle: 'Quick Value Snapshot',
@@ -141,7 +141,7 @@ const data = {
       ],
       ctaHint: '主路径通常约 30-60 分钟可跑通首条流程。',
       ctas: [
-        { text: '开始上线路线图', href: '#roadmap' },
+        { text: '开始上线路线图', href: '#roadmap-step-1' },
         { text: '选择你的路径', href: '#launch-tracks' },
       ],
       sideTitle: '价值速览',
@@ -644,7 +644,7 @@ function render(lang = 'en') {
 
         <div class="ctas">
           ${t.hero.ctas.map(c => {
-            const isPrimary = c.href === '#roadmap';
+            const isPrimary = c.href.startsWith('#roadmap');
             return `<a class="btn ${isPrimary ? 'primary' : 'secondary'}" href="${c.href}"${ext(c)}>${c.text}</a>`;
           }).join('')}
         </div>
@@ -686,7 +686,7 @@ function render(lang = 'en') {
     <section id="roadmap">
       <h2>${t.roadmap.h}</h2>
       <div class="steps">
-        ${t.roadmap.steps.map((s, i) => `<article class="step"><b>${i + 1}. ${s[0]}</b><div class="muted">${s[1]}</div></article>`).join('')}
+        ${t.roadmap.steps.map((s, i) => `<article class="step" id="roadmap-step-${i + 1}"><b>${i + 1}. ${s[0]}</b><div class="muted">${s[1]}</div></article>`).join('')}
       </div>
       <div class="roadmap-actions" aria-label="${lang === 'zh' ? '下一步操作' : 'Next actions'}">
         ${t.roadmap.actions.map((a, i) => `<a class="btn ${i === 0 ? 'primary' : 'secondary'}" href="${a[1]}">${a[0]}</a>`).join('')}
