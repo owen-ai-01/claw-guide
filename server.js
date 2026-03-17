@@ -303,6 +303,31 @@ const data = {
         ['What happens after I get the basics working?', 'You can keep self-serving with docs and resources, or move into paid deployment help or a structured course if you want speed and guidance.'],
       ],
     },
+    footer: {
+      about: 'About',
+      description: 'Bilingual OpenClaw launch and conversion hub',
+      quickLinks: 'Quick Links',
+      legal: 'Legal',
+      links: {
+        about: [
+          ['About Us', '/about'],
+          ['Contact', '/contact'],
+        ],
+        quickLinks: [
+          ['5-Step Guide', '#roadmap'],
+          ['Resources', '#resources'],
+          ['Skills', '#skills'],
+          ['FAQ', '#faq'],
+        ],
+        legal: [
+          ['Privacy Policy', '/privacy'],
+          ['Terms of Service', '/terms'],
+          ['Cookie Policy', '/cookies'],
+        ],
+      },
+      copyright: '© 2026 Claw Guide. All rights reserved.',
+      builtDate: 'Built',
+    },
   },
   zh: {
     htmlLang: 'zh-CN',
@@ -599,6 +624,31 @@ const data = {
         ['非技术创业者能用吗？', '可以。建议先走路径分流与引导内容，不必一开始就独自处理所有配置细节。'],
         ['基础跑通之后下一步是什么？', '你可以继续自助扩展，也可以进入部署收费服务或系统化付费课程，加快推进速度。'],
       ],
+    },
+    footer: {
+      about: '关于',
+      description: 'OpenClaw 双语落地与转化入口',
+      quickLinks: '快速链接',
+      legal: '法律信息',
+      links: {
+        about: [
+          ['关于我们', '/about'],
+          ['联系我们', '/contact'],
+        ],
+        quickLinks: [
+          ['5 步指南', '#roadmap'],
+          ['资源', '#resources'],
+          ['技能', '#skills'],
+          ['常见问题', '#faq'],
+        ],
+        legal: [
+          ['隐私政策', '/privacy'],
+          ['服务条款', '/terms'],
+          ['Cookie 政策', '/cookies'],
+        ],
+      },
+      copyright: '© 2026 Claw Guide. 保留所有权利。',
+      builtDate: '构建时间',
     },
   },
 };
@@ -1232,10 +1282,69 @@ function render(lang = 'en') {
       color:#fff;
     }
 
-    footer {
-      padding:24px 0 34px;
+    .site-footer {
+      background:rgba(6,9,21,.6);
+      border-top:1px solid var(--line);
+      margin-top:64px;
+    }
+    .footer-content {
+      display:grid;
+      grid-template-columns:2fr 1fr 1fr 1fr;
+      gap:48px;
+      padding:48px 0 32px;
+    }
+    .footer-column h4.footer-title {
+      margin:0 0 16px;
+      font-size:14px;
+      color:#ecf1ff;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:0.5px;
+    }
+    .footer-desc {
+      margin:0;
+      color:#a8bbea;
+      font-size:14px;
+      line-height:1.6;
+    }
+    .footer-links {
+      list-style:none;
+      margin:0;
+      padding:0;
+    }
+    .footer-links li {
+      margin-bottom:10px;
+    }
+    .footer-links a {
+      color:#a8bbea;
+      font-size:14px;
+      transition:color 0.2s;
+    }
+    .footer-links a:hover {
+      color:var(--ok);
+    }
+    .footer-bottom {
+      display:flex;
+      justify-content:space-between;
+      padding:24px 0 32px;
+      border-top:1px solid var(--line);
       color:#a8bbea;
       font-size:13px;
+    }
+    .footer-bottom p {
+      margin:0;
+    }
+    
+    @media (max-width: 960px) {
+      .footer-content {
+        grid-template-columns:1fr;
+        gap:32px;
+      }
+      .footer-bottom {
+        flex-direction:column;
+        gap:12px;
+        text-align:center;
+      }
     }
 
     @media (max-width: 960px) {
@@ -1432,8 +1541,39 @@ function render(lang = 'en') {
     </section>
   </main>
 
-  <footer class="container">
-    Claw Guide · ${lang === 'zh' ? 'OpenClaw 双语落地与转化入口' : 'Bilingual OpenClaw launch and conversion hub'} · Built: ${new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Shanghai' })}
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-column">
+        <h4 class="footer-title">Claw Guide</h4>
+        <p class="footer-desc">${t.footer.description}</p>
+      </div>
+      
+      <div class="footer-column">
+        <h4 class="footer-title">${t.footer.about}</h4>
+        <ul class="footer-links">
+          ${t.footer.links.about.map(link => `<li><a href="${link[1]}">${link[0]}</a></li>`).join('')}
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4 class="footer-title">${t.footer.quickLinks}</h4>
+        <ul class="footer-links">
+          ${t.footer.links.quickLinks.map(link => `<li><a href="${link[1]}">${link[0]}</a></li>`).join('')}
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4 class="footer-title">${t.footer.legal}</h4>
+        <ul class="footer-links">
+          ${t.footer.links.legal.map(link => `<li><a href="${link[1]}">${link[0]}</a></li>`).join('')}
+        </ul>
+      </div>
+    </div>
+    
+    <div class="container footer-bottom">
+      <p>${t.footer.copyright}</p>
+      <p>${t.footer.builtDate}: ${new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Shanghai' })}</p>
+    </div>
   </footer>
 
   <script>
@@ -2076,6 +2216,174 @@ const server = http.createServer((req, res) => {
       const stepLang = 'en'; // steps are English-only for now
       res.writeHead(200, htmlHeaders);
       return res.end(renderStepPage(stepNum, stepLang));
+    }
+
+    // Legal pages
+    if (url === '/privacy' || url === '/terms' || url === '/cookies' || url === '/about' || url === '/contact') {
+      const pageTitles = {
+        '/privacy': { en: 'Privacy Policy', zh: '隐私政策' },
+        '/terms': { en: 'Terms of Service', zh: '服务条款' },
+        '/cookies': { en: 'Cookie Policy', zh: 'Cookie 政策' },
+        '/about': { en: 'About Us', zh: '关于我们' },
+        '/contact': { en: 'Contact', zh: '联系我们' },
+      };
+      const pageContents = {
+        '/privacy': {
+          en: `<h2>Privacy Policy</h2>
+            <p>Last updated: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+            <h3>Information We Collect</h3>
+            <p>This website is a static guide and does not collect personal information. We do not use cookies, analytics, or tracking scripts.</p>
+            <h3>Third-Party Links</h3>
+            <p>This site contains links to external resources. We are not responsible for the privacy practices of these websites.</p>
+            <h3>Changes to This Policy</h3>
+            <p>We may update this privacy policy from time to time. Changes will be posted on this page.</p>
+            <h3>Contact</h3>
+            <p>For questions about this policy, please visit our <a href="/contact">contact page</a>.</p>`,
+          zh: `<h2>隐私政策</h2>
+            <p>最后更新: ${new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+            <h3>我们收集的信息</h3>
+            <p>本网站是一个静态指南，不收集个人信息。我们不使用 Cookie、分析工具或跟踪脚本。</p>
+            <h3>第三方链接</h3>
+            <p>本网站包含外部资源链接。我们不对这些网站的隐私惯例负责。</p>
+            <h3>政策变更</h3>
+            <p>我们可能会不时更新本隐私政策。更改将发布在本页面上。</p>
+            <h3>联系我们</h3>
+            <p>有关本政策的问题，请访问我们的<a href="/contact">联系页面</a>。</p>`
+        },
+        '/terms': {
+          en: `<h2>Terms of Service</h2>
+            <p>Last updated: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+            <h3>Acceptance of Terms</h3>
+            <p>By accessing this website, you agree to be bound by these terms of service and our privacy policy.</p>
+            <h3>Use License</h3>
+            <p>This is a free educational resource. Content may be used for personal, non-commercial purposes with proper attribution.</p>
+            <h3>Disclaimer</h3>
+            <p>This guide is provided "as is" without warranties. We are not responsible for any damages arising from the use of this information.</p>
+            <h3>External Links</h3>
+            <p>We are not responsible for content on external websites linked from this guide.</p>`,
+          zh: `<h2>服务条款</h2>
+            <p>最后更新: ${new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+            <h3>接受条款</h3>
+            <p>访问本网站即表示您同意遵守这些服务条款和我们的隐私政策。</p>
+            <h3>使用许可</h3>
+            <p>这是一个免费的教育资源。内容可用于个人、非商业目的，需注明出处。</p>
+            <h3>免责声明</h3>
+            <p>本指南按"原样"提供，不提供任何保证。我们不对使用本信息而产生的任何损害负责。</p>
+            <h3>外部链接</h3>
+            <p>我们不对本指南链接的外部网站内容负责。</p>`
+        },
+        '/cookies': {
+          en: `<h2>Cookie Policy</h2>
+            <p>Last updated: ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+            <h3>What Are Cookies</h3>
+            <p>Cookies are small text files stored on your device by websites you visit.</p>
+            <h3>Our Use of Cookies</h3>
+            <p>This website does not use cookies or similar tracking technologies. We do not store any information on your device.</p>
+            <h3>Third-Party Cookies</h3>
+            <p>External links may lead to websites that use cookies. Please review their policies separately.</p>`,
+          zh: `<h2>Cookie 政策</h2>
+            <p>最后更新: ${new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+            <h3>什么是 Cookie</h3>
+            <p>Cookie 是您访问的网站存储在您设备上的小型文本文件。</p>
+            <h3>我们对 Cookie 的使用</h3>
+            <p>本网站不使用 Cookie 或类似的跟踪技术。我们不在您的设备上存储任何信息。</p>
+            <h3>第三方 Cookie</h3>
+            <p>外部链接可能导向使用 Cookie 的网站。请单独查看它们的政策。</p>`
+        },
+        '/about': {
+          en: `<h2>About Claw Guide</h2>
+            <p>Claw Guide is a bilingual resource for learning and deploying OpenClaw, an open-source AI agent framework.</p>
+            <h3>Our Mission</h3>
+            <p>We aim to make OpenClaw more accessible by providing clear, execution-focused guidance that complements the official documentation.</p>
+            <h3>What We Offer</h3>
+            <ul>
+              <li>5-step practical setup guide</li>
+              <li>Curated resources (40+ links)</li>
+              <li>Verified community skills</li>
+              <li>Bilingual content (English & Chinese)</li>
+            </ul>
+            <h3>Not Official</h3>
+            <p>This is an independent community project, not affiliated with the official OpenClaw team.</p>`,
+          zh: `<h2>关于 Claw Guide</h2>
+            <p>Claw Guide 是一个双语资源，用于学习和部署 OpenClaw（一个开源 AI 智能体框架）。</p>
+            <h3>我们的使命</h3>
+            <p>我们旨在通过提供清晰、以执行为重点的指导来使 OpenClaw 更易于使用，补充官方文档。</p>
+            <h3>我们提供什么</h3>
+            <ul>
+              <li>5 步实用设置指南</li>
+              <li>精选资源（40+ 链接）</li>
+              <li>经过验证的社区技能</li>
+              <li>双语内容（英文和中文）</li>
+            </ul>
+            <h3>非官方</h3>
+            <p>这是一个独立的社区项目，与官方 OpenClaw 团队无关。</p>`
+        },
+        '/contact': {
+          en: `<h2>Contact Us</h2>
+            <p>We welcome feedback and suggestions to improve this guide.</p>
+            <h3>Ways to Reach Us</h3>
+            <ul>
+              <li><strong>GitHub</strong>: <a href="https://github.com/owen-ai-01/claw-guide" target="_blank" rel="noopener noreferrer">github.com/owen-ai-01/claw-guide</a></li>
+              <li><strong>Issues</strong>: Report bugs or suggest improvements via GitHub Issues</li>
+              <li><strong>Discussions</strong>: Join conversations in GitHub Discussions</li>
+            </ul>
+            <p>For general OpenClaw support, please use the <a href="https://discord.gg/clawd" target="_blank" rel="noopener noreferrer">official Discord community</a>.</p>`,
+          zh: `<h2>联系我们</h2>
+            <p>我们欢迎反馈和建议来改进本指南。</p>
+            <h3>联系方式</h3>
+            <ul>
+              <li><strong>GitHub</strong>: <a href="https://github.com/owen-ai-01/claw-guide" target="_blank" rel="noopener noreferrer">github.com/owen-ai-01/claw-guide</a></li>
+              <li><strong>问题反馈</strong>: 通过 GitHub Issues 报告错误或建议改进</li>
+              <li><strong>讨论</strong>: 在 GitHub Discussions 中参与讨论</li>
+            </ul>
+            <p>对于一般的 OpenClaw 支持，请使用<a href="https://discord.gg/clawd" target="_blank" rel="noopener noreferrer">官方 Discord 社区</a>。</p>`
+        },
+      };
+
+      const lang = url.includes('/zh/') ? 'zh' : 'en';
+      const title = pageTitles[url][lang];
+      const content = pageContents[url][lang];
+      
+      const legalHtml = `<!DOCTYPE html>
+<html lang="${lang}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${title} | Claw Guide</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(180deg, #06090d 0%, #0b1128 100%);
+      color: #ecf1ff;
+      line-height:1.7;
+      min-height:100vh;
+    }
+    .container { max-width:800px; margin:0 auto; padding:60px 20px; }
+    nav { margin-bottom:40px; }
+    nav a { color:#6fa5ff; text-decoration:none; font-weight:600; }
+    nav a:hover { text-decoration:underline; }
+    h1 { font-size:36px; margin-bottom:32px; }
+    h2 { font-size:28px; margin:32px 0 16px; color:#ecf1ff; }
+    h3 { font-size:20px; margin:24px 0 12px; color:#bfd0f8; }
+    p { margin-bottom:16px; color:#d6e1ff; font-size:16px; }
+    ul { margin:16px 0; padding-left:24px; }
+    li { margin-bottom:8px; color:#d6e1ff; }
+    a { color:#6fa5ff; }
+    a:hover { color:#8fb1ff; }
+    strong { color:#ecf1ff; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav><a href="${lang === 'zh' ? '/zh' : '/'}"">← ${lang === 'zh' ? '返回首页' : 'Back to Home'}</a></nav>
+    ${content}
+  </div>
+</body>
+</html>`;
+      
+      res.writeHead(200, htmlHeaders);
+      return res.end(legalHtml);
     }
 
     if (url === '/zh' || url === '/zh/') {
