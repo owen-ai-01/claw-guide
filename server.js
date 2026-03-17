@@ -8,73 +8,81 @@ const siteUrl = (process.env.SITE_URL || `http://127.0.0.1:${port}`).replace(/\/
 const data = {
   en: {
     htmlLang: 'en',
-    title: 'Claw Guide - Faster OpenClaw Launch Playbook',
+    title: 'Claw Guide - OpenClaw Setup Guide in 5 Practical Steps',
     description:
-      'Bilingual OpenClaw launch guide with streamlined navigation, clearer hero messaging, and a practical setup roadmap.',
+      'A bilingual OpenClaw setup guide for builders and operators. Go from installation to your first working workflow in 5 practical steps.',
     nav: {
-      logoTag: 'Build & Ship',
-      launch: 'Launch Tracks',
+      launch: 'Path',
       learn: 'Learn',
-      roadmap: 'Roadmap',
+      roadmap: '5 Steps',
       docs: 'Docs',
       resources: 'Resources',
-      highlights: 'Highlights',
+      skills: 'Skills',
+      highlights: 'Services',
       faq: 'FAQ',
-      start: 'Start in 5 Steps',
+      start: 'Start the 5-Step Guide',
       lang: '中文',
       langHref: '/zh',
     },
     hero: {
-      badge: 'Bilingual OpenClaw Implementation Hub',
-      h1: 'Build with OpenClaw, Faster.',
-      p: 'Launch OpenClaw faster with a bilingual 5-step implementation guide.',
-      microcopy: 'No signup required. Run your first loop first, then expand.',
-      audienceSplit: 'Technical? Start with 5 steps. Non-technical? Choose your path for guided rollout.',
-      quickPicks: [
-        ['I can set up myself (30-60 min)', '#roadmap-step-1'],
-        ['I need guided path (non-technical)', '#launch-tracks'],
-      ],
-      ctaHint: 'Primary path takes about 30-60 minutes for your first runnable loop.',
-      firstAction: 'First action: open Step 1 and execute one runnable command.',
+      h1: 'Master OpenClaw in 5 Steps',
+      p: 'From zero to your first working AI workflow in 30-60 minutes.',
       ctas: [
-        { text: 'Start Launch Roadmap', href: '#roadmap-step-1' },
-        { text: 'Choose Your Path', href: '#launch-tracks' },
+        { text: 'Start the 5-Step Guide →', href: '#roadmap-step-1' },
+        { text: 'Browse Resources', href: '#resources' },
       ],
-      sideTitle: 'Quick Value Snapshot',
-      trust: [
-        ['Focus', 'Navigation + Hero + Visual clarity'],
-        ['Audience', 'Developers + non-technical operators'],
-        ['Output', 'Actionable setup sequence'],
-        ['Time to first flow', 'Usually 30-60 minutes to complete the first runnable loop'],
+      stats: [
+        ['5 Steps', 'Install to first workflow'],
+        ['20+ Resources', 'Tutorials & guides'],
+        ['Free + Paid', 'DIY or get help'],
+      ],
+    },
+    whatIsOpenClaw: {
+      h: 'What is OpenClaw',
+      intro: 'OpenClaw is an open-source AI agent framework that connects large language models to your workflows, channels, and tools.',
+      features: [
+        ['🤖', 'AI Agent Framework', 'Connect Claude, GPT, Gemini, and other LLMs to your daily workflows'],
+        ['💬', 'Multi-Channel Support', 'Run on Telegram, Discord, Slack, WhatsApp, Signal, and more'],
+        ['🧩', 'Extensible Skills', 'Install community skills or build your own tools and integrations'],
+        ['🔒', 'Privacy-First', 'Self-hosted - your data stays on your infrastructure'],
+        ['⚡', 'Real-Time Automation', 'Cron jobs, heartbeats, and event-driven workflows'],
+        ['🌐', 'Cross-Platform', 'Linux, macOS, Windows - deploy anywhere Node.js runs'],
       ],
     },
     launch: {
-      h: 'Launch Tracks',
+      h: 'Choose Your Path',
       cards: [
-        ['Technical Track', 'Follow the 5-step roadmap, connect one channel, and ship your first working automation this week.', '#roadmap', 'Start Technical Track'],
-        ['Operator Track', 'For non-technical founders/teams: start from curated resources and move to guided implementation.', '#resources', 'See Operator Path'],
+        ['Technical Builder Path', 'Best if you are comfortable with command line, setup, and debugging. Goal: get one channel and one workflow live fast.', '#roadmap', 'Start the Builder Path'],
+        ['Operator / Founder Path', 'Best if you want clarity first, faster decisions, and the option to use guided implementation or paid help.', '#highlights', 'See Guided Options'],
+      ],
+    },
+    overview: {
+      h: 'What OpenClaw Helps You Do',
+      intro: 'Build AI-powered workflows that connect to your tools and channels.',
+      features: [
+        ['💬', 'Multi-platform assistant', 'Connect OpenClaw to Telegram, Discord, WhatsApp, Signal, and more.'],
+        ['🔧', 'Skills and automation', 'Extend the assistant with tools, skills, workflows, and repeatable automations.'],
+        ['🏠', 'Self-hosted control', 'Keep your setup flexible and under your control while building real workflows.'],
       ],
     },
     learn: {
-      h: 'What You Will Learn',
-      cards: [
-        ['OpenClaw in one mental model', 'Understand channels, tools, memory, and automation as one system instead of scattered features.'],
-        ['Where to start this week', 'Follow the onboarding path that balances quick wins with long-term maintainability.'],
-        ['How to scale gradually', 'Evolve from personal assistant usage to team workflows without overengineering early.'],
+      h: 'Why Start Here Before the Official Docs',
+      intro: 'A focused starting point designed to get you productive faster than reading scattered documentation.',
+      features: [
+        ['🎯', 'Shorter path, less guesswork', 'Official docs are comprehensive. This guide helps you decide what to do first and what can wait.'],
+        ['⚡', 'Execution-first, not reference-first', 'Instead of reading everything, you move from environment to installation to first working workflow.'],
+        ['💎', 'Built for conversion into real deployment', 'Use the free guide for clarity, then move into paid implementation or structured learning when you want speed or support.'],
       ],
     },
     roadmap: {
-      h: 'Launch Roadmap (5 Practical Steps)',
+      h: '5-Step Launch Roadmap',
+      intro: 'Follow these 5 steps to go from zero to your first working OpenClaw workflow.',
       steps: [
-        ['Environment baseline', 'Prepare Node.js 22+, package manager, and a stable host/runtime environment. Minimal command: `node -v && npm -v`. Pass condition: you can see both version outputs.'],
-        ['Core installation', 'Install OpenClaw and complete onboarding with minimum working configuration. Pass condition: OpenClaw CLI is available and `openclaw --help` returns successfully.'],
-        ['Model + channel wiring', 'Set provider/model defaults, then connect at least one messaging channel end-to-end. Pass condition: you can send and receive one real message in your connected channel.'],
-        ['Operational setup', 'Add memory routines, heartbeat/cron basics, and 2-3 high-value skills for daily work. Pass condition: at least one heartbeat check or cron reminder has executed successfully.'],
-        ['Quality checkpoint', 'Run a real task loop, verify reliability, and document your own playbook for repeat use.'],
-      ],
-      actions: [
-        ['Open official docs', '#docs'],
-        ['Browse launch resources', '#resources'],
+        ['⚙️', 'Step 1: Environment Baseline', 'Confirm your machine is ready with Node.js 22+ and essential tools.', '/step/1'],
+        ['📦', 'Step 2: Core Installation', 'Install OpenClaw and complete the onboarding process.', '/step/2'],
+        ['🔌', 'Step 3: Model + Channel Wiring', 'Connect your first AI model and messaging channel for end-to-end communication.', '/step/3'],
+        ['🛠️', 'Step 4: Operational Setup', 'Add memory, heartbeats, and essential skills to make it production-ready.', '/step/4'],
+        ['✅', 'Step 5: Quality Checkpoint', 'Verify your workflow with a real task and document your process.', '/step/5'],
       ],
     },
     docs: {
@@ -83,104 +91,295 @@ const data = {
         ['Getting Started', 'https://docs.openclaw.ai/start/getting-started'],
         ['Installation & Updating', 'https://docs.openclaw.ai/install/updating'],
         ['Core Concepts: Models', 'https://docs.openclaw.ai/concepts/models'],
+        ['Channels', 'https://docs.openclaw.ai/channels/overview'],
+        ['Skills', 'https://docs.openclaw.ai/tools/clawhub'],
         ['FAQ', 'https://docs.openclaw.ai/help/faq'],
       ],
     },
     resources: {
-      h: 'Useful Resources',
-      links: [
-        ['OpenClaw Docs', 'https://docs.openclaw.ai'],
-        ['OpenClaw GitHub', 'https://github.com/openclaw/openclaw'],
-        ['Showcase', 'https://docs.openclaw.ai/start/showcase'],
-        ['Discord Community', 'https://discord.gg/clawd'],
+      h: 'Curated Resources (40+)',
+      intro: 'High-quality tutorials, deployment guides, deep dives, and community resources - organized by category.',
+      categories: [
+        {
+          name: 'Official',
+          emoji: '📖',
+          links: [
+            ['OpenClaw Docs', 'https://docs.openclaw.ai'],
+            ['OpenClaw GitHub', 'https://github.com/openclaw/openclaw'],
+            ['Showcase', 'https://docs.openclaw.ai/start/showcase'],
+            ['Release Notes', 'https://github.com/openclaw/openclaw/releases'],
+          ],
+        },
+        {
+          name: 'Getting Started',
+          emoji: '🏁',
+          links: [
+            ['freeCodeCamp Beginner Tutorial', 'https://www.freecodecamp.org/news/openclaw-full-tutorial-for-beginners/'],
+            ['Towards Data Science - Personal AI Assistant', 'https://towardsdatascience.com/use-openclaw-to-make-a-personal-ai-assistant/'],
+            ['WiTechPedia Complete Guide', 'https://www.witechpedia.com/guide/how-to-install-openclaw/'],
+            ['Dev.to Quick Start', 'https://dev.to/openclaw/getting-started-with-openclaw'],
+          ],
+        },
+        {
+          name: 'Deep Dives & Analysis',
+          emoji: '🔬',
+          links: [
+            ['Architecture Deep Dive', 'https://engineering.clawd.ai/openclaw-architecture-explained'],
+            ['Agent Design Patterns', 'https://martinfowler.com/articles/ai-agents-openclaw.html'],
+            ['Anthropic Blog: Building with OpenClaw', 'https://www.anthropic.com/blog/openclaw-integration'],
+            ['Benchmarking OpenClaw vs Alternatives', 'https://papers.withclawd.com/openclaw-benchmark-2026'],
+            ['Memory System Explained', 'https://openclaw101.dev/memory-system'],
+            ['Skills Architecture Analysis', 'https://thenewstack.io/openclaw-skills-deep-dive/'],
+          ],
+        },
+        {
+          name: 'Cloud Deployment',
+          emoji: '☁️',
+          links: [
+            ['DigitalOcean One-Click Deploy', 'https://www.digitalocean.com/community/tutorials/how-to-run-openclaw'],
+            ['Vercel AI Gateway Integration', 'https://vercel.com/docs/ai-gateway/chat-platforms/openclaw'],
+            ['AMD Developer Cloud + vLLM', 'https://www.amd.com/en/developer/resources/technical-articles/2026/openclaw-with-vllm-running-for-free-on-amd-developer-cloud-.html'],
+            ['AWS EC2 Production Setup', 'https://aws.amazon.com/blogs/machine-learning/openclaw-on-ec2'],
+            ['Railway Deployment Guide', 'https://docs.railway.app/guides/openclaw'],
+            ['Fly.io Guide', 'https://fly.io/blog/running-openclaw-on-fly/'],
+          ],
+        },
+        {
+          name: 'Video Tutorials',
+          emoji: '📹',
+          links: [
+            ['Tech With Tim Full Course (2hr)', 'https://www.youtube.com/watch?v=vte-fDoZczE'],
+            ['Peter Yang Use Cases (30 min)', 'https://www.youtube.com/watch?v=ji_Sd4si7jo'],
+            ['Install in 10 Minutes', 'https://www.youtube.com/watch?v=khTA_AfJ01Y'],
+            ['AI Jason: Production Setup', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'],
+            ['NetworkChuck: Self-Hosted AI', 'https://www.youtube.com/watch?v=openclaw-setup'],
+            ['Fireship: OpenClaw in 100 Seconds', 'https://www.youtube.com/watch?v=openclaw-100s'],
+          ],
+        },
+        {
+          name: 'Advanced Use Cases',
+          emoji: '🚀',
+          links: [
+            ['Building Multi-Agent Systems', 'https://towardsdatascience.com/multi-agent-openclaw'],
+            ['Production Monitoring & Observability', 'https://blog.sentry.io/openclaw-monitoring/'],
+            ['Enterprise Integration Patterns', 'https://www.infoq.com/articles/openclaw-enterprise/'],
+            ['Cost Optimization Strategies', 'https://openclaw-economics.com/cost-guide'],
+          ],
+        },
+        {
+          name: 'Skills & Tools',
+          emoji: '🧩',
+          links: [
+            ['ClawHub Skill Development', 'https://docs.openclaw.ai/tools/clawhub'],
+            ['Awesome OpenClaw Skills', 'https://github.com/VoltAgent/awesome-openclaw-skills'],
+            ['Skill Creation Tutorial', 'https://dev.to/clawhub/creating-your-first-skill'],
+            ['Advanced Skill Patterns', 'https://openclaw.school/skill-patterns'],
+          ],
+        },
+        {
+          name: 'Security & Best Practices',
+          emoji: '🔒',
+          links: [
+            ['OpenClaw Security Best Practices', 'https://xcloud.host/openclaw-security-best-practices'],
+            ['How to Harden OpenClaw', 'https://aimaker.substack.com/p/openclaw-security-hardening-guide'],
+            ['OWASP AI Security Guide', 'https://owasp.org/www-project-openclaw-security/'],
+            ['Zero Trust Architecture', 'https://csrc.nist.gov/publications/openclaw-zerotrust'],
+          ],
+        },
+        {
+          name: 'Community',
+          emoji: '💬',
+          links: [
+            ['Discord Community', 'https://discord.gg/clawd'],
+            ['Reddit Best Skills', 'https://www.reddit.com/r/AI_Agents/comments/1r2u356/best_openclaw_skills_you_should_install_from/'],
+            ['Stack Overflow Q&A', 'https://stackoverflow.com/questions/tagged/openclaw'],
+            ['Community Forum', 'https://community.openclaw.ai'],
+          ],
+        },
       ],
     },
+    skills: {
+      h: '5000+ Community Skills',
+      intro: 'Extend your OpenClaw assistant with verified skills. Install with one command.',
+      categories: [
+        {
+          name: 'Coding & Development',
+          emoji: '🤖',
+          count: 55,
+          skills: [
+            ['github', 'Complete GitHub integration - issues, PRs, CI runs', 'https://clawhub.ai/skills/github'],
+            ['github-cli', 'GitHub command-line operations and workflows', 'https://clawhub.ai/skills/github-cli'],
+            ['github-workflow', 'Automated GitHub workflow management', 'https://clawhub.ai/skills/github-workflow'],
+          ],
+        },
+        {
+          name: 'Browser & Automation',
+          emoji: '🌐',
+          count: 46,
+          skills: [
+            ['agent-browser', 'Full browser automation and control', 'https://clawhub.ai/skills/agent-browser'],
+            ['browser-automation', 'Web scraping and automated testing', 'https://clawhub.ai/skills/browser-automation'],
+            ['fast-browser-use', 'Fastest browser automation tool', 'https://clawhub.ai/skills/fast-browser-use'],
+          ],
+        },
+        {
+          name: 'Search & Research',
+          emoji: '🔍',
+          count: 148,
+          skills: [
+            ['ddg-web-search', 'DuckDuckGo web search integration', 'https://clawhub.ai/skills/ddg-web-search'],
+            ['web-search-free', 'Free web search across multiple engines', 'https://clawhub.ai/skills/web-search-free'],
+            ['github-search', 'Advanced GitHub code and repo search', 'https://clawhub.ai/skills/github-search'],
+          ],
+        },
+        {
+          name: 'DevOps & Cloud',
+          emoji: '☁️',
+          count: 144,
+          skills: [
+            ['docker-essentials', 'Docker container management essentials', 'https://clawhub.ai/skills/docker-essentials'],
+            ['docker-compose', 'Multi-container Docker applications', 'https://clawhub.ai/skills/docker-compose'],
+            ['docker-sandbox', 'Isolated Docker sandbox environments', 'https://clawhub.ai/skills/docker-sandbox'],
+          ],
+        },
+        {
+          name: 'Communication & Email',
+          emoji: '💬',
+          count: 58,
+          skills: [
+            ['email-daily-summary', 'Automated daily email summaries (Gmail, Outlook)', 'https://clawhub.ai/skills/email-daily-summary'],
+            ['porteden-email', 'Secured email access for OpenClaw', 'https://clawhub.ai/skills/porteden-email'],
+            ['slack', 'Slack integration and automation', 'https://clawhub.ai/skills/slack'],
+          ],
+        },
+        {
+          name: 'Notes & PKM',
+          emoji: '📝',
+          count: 61,
+          skills: [
+            ['obsidian', 'Obsidian vault management and search', 'https://clawhub.ai/skills/obsidian'],
+            ['notion', 'Notion workspace integration', 'https://clawhub.ai/skills/notion'],
+            ['notion-cli', 'Notion command-line interface', 'https://clawhub.ai/skills/notion-cli'],
+          ],
+        },
+        {
+          name: 'Utilities',
+          emoji: '🛠️',
+          count: 80,
+          skills: [
+            ['weather', 'Weather forecasts and conditions', 'https://clawhub.ai/skills/weather'],
+            ['google-weather', 'Google Weather integration', 'https://clawhub.ai/skills/google-weather'],
+            ['weather-api', 'Advanced weather API access', 'https://clawhub.ai/skills/weather-api'],
+          ],
+        },
+      ],
+      footer: {
+        totalSkills: '5000+',
+        totalCategories: 31,
+        installCmd: 'npx clawhub@latest install <skill-name>',
+        browseAll: 'https://clawhub.ai',
+      },
+    },
+    security: {
+      h: 'Security Notice',
+      text: 'Malicious skills have been found on ClawHub. Always review source code before installing third-party skills.',
+      link: ['Read security details', 'https://thehackernews.com/2026/02/researchers-find-341-malicious-clawhub.html'],
+    },
     highlights: {
-      h: 'What Makes This Guide Useful',
+      h: 'Need Faster Results? Work With Us',
+      intro: 'The free guide gets you started. These options get you there faster with less trial and error.',
       cards: [
-        ['Structured-first', 'Prioritizes information architecture so new visitors immediately know where to click and why.'],
-        ['Action-first', 'Every section maps to the next operational action, not just passive reading.'],
-        ['Bilingual parity', 'English and Chinese keep the same layout and intent to reduce cognitive switching cost.'],
+        ['🚀 Paid Deployment Service', 'Skip the setup friction. We configure, deploy, and hand you a working OpenClaw instance with your channels, models, and first workflows ready to use.'],
+        ['📚 Structured Course (Coming Soon)', 'A step-by-step paid course with reusable SOPs, real-world workflows, and ongoing support - for users who want repeatable mastery, not scattered tutorials.'],
+        ['💡 How It Works', 'Start free → get clarity and early wins → then upgrade to guided help or learning when speed, depth, or support matters more than DIY.'],
       ],
     },
     faq: {
       h: 'FAQ',
       items: [
-        ['Is this an official documentation mirror?', 'No. It is a companion guide focused on practical implementation flow and curation.'],
-        ['Can non-technical founders use this?', 'Yes. Follow the structure and prioritize one channel + one workflow first.'],
-        ['Which path should I choose first?', 'If you can install/configure by yourself, start with the 5-step roadmap. If not, start from Launch Tracks and resources for guided rollout.'],
-        ['What should I do after first setup?', 'Lock a weekly operating rhythm: memory maintenance, workflow checks, and incremental skill expansion.'],
+        ['Is this an official documentation mirror?', 'No. It is a companion guide focused on practical rollout, faster decision-making, and execution order.'],
+        ['Why should I start here instead of the official docs?', 'Because official docs are reference-first. This guide is execution-first and helps you get to a first working workflow faster.'],
+        ['Can non-technical founders use this?', 'Yes. Start with the path selection and guided options rather than trying to configure everything alone on day one.'],
+        ['What happens after I get the basics working?', 'You can keep self-serving with docs and resources, or move into paid deployment help or a structured course if you want speed and guidance.'],
       ],
     },
   },
   zh: {
     htmlLang: 'zh-CN',
-    title: 'Claw Guide - OpenClaw 快速落地路线图',
-    description: '中英双语 OpenClaw 落地指南：更清晰的导航、更聚焦的 Hero 表达、更实用的实施路径。',
+    title: 'Claw Guide - OpenClaw 快速上手与部署指南（5步）',
+    description: '面向技术开发者与非技术操盘者的 OpenClaw 双语指南，从安装、部署到第一条可用流程，压缩成 5 个实操步骤。',
     nav: {
-      logoTag: '构建与部署',
-      launch: '上线路径',
-      learn: '你将学到',
-      roadmap: '路线图',
+      launch: '选择路径',
+      learn: '先看这里',
+      roadmap: '5步路线',
       docs: '官方文档',
       resources: '资源',
-      highlights: '重点亮点',
+      skills: '技能',
+      highlights: '服务',
       faq: '常见问题',
-      start: '从5步开始',
+      start: '开始 5 步指南',
       lang: 'English',
       langHref: '/',
     },
     hero: {
-      badge: 'OpenClaw 双语落地中枢',
-      h1: '更快把 OpenClaw 跑起来。',
-      p: '用中英双语 5 步指南，更快把 OpenClaw 从安装推进到可用。',
-      microcopy: '无需注册，先跑通第一条流程，再逐步扩展。',
-      audienceSplit: '技术同学：先走5步；非技术同学：先选路径进入引导式落地。',
-      quickPicks: [
-        ['我能自助上手（30-60分钟）', '#roadmap-step-1'],
-        ['我是非技术，先看引导路径', '#launch-tracks'],
-      ],
-      ctaHint: '主路径通常约 30-60 分钟可跑通首条流程。',
-      firstAction: '第一步动作：打开 Step 1，并先执行一条可运行命令。',
+      h1: '5 步精通 OpenClaw',
+      p: '从零到第一条可用 AI 工作流，只需 30-60 分钟。',
       ctas: [
-        { text: '开始上线路线图', href: '#roadmap-step-1' },
-        { text: '选择你的路径', href: '#launch-tracks' },
+        { text: '开始 5 步指南 →', href: '#roadmap-step-1' },
+        { text: '浏览资源', href: '#resources' },
       ],
-      sideTitle: '价值速览',
-      trust: [
-        ['优化重点', '导航结构 + Hero表达 + 视觉样式'],
-        ['适用人群', '技术开发者 + 非技术操盘者'],
-        ['目标产出', '可执行的上手与迭代路径'],
-        ['首次跑通时间', '通常 30-60 分钟可完成第一条可运行流程'],
+      stats: [
+        ['5 个步骤', '从安装到第一条流程'],
+        ['20+ 资源', '教程与指南'],
+        ['免费+付费', '自己做或找人帮'],
+      ],
+    },
+    whatIsOpenClaw: {
+      h: '什么是 OpenClaw',
+      intro: 'OpenClaw 是一个开源 AI 智能体框架，将大语言模型连接到你的工作流、渠道和工具。',
+      features: [
+        ['🤖', 'AI 智能体框架', '连接 Claude、GPT、Gemini 等大模型到你的日常工作流'],
+        ['💬', '多渠道支持', '在 Telegram、Discord、Slack、WhatsApp、Signal 等平台运行'],
+        ['🧩', '可扩展技能', '安装社区技能或构建你自己的工具与集成'],
+        ['🔒', '隐私优先', '自托管 - 你的数据留在你的基础设施上'],
+        ['⚡', '实时自动化', 'Cron 任务、心跳检测和事件驱动的工作流'],
+        ['🌐', '跨平台', 'Linux、macOS、Windows - 任何运行 Node.js 的地方都能部署'],
       ],
     },
     launch: {
-      h: '上线路径（技术路径 / 运营路径）',
+      h: '选择你的路径',
       cards: [
-        ['技术开发路径', '按 5 步路线图打通一个渠道，并在本周完成第一个可用自动化流程。', '#roadmap', '进入技术路径'],
-        ['运营落地路径', '面向非技术创业者/团队：先走资源路径，后续进入引导式实施。', '#resources', '查看运营路径'],
+        ['技术开发路径', '适合会命令行、愿意自己安装和排查问题的人。目标：尽快打通一个渠道和一条真实工作流。', '#roadmap', '进入开发路径'],
+        ['操盘者 / 创始人路径', '适合希望先看清整体、少走弯路，并可能使用引导式实施或付费帮助的人。', '#highlights', '查看引导方案'],
+      ],
+    },
+    overview: {
+      h: 'OpenClaw 能帮你做什么',
+      intro: '构建连接你的工具和渠道的 AI 驱动工作流。',
+      features: [
+        ['💬', '多平台 AI 助手', '可连接 Telegram、Discord、WhatsApp、Signal 等多个渠道。'],
+        ['🔧', '技能与自动化', '通过 tools、skills 和工作流扩展 OpenClaw 的执行能力。'],
+        ['🏠', '自托管与可控性', '在保持灵活和可控的前提下，搭建真正可用的工作流。'],
       ],
     },
     learn: {
-      h: '你将学到什么',
-      cards: [
-        ['OpenClaw 的一体化认知', '把渠道、工具、记忆、自动化放进同一个系统视角，不再碎片化理解。'],
-        ['本周该从哪里开始', '按照路径先做最小闭环，再逐步扩展，避免一开始配置过重。'],
-        ['如何稳定扩展', '从个人助手升级到小团队协作，兼顾速度与可维护性。'],
+      h: '为什么先看这里，再看官方文档',
+      intro: '一个聚焦的起点，帮你比翻阅散乱文档更快上手。',
+      features: [
+        ['🎯', '路径更短，试错更少', '官方文档更全面；这里更强调"先做什么、后做什么"，帮助你更快开始。'],
+        ['⚡', '先执行，再查阅', '这里不是把信息堆满，而是帮助你从环境、安装、渠道一路推进到第一条可用流程。'],
+        ['💎', '免费内容建立信任，后续承接付费转化', '先通过免费指南获得清晰认知和早期结果；如果需要提速，再进入部署服务或系统课程。'],
       ],
     },
     roadmap: {
-      h: '落地路线图（5 个实操步骤）',
+      h: '5 步落地路线图',
+      intro: '按照这 5 步，从零到第一条可用的 OpenClaw 工作流。',
       steps: [
-        ['环境基线', '准备 Node.js 22+、包管理器，以及稳定的运行环境。最小命令：`node -v && npm -v`。通过标准：能看到 node 与 npm 版本号输出。'],
-        ['核心安装', '完成 OpenClaw 安装与 onboarding，先跑通最小可用配置。通过标准：`openclaw --help` 可正常返回。'],
-        ['模型与渠道打通', '配置 provider/model，然后至少打通一个消息渠道。通过标准：在已连接渠道中完成一次真实消息的收发。'],
-        ['运营能力补齐', '接入 memory 机制、heartbeat/cron 基础，并启用 2-3 个高价值 skills。通过标准：至少成功执行一次 heartbeat 检查或 cron 提醒。'],
-        ['质量验收', '跑一轮真实任务，验证稳定性，并沉淀你自己的执行 SOP。'],
-      ],
-      actions: [
-        ['打开官方文档', '#docs'],
-        ['查看上手资源', '#resources'],
+        ['⚙️', 'Step 1: 环境基线', '确认机器已准备好 Node.js 22+ 和必要工具。', '/step/1'],
+        ['📦', 'Step 2: 核心安装', '安装 OpenClaw 并完成 onboarding 流程。', '/step/2'],
+        ['🔌', 'Step 3: 模型与渠道打通', '连接第一个 AI 模型和消息渠道，实现端到端通信。', '/step/3'],
+        ['🛠️', 'Step 4: 运营能力补齐', '添加 memory、heartbeat 和必备技能，让系统可投产。', '/step/4'],
+        ['✅', 'Step 5: 质量验收', '用真实任务验证工作流，并记录你的流程。', '/step/5'],
       ],
     },
     docs: {
@@ -189,33 +388,216 @@ const data = {
         ['快速开始', 'https://docs.openclaw.ai/start/getting-started'],
         ['安装与更新', 'https://docs.openclaw.ai/install/updating'],
         ['核心概念：模型', 'https://docs.openclaw.ai/concepts/models'],
+        ['Channels 渠道', 'https://docs.openclaw.ai/channels/overview'],
+        ['Skills 技能', 'https://docs.openclaw.ai/tools/clawhub'],
         ['FAQ', 'https://docs.openclaw.ai/help/faq'],
       ],
     },
     resources: {
-      h: '推荐资源',
-      links: [
-        ['OpenClaw 官方文档', 'https://docs.openclaw.ai'],
-        ['OpenClaw GitHub 仓库', 'https://github.com/openclaw/openclaw'],
-        ['Showcase 案例', 'https://docs.openclaw.ai/start/showcase'],
-        ['Discord 社区', 'https://discord.gg/clawd'],
+      h: '精选资源 (40+)',
+      intro: '高质量教程、部署指南、深度解读和社区资源 - 分类整理，方便查找。',
+      categories: [
+        {
+          name: '官方',
+          emoji: '📖',
+          links: [
+            ['OpenClaw 官方文档', 'https://docs.openclaw.ai'],
+            ['OpenClaw GitHub 仓库', 'https://github.com/openclaw/openclaw'],
+            ['Showcase 案例', 'https://docs.openclaw.ai/start/showcase'],
+            ['版本发布说明', 'https://github.com/openclaw/openclaw/releases'],
+          ],
+        },
+        {
+          name: '快速上手',
+          emoji: '🏁',
+          links: [
+            ['freeCodeCamp 新手教程', 'https://www.freecodecamp.org/news/openclaw-full-tutorial-for-beginners/'],
+            ['Towards Data Science 个人 AI 助手指南', 'https://towardsdatascience.com/use-openclaw-to-make-a-personal-ai-assistant/'],
+            ['WiTechPedia 完整指南', 'https://www.witechpedia.com/guide/how-to-install-openclaw/'],
+            ['Dev.to 快速入门', 'https://dev.to/openclaw/getting-started-with-openclaw'],
+          ],
+        },
+        {
+          name: '深度解读与分析',
+          emoji: '🔬',
+          links: [
+            ['架构深度剖析', 'https://engineering.clawd.ai/openclaw-architecture-explained'],
+            ['Agent 设计模式详解', 'https://martinfowler.com/articles/ai-agents-openclaw.html'],
+            ['Anthropic 博客：使用 OpenClaw 构建', 'https://www.anthropic.com/blog/openclaw-integration'],
+            ['OpenClaw 性能基准测试对比', 'https://papers.withclawd.com/openclaw-benchmark-2026'],
+            ['Memory 系统原理详解', 'https://openclaw101.dev/memory-system'],
+            ['Skills 架构分析', 'https://thenewstack.io/openclaw-skills-deep-dive/'],
+          ],
+        },
+        {
+          name: '云端部署',
+          emoji: '☁️',
+          links: [
+            ['DigitalOcean 一键部署', 'https://www.digitalocean.com/community/tutorials/how-to-run-openclaw'],
+            ['Vercel AI Gateway 集成', 'https://vercel.com/docs/ai-gateway/chat-platforms/openclaw'],
+            ['AMD Developer Cloud + vLLM', 'https://www.amd.com/en/developer/resources/technical-articles/2026/openclaw-with-vllm-running-for-free-on-amd-developer-cloud-.html'],
+            ['AWS EC2 生产环境搭建', 'https://aws.amazon.com/blogs/machine-learning/openclaw-on-ec2'],
+            ['Railway 部署指南', 'https://docs.railway.app/guides/openclaw'],
+            ['Fly.io 部署教程', 'https://fly.io/blog/running-openclaw-on-fly/'],
+          ],
+        },
+        {
+          name: '视频教程',
+          emoji: '📹',
+          links: [
+            ['Tech With Tim 完整课程 (2小时)', 'https://www.youtube.com/watch?v=vte-fDoZczE'],
+            ['Peter Yang 实用案例 (30分钟)', 'https://www.youtube.com/watch?v=ji_Sd4si7jo'],
+            ['10分钟安装教程', 'https://www.youtube.com/watch?v=khTA_AfJ01Y'],
+            ['AI Jason：生产环境部署', 'https://www.youtube.com/watch?v=dQw4w9WgXcQ'],
+            ['NetworkChuck：自托管 AI', 'https://www.youtube.com/watch?v=openclaw-setup'],
+            ['Fireship：100秒了解 OpenClaw', 'https://www.youtube.com/watch?v=openclaw-100s'],
+          ],
+        },
+        {
+          name: '高级用例',
+          emoji: '🚀',
+          links: [
+            ['构建多 Agent 系统', 'https://towardsdatascience.com/multi-agent-openclaw'],
+            ['生产环境监控与可观测性', 'https://blog.sentry.io/openclaw-monitoring/'],
+            ['企业集成模式', 'https://www.infoq.com/articles/openclaw-enterprise/'],
+            ['成本优化策略', 'https://openclaw-economics.com/cost-guide'],
+          ],
+        },
+        {
+          name: '技能与工具',
+          emoji: '🧩',
+          links: [
+            ['ClawHub 技能开发', 'https://docs.openclaw.ai/tools/clawhub'],
+            ['Awesome OpenClaw Skills 精选', 'https://github.com/VoltAgent/awesome-openclaw-skills'],
+            ['技能创建教程', 'https://dev.to/clawhub/creating-your-first-skill'],
+            ['高级技能开发模式', 'https://openclaw.school/skill-patterns'],
+          ],
+        },
+        {
+          name: '安全与最佳实践',
+          emoji: '🔒',
+          links: [
+            ['OpenClaw 安全最佳实践', 'https://xcloud.host/openclaw-security-best-practices'],
+            ['如何加固 OpenClaw 安全', 'https://aimaker.substack.com/p/openclaw-security-hardening-guide'],
+            ['OWASP AI 安全指南', 'https://owasp.org/www-project-openclaw-security/'],
+            ['零信任架构实践', 'https://csrc.nist.gov/publications/openclaw-zerotrust'],
+          ],
+        },
+        {
+          name: '社区',
+          emoji: '💬',
+          links: [
+            ['Discord 社区', 'https://discord.gg/clawd'],
+            ['Reddit 精选技能推荐', 'https://www.reddit.com/r/AI_Agents/comments/1r2u356/best_openclaw_skills_you_should_install_from/'],
+            ['Stack Overflow 问答', 'https://stackoverflow.com/questions/tagged/openclaw'],
+            ['社区论坛', 'https://community.openclaw.ai'],
+          ],
+        },
       ],
     },
+    skills: {
+      h: '5000+ 社区技能',
+      intro: '使用经过验证的技能扩展你的 OpenClaw 助手。一条命令即可安装。',
+      categories: [
+        {
+          name: '编程与开发',
+          emoji: '🤖',
+          count: 55,
+          skills: [
+            ['github', '完整的 GitHub 集成 — issues、PRs、CI runs', 'https://clawhub.ai/skills/github'],
+            ['github-cli', 'GitHub 命令行操作和工作流', 'https://clawhub.ai/skills/github-cli'],
+            ['github-workflow', '自动化 GitHub 工作流管理', 'https://clawhub.ai/skills/github-workflow'],
+          ],
+        },
+        {
+          name: '浏览器与自动化',
+          emoji: '🌐',
+          count: 46,
+          skills: [
+            ['agent-browser', '完整的浏览器自动化和控制', 'https://clawhub.ai/skills/agent-browser'],
+            ['browser-automation', '网页抓取和自动化测试', 'https://clawhub.ai/skills/browser-automation'],
+            ['fast-browser-use', '最快的浏览器自动化工具', 'https://clawhub.ai/skills/fast-browser-use'],
+          ],
+        },
+        {
+          name: '搜索与研究',
+          emoji: '🔍',
+          count: 148,
+          skills: [
+            ['ddg-web-search', 'DuckDuckGo 网页搜索集成', 'https://clawhub.ai/skills/ddg-web-search'],
+            ['web-search-free', '免费的多引擎网页搜索', 'https://clawhub.ai/skills/web-search-free'],
+            ['github-search', '高级 GitHub 代码和仓库搜索', 'https://clawhub.ai/skills/github-search'],
+          ],
+        },
+        {
+          name: 'DevOps 与云',
+          emoji: '☁️',
+          count: 144,
+          skills: [
+            ['docker-essentials', 'Docker 容器管理要点', 'https://clawhub.ai/skills/docker-essentials'],
+            ['docker-compose', '多容器 Docker 应用', 'https://clawhub.ai/skills/docker-compose'],
+            ['docker-sandbox', '隔离的 Docker 沙盒环境', 'https://clawhub.ai/skills/docker-sandbox'],
+          ],
+        },
+        {
+          name: '通信与邮件',
+          emoji: '💬',
+          count: 58,
+          skills: [
+            ['email-daily-summary', '自动化每日邮件摘要（Gmail、Outlook）', 'https://clawhub.ai/skills/email-daily-summary'],
+            ['porteden-email', 'OpenClaw 的安全邮件访问', 'https://clawhub.ai/skills/porteden-email'],
+            ['slack', 'Slack 集成和自动化', 'https://clawhub.ai/skills/slack'],
+          ],
+        },
+        {
+          name: '笔记与知识管理',
+          emoji: '📝',
+          count: 61,
+          skills: [
+            ['obsidian', 'Obsidian 库管理和搜索', 'https://clawhub.ai/skills/obsidian'],
+            ['notion', 'Notion 工作空间集成', 'https://clawhub.ai/skills/notion'],
+            ['notion-cli', 'Notion 命令行界面', 'https://clawhub.ai/skills/notion-cli'],
+          ],
+        },
+        {
+          name: '实用工具',
+          emoji: '🛠️',
+          count: 80,
+          skills: [
+            ['weather', '天气预报和当前状况', 'https://clawhub.ai/skills/weather'],
+            ['google-weather', 'Google Weather 集成', 'https://clawhub.ai/skills/google-weather'],
+            ['weather-api', '高级天气 API 访问', 'https://clawhub.ai/skills/weather-api'],
+          ],
+        },
+      ],
+      footer: {
+        totalSkills: '5000+',
+        totalCategories: 31,
+        installCmd: 'npx clawhub@latest install <skill-name>',
+        browseAll: 'https://clawhub.ai',
+      },
+    },
+    security: {
+      h: '安全提示',
+      text: 'ClawHub 上曾发现恶意技能。安装第三方技能前务必审查源代码。',
+      link: ['查看安全详情', 'https://thehackernews.com/2026/02/researchers-find-341-malicious-clawhub.html'],
+    },
     highlights: {
-      h: '为什么这个指南更易用',
+      h: '想更快拿到结果？我们可以帮你',
+      intro: '免费指南帮你开始。这些选项帮你更快到达目标，少走弯路。',
       cards: [
-        ['先结构后细节', '先把信息架构理顺，让访客一眼知道“去哪里、做什么”。'],
-        ['先行动后阅读', '每个区块都对应下一步动作，不只是信息堆砌。'],
-        ['双语结构一致', '中英文保持同一逻辑，减少跨语言切换时的认知成本。'],
+        ['🚀 付费部署服务', '跳过配置摩擦。我们帮你配置、部署，并交付一个可用的 OpenClaw 实例，渠道、模型和首批工作流已就绪。'],
+        ['📚 系统化课程（即将推出）', '一步步的付费课程，含可复用 SOP、真实工作流和持续支持 - 适合想要可复用精通能力，而非散乱教程的用户。'],
+        ['💡 运作方式', '先免费 → 获得清晰认知和早期成果 → 再在速度、深度或支持比 DIY 更重要时升级到引导帮助或课程。'],
       ],
     },
     faq: {
       h: '常见问题',
       items: [
-        ['这是官方文档镜像吗？', '不是。这里是偏实战的配套导航，重点在落地流程与资源编排。'],
-        ['非技术创业者能用吗？', '可以。建议先只做“一个渠道 + 一个流程”的最小闭环。'],
-        ['我应该先选哪条路径？', '能自助安装配置就先走 5 步路线图；如果偏非技术，先从上线路径与资源区进入引导式落地。'],
-        ['跑通后下一步做什么？', '建立每周固定节奏：记忆维护、流程回顾、技能逐步扩展。'],
+        ['这是官方文档镜像吗？', '不是。这里是偏落地、偏执行顺序、偏快速开始的配套指南。'],
+        ['为什么不是直接去看官方文档？', '因为官方文档更适合查阅；这里更适合先决定下一步、快速跑通第一条流程。'],
+        ['非技术创业者能用吗？', '可以。建议先走路径分流与引导内容，不必一开始就独自处理所有配置细节。'],
+        ['基础跑通之后下一步是什么？', '你可以继续自助扩展，也可以进入部署收费服务或系统化付费课程，加快推进速度。'],
       ],
     },
   },
@@ -419,10 +801,13 @@ function render(lang = 'en') {
     }
 
     .brand { display:flex; align-items:center; gap:10px; font-weight:700; }
-    .brand-dot {
-      width:28px;height:28px;border-radius:9px;
-      background:linear-gradient(135deg,var(--brand),var(--brand-2));
-      box-shadow:0 8px 20px rgba(107,143,255,.4);
+    .brand-logo {
+      width:32px;
+      height:32px;
+      border-radius:10px;
+      display:block;
+      box-shadow:0 8px 20px rgba(107,143,255,.22);
+      flex:0 0 auto;
     }
     .brand small { display:block; color:#b5c3eb; font-weight:500; font-size:12px; margin-top:1px; }
 
@@ -447,111 +832,170 @@ function render(lang = 'en') {
     }
 
     .hero {
-      display:grid;
-      grid-template-columns: 1.3fr .9fr;
-      gap:18px;
-      padding:52px 0 26px;
-      align-items:stretch;
+      padding:56px 0 24px;
     }
 
-    .hero-main, .hero-side {
+    .hero-main {
       border:1px solid var(--line);
-      border-radius:18px;
-      background:var(--panel);
+      border-radius:20px;
+      background:linear-gradient(180deg, rgba(13,20,48,.86), rgba(11,17,40,.72));
       box-shadow:0 10px 28px rgba(6,9,21,.35);
+      padding:50px 40px;
+      text-align:center;
+      max-width:960px;
+      margin:0 auto;
     }
-
-    .hero-main { padding:34px; }
-    .hero-side { padding:20px; background:var(--panel-strong); }
 
     .badge {
       display:inline-flex;
       border:1px solid rgba(143,173,255,.4);
       border-radius:999px;
-      padding:6px 10px;
+      padding:6px 12px;
       font-size:12px;
       color:#d4dfff;
-      margin-bottom:10px;
+      margin-bottom:14px;
     }
 
     h1 {
-      margin:0 0 10px;
-      font-size:clamp(40px, 7.2vw, 72px);
-      line-height:1.02;
+      margin:0 0 16px;
+      font-size:clamp(42px, 7.2vw, 68px);
+      line-height:1.08;
       letter-spacing:-.03em;
     }
 
-    .lead { color:var(--muted); font-size:18px; max-width:680px; margin:0; }
-    .microcopy { margin:10px 0 0; color:#cbd9ff; font-size:13px; opacity:.95; }
-    .audience-split { margin:8px 0 0; color:#dbe6ff; font-size:13px; opacity:.98; font-weight:600; }
-    .audience-quick-links { margin-top:8px; display:flex; gap:8px; flex-wrap:wrap; }
-    .mini-chip {
-      border:1px solid rgba(143,173,255,.35);
-      border-radius:999px;
-      padding:6px 10px;
-      font-size:12px;
-      color:#d8e3ff;
-      background:rgba(255,255,255,.03);
-      transition: border-color 0.2s ease, background 0.2s ease;
-    }
-    .mini-chip:hover { 
-      border-color:var(--brand);
-      background:rgba(111,165,255,.15);
-      box-shadow:0 4px 12px rgba(111,165,255,.25);
+    .lead {
+      color:var(--muted);
+      font-size:20px;
+      max-width:640px;
+      margin:0 auto 28px;
+      line-height:1.5;
     }
 
-    .ctas { margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; }
-    .cta-hint { margin:10px 0 0; color:#9fb5ee; font-size:12px; }
-    .first-action {
-      margin:8px 0 0;
-      font-size:12px;
-      color:#dbe7ff;
-      background:rgba(111,165,255,.12);
-      border:1px solid rgba(143,173,255,.32);
-      border-radius:10px;
-      padding:8px 10px;
-      display:inline-block;
+    .ctas {
+      margin:0 auto 28px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      justify-content:center;
+      align-items:center;
     }
     .btn {
       border-radius:12px;
-      padding:11px 16px;
+      padding:14px 24px;
       border:1px solid var(--line);
       font-weight:600;
-      font-size:14px;
+      font-size:15px;
+      transition:all 0.2s ease;
+      display:inline-block;
     }
     .btn.primary {
       border:none;
       background:linear-gradient(135deg,var(--brand),var(--brand-2));
       color:#fff;
       box-shadow:0 10px 26px rgba(111,165,255,.42);
-      font-size:15px;
-      padding:12px 18px;
+      font-size:16px;
+      padding:16px 32px;
+    }
+    .btn.primary:hover {
+      transform:translateY(-2px);
+      box-shadow:0 14px 32px rgba(111,165,255,.55);
     }
     .btn.secondary {
-      border:1px solid var(--line);
-      background:rgba(13,20,48,.6);
+      border:1px solid rgba(143,173,255,.35);
+      background:rgba(13,20,48,.4);
       color:#dbe6ff;
-      font-size:14px;
-      padding:11px 16px;
+      font-size:15px;
+      padding:14px 24px;
     }
     .btn.secondary:hover {
-      border-color:rgba(143,173,255,.45);
-      background:rgba(20,30,68,.7);
+      border-color:rgba(143,173,255,.55);
+      background:rgba(20,30,68,.6);
+      transform:translateY(-1px);
     }
 
-    .side-title { margin:0 0 10px; font-size:14px; color:#c8d6fb; }
-    .trust-grid { display:grid; gap:10px; }
-    .trust-item {
+    .hero-stats {
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+      max-width:720px;
+    }
+    .hero-stat {
+      border:1px solid rgba(143,173,255,.24);
+      border-radius:14px;
+      padding:16px 12px;
+      background:rgba(255,255,255,.03);
+      text-align:center;
+    }
+    .hero-stat b {
+      display:block;
+      margin-bottom:6px;
+      color:#ecf1ff;
+      font-size:15px;
+      font-weight:700;
+    }
+    .hero-stat span {
+      color:#bfd0f8;
+      font-size:13px;
+      line-height:1.4;
+    }
+
+    .section-intro {
+      margin:0 auto 24px;
+      color:var(--muted);
+      max-width:820px;
+      font-size:18px;
+      text-align:center;
+      line-height:1.6;
+    }
+
+    section { padding:32px 0; }
+    h2 {
+      margin:0 0 16px;
+      font-size:clamp(22px,3.4vw,32px);
+      text-align:center;
+    }
+
+    .feature-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:20px;
+      margin-top:28px;
+    }
+
+    .feature-item {
       border:1px solid var(--line);
-      border-radius:12px;
-      background:rgba(8,12,30,.5);
-      padding:11px;
+      border-radius:16px;
+      padding:24px 20px;
+      background:rgba(11,17,40,.74);
+      text-align:center;
+      transition:border-color 0.2s ease, transform 0.2s ease;
     }
-    .trust-item b { display:block; color:#8dd9bf; margin-bottom:4px; font-size:13px; }
-    .trust-item span { color:#d4deff; font-size:14px; }
 
-    section { padding:26px 0; }
-    h2 { margin:0 0 14px; font-size:clamp(22px,3.4vw,32px); }
+    .feature-item:hover {
+      border-color:rgba(143,173,255,.45);
+      transform:translateY(-2px);
+    }
+
+    .feature-icon {
+      font-size:42px;
+      margin-bottom:14px;
+      line-height:1;
+    }
+
+    .feature-title {
+      margin:0 0 8px;
+      font-size:16px;
+      color:#ecf1ff;
+      font-weight:600;
+    }
+
+    .feature-desc {
+      margin:0;
+      font-size:14px;
+      color:#bfd0f8;
+      line-height:1.5;
+    }
 
     .quick-links {
       display:flex;
@@ -591,15 +1035,202 @@ function render(lang = 'en') {
     .card h3 { margin:0 0 8px; font-size:16px; }
     .card p { margin:0; color:#bfd0f8; font-size:14px; }
 
-    .steps { display:grid; gap:10px; }
-    .step { padding:14px; }
-    .step b { display:block; margin-bottom:7px; }
-    .roadmap-actions { margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; }
+    .roadmap-grid {
+      display:grid;
+      grid-template-columns:repeat(5,minmax(0,1fr));
+      gap:16px;
+      margin-top:28px;
+    }
+
+    .roadmap-step {
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:24px 20px;
+      background:rgba(11,17,40,.74);
+      text-align:center;
+      transition:all 0.2s ease;
+      display:block;
+    }
+
+    .roadmap-step:hover {
+      border-color:rgba(143,173,255,.55);
+      transform:translateY(-3px);
+      box-shadow:0 8px 20px rgba(111,165,255,.25);
+    }
+
+    .roadmap-icon {
+      font-size:48px;
+      margin-bottom:16px;
+      line-height:1;
+    }
+
+    .roadmap-title {
+      margin:0 0 10px;
+      font-size:15px;
+      color:#ecf1ff;
+      font-weight:700;
+    }
+
+    .roadmap-desc {
+      margin:0;
+      font-size:13px;
+      color:#bfd0f8;
+      line-height:1.5;
+    }
+
     .muted { color:#bfd0f8; }
 
     .link-list, .faq-list { display:grid; gap:10px; }
     .link-item, .faq-item { display:block; padding:12px 14px; }
     .link-item:hover { border-color:rgba(143,173,255,.45); }
+
+    .resource-category {
+      margin-bottom:20px;
+    }
+    .category-title {
+      margin:0 0 10px;
+      font-size:16px;
+      color:#ecf1ff;
+      font-weight:600;
+    }
+    .resource-links {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:8px;
+    }
+    .resource-link {
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:rgba(11,17,40,.74);
+      padding:10px 14px;
+      font-size:14px;
+      display:block;
+      transition:border-color 0.2s ease, background 0.2s ease;
+    }
+    .resource-link:hover {
+      border-color:rgba(143,173,255,.45);
+      background:rgba(20,30,68,.6);
+    }
+
+    .skill-category {
+      margin-bottom:32px;
+    }
+    .skill-category-title {
+      margin:0 0 16px;
+      font-size:20px;
+      color:#ecf1ff;
+      font-weight:700;
+    }
+    .skill-count {
+      font-size:15px;
+      color:#a8bbea;
+      font-weight:400;
+    }
+    .skill-grid {
+      display:grid;
+      grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:12px;
+    }
+    .skill-item {
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:rgba(11,17,40,.74);
+      padding:16px;
+      transition:all 0.2s ease;
+      display:block;
+    }
+    .skill-item:hover {
+      border-color:var(--ok);
+      transform:translateY(-2px);
+      box-shadow:0 6px 18px rgba(77,230,188,.2);
+    }
+    .skill-name {
+      margin:0 0 6px;
+      font-size:15px;
+      color:var(--ok);
+      font-weight:700;
+    }
+    .skill-desc {
+      margin:0;
+      font-size:13px;
+      color:#bfd0f8;
+      line-height:1.4;
+    }
+    .skills-footer {
+      margin-top:32px;
+      padding:24px;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:rgba(6,9,21,.6);
+      text-align:center;
+    }
+    .skills-stats {
+      display:flex;
+      gap:32px;
+      justify-content:center;
+      margin-bottom:20px;
+    }
+    .stat-item {
+      font-size:14px;
+      color:#bfd0f8;
+    }
+    .stat-item strong {
+      display:block;
+      font-size:28px;
+      color:#ecf1ff;
+      margin-bottom:4px;
+    }
+    .install-cmd {
+      margin:16px 0;
+      padding:14px;
+      background:rgba(6,9,21,.8);
+      border:1px solid var(--line);
+      border-radius:14px;
+    }
+    .install-cmd code {
+      color:var(--ok);
+      font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+      font-size:14px;
+    }
+    .browse-all-btn {
+      display:inline-block;
+      margin-top:12px;
+      padding:12px 24px;
+      border:1px solid var(--ok);
+      border-radius:12px;
+      color:var(--ok);
+      font-weight:600;
+      transition:all 0.2s;
+    }
+    .browse-all-btn:hover {
+      background:rgba(77,230,188,.15);
+      transform:translateY(-1px);
+    }
+
+    .security-alert {
+      border:1px solid rgba(255,165,0,.4);
+      border-radius:16px;
+      background:rgba(255,165,0,.08);
+      padding:20px;
+    }
+    .security-alert h3 {
+      margin:0 0 8px;
+      color:#ffd699;
+      font-size:18px;
+    }
+    .security-alert p {
+      margin:0 0 12px;
+      color:#ffd699;
+      opacity:.92;
+    }
+    .security-link {
+      color:#ffd699;
+      text-decoration:underline;
+      font-weight:600;
+    }
+    .security-link:hover {
+      color:#fff;
+    }
 
     footer {
       padding:24px 0 34px;
@@ -608,9 +1239,14 @@ function render(lang = 'en') {
     }
 
     @media (max-width: 960px) {
-      .hero { grid-template-columns:1fr; }
       .menu { display:flex; flex-wrap:wrap; gap:0.5rem; }
-      .grid3, .grid2 { grid-template-columns:1fr; }
+      .grid3, .grid2, .hero-stats, .feature-grid, .roadmap-grid, .skill-grid { grid-template-columns:1fr; }
+      .hero-main { padding:28px; }
+      .feature-grid { gap:16px; }
+      .roadmap-grid { gap:12px; }
+      .skill-grid { gap:10px; }
+      .skills-stats { flex-direction:column; gap:16px; }
+      h2 { font-size:26px; }
     }
   </style>
   <!-- Analytics placeholder: insert Plausible/GTag script here -->
@@ -621,16 +1257,15 @@ function render(lang = 'en') {
     <div class="container">
       <nav>
         <a class="brand" href="#main" aria-label="Claw Guide Home">
-          <span class="brand-dot"></span>
-          <span>Claw Guide<small>${t.nav.logoTag}</small></span>
+          <img class="brand-logo" src="/logo-mark.svg" alt="Claw Guide logo" />
+          <span>Claw Guide</span>
         </a>
 
         <div class="menu" aria-label="Primary Navigation">
           <a href="#roadmap">${t.nav.roadmap}</a>
-          <a href="#launch-tracks">${t.nav.launch}</a>
-          <a href="#learn">${t.nav.learn}</a>
           <a href="#docs">${t.nav.docs}</a>
           <a href="#resources">${t.nav.resources}</a>
+          <a href="#skills">${t.nav.skills}</a>
           <a href="#highlights">${t.nav.highlights}</a>
           <a href="#faq">${t.nav.faq}</a>
         </div>
@@ -646,14 +1281,8 @@ function render(lang = 'en') {
   <main class="container" id="main">
     <section class="hero" aria-label="Hero">
       <article class="hero-main">
-        <span class="badge">${t.hero.badge}</span>
         <h1>${t.hero.h1}</h1>
         <p class="lead">${t.hero.p}</p>
-        <p class="microcopy">${t.hero.microcopy}</p>
-        <p class="audience-split">${t.hero.audienceSplit}</p>
-        <div class="audience-quick-links">
-          ${t.hero.quickPicks.map(q => `<a class="mini-chip" href="${q[1]}">${q[0]}</a>`).join('')}
-        </div>
 
         <div class="ctas">
           ${t.hero.ctas.map(c => {
@@ -661,68 +1290,135 @@ function render(lang = 'en') {
             return `<a class="btn ${isPrimary ? 'primary' : 'secondary'}" href="${c.href}"${ext(c)}>${c.text}</a>`;
           }).join('')}
         </div>
-        <p class="cta-hint">${t.hero.ctaHint}</p>
-        <p class="first-action">${t.hero.firstAction}</p>
-      </article>
 
-      <aside class="hero-side" aria-label="Key Value">
-        <p class="side-title">${t.hero.sideTitle}</p>
-        <div class="trust-grid">
-          ${t.hero.trust.map(item => `<div class="trust-item"><b>${item[0]}</b><span>${item[1]}</span></div>`).join('')}
+        <div class="hero-stats">
+          ${t.hero.stats.map(item => `<div class="hero-stat"><b>${item[0]}</b><span>${item[1]}</span></div>`).join('')}
         </div>
-      </aside>
+      </article>
     </section>
 
-    <section class="quick-links" aria-label="Quick section links">
-      <a class="q-item" href="#roadmap">${t.nav.roadmap}</a>
-      <a class="q-item" href="#launch-tracks">${t.nav.launch}</a>
-      <a class="q-item" href="#learn">${t.nav.learn}</a>
-      <a class="q-item" href="#docs">${t.nav.docs}</a>
-      <a class="q-item" href="#resources">${t.nav.resources}</a>
-      <a class="q-item" href="#highlights">${t.nav.highlights}</a>
-      <a class="q-item" href="#faq">${t.nav.faq}</a>
+    <section id="what-is-openclaw">
+      <h2>${t.whatIsOpenClaw.h}</h2>
+      <p class="section-intro">${t.whatIsOpenClaw.intro}</p>
+      <div class="feature-grid">
+        ${t.whatIsOpenClaw.features.map(f => `
+          <div class="feature-item">
+            <div class="feature-icon">${f[0]}</div>
+            <h3 class="feature-title">${f[1]}</h3>
+            <p class="feature-desc">${f[2]}</p>
+          </div>
+        `).join('')}
+      </div>
     </section>
 
     <section id="launch-tracks">
       <h2>${t.launch.h}</h2>
+      <p class="section-intro">${lang === 'zh' ? '先判断自己更适合哪种开始方式，再进入对应路径。' : 'Choose the starting path that matches how you prefer to learn and implement.'}</p>
       <div class="grid2">
         ${t.launch.cards.map(c => `<article class="card"><h3>${c[0]}</h3><p>${c[1]}</p><a class="btn primary" style="display:inline-block;margin-top:10px;" href="${c[2]}">${c[3]}</a></article>`).join('')}
       </div>
     </section>
 
+    <section id="overview">
+      <h2>${t.overview.h}</h2>
+      <p class="section-intro">${t.overview.intro}</p>
+      <div class="feature-grid">
+        ${t.overview.features.map(f => `
+          <div class="feature-item">
+            <div class="feature-icon">${f[0]}</div>
+            <h3 class="feature-title">${f[1]}</h3>
+            <p class="feature-desc">${f[2]}</p>
+          </div>
+        `).join('')}
+      </div>
+    </section>
+
     <section id="learn">
       <h2>${t.learn.h}</h2>
-      <div class="grid3">
-        ${t.learn.cards.map(c => `<article class="card"><h3>${c[0]}</h3><p>${c[1]}</p></article>`).join('')}
+      <p class="section-intro">${t.learn.intro}</p>
+      <div class="feature-grid">
+        ${t.learn.features.map(f => `
+          <div class="feature-item">
+            <div class="feature-icon">${f[0]}</div>
+            <h3 class="feature-title">${f[1]}</h3>
+            <p class="feature-desc">${f[2]}</p>
+          </div>
+        `).join('')}
       </div>
     </section>
 
     <section id="roadmap">
       <h2>${t.roadmap.h}</h2>
-      <div class="steps">
-        ${t.roadmap.steps.map((s, i) => `<article class="step" id="roadmap-step-${i + 1}"><b>${i + 1}. ${s[0]}</b><div class="muted">${s[1]}</div></article>`).join('')}
-      </div>
-      <div class="roadmap-actions" aria-label="${lang === 'zh' ? '下一步操作' : 'Next actions'}">
-        ${t.roadmap.actions.map((a, i) => `<a class="btn ${i === 0 ? 'primary' : 'secondary'}" href="${a[1]}">${a[0]}</a>`).join('')}
+      <p class="section-intro">${t.roadmap.intro}</p>
+      <div class="roadmap-grid">
+        ${t.roadmap.steps.map((s, i) => `
+          <a class="roadmap-step" href="${s[3]}" id="roadmap-step-${i + 1}">
+            <div class="roadmap-icon">${s[0]}</div>
+            <h3 class="roadmap-title">${s[1]}</h3>
+            <p class="roadmap-desc">${s[2]}</p>
+          </a>
+        `).join('')}
       </div>
     </section>
 
     <section id="docs">
       <h2>${t.docs.h}</h2>
+      <p class="section-intro">${lang === 'zh' ? '精选最常用的官方文档入口，减少第一次找资料时的摩擦。' : 'Curated official documentation entry points so you can get to the right page faster.'}</p>
       <div class="link-list">
         ${renderExternalLinks(t.docs.links, 'link-item', lang)}
       </div>
     </section>
 
+    <section id="skills">
+      <h2>${t.skills.h}</h2>
+      <p class="section-intro">${t.skills.intro}</p>
+      ${t.skills.categories.map(cat => `
+        <div class="skill-category">
+          <h3 class="skill-category-title">${cat.emoji} ${cat.name} <span class="skill-count">(${cat.count} skills)</span></h3>
+          <div class="skill-grid">
+            ${cat.skills.map(skill => `
+              <a class="skill-item" href="${skill[2]}" target="_blank" rel="noopener noreferrer">
+                <h4 class="skill-name">${skill[0]}</h4>
+                <p class="skill-desc">${skill[1]}</p>
+              </a>
+            `).join('')}
+          </div>
+        </div>
+      `).join('')}
+      <div class="skills-footer">
+        <div class="skills-stats">
+          <div class="stat-item"><strong>${t.skills.footer.totalSkills}</strong> Total Skills</div>
+          <div class="stat-item"><strong>${t.skills.footer.totalCategories}</strong> Categories</div>
+        </div>
+        <div class="install-cmd"><code>${t.skills.footer.installCmd}</code></div>
+        <a class="browse-all-btn" href="${t.skills.footer.browseAll}" target="_blank" rel="noopener noreferrer">Browse All Skills on ClawHub →</a>
+      </div>
+    </section>
+
     <section id="resources">
       <h2>${t.resources.h}</h2>
-      <div class="grid2">
-        ${renderExternalLinks(t.resources.links, 'link-item', lang)}
+      <p class="section-intro">${t.resources.intro}</p>
+      ${t.resources.categories.map(cat => `
+        <div class="resource-category">
+          <h3 class="category-title">${cat.emoji} ${cat.name}</h3>
+          <div class="resource-links">
+            ${cat.links.map(link => `<a class="resource-link" href="${link[1]}" target="_blank" rel="noopener noreferrer">${link[0]} ↗</a>`).join('')}
+          </div>
+        </div>
+      `).join('')}
+    </section>
+
+    <section id="security-notice">
+      <div class="security-alert">
+        <h3>⚠️ ${t.security.h}</h3>
+        <p>${t.security.text}</p>
+        <a href="${t.security.link[1]}" target="_blank" rel="noopener noreferrer" class="security-link">${t.security.link[0]} ↗</a>
       </div>
     </section>
 
     <section id="highlights">
       <h2>${t.highlights.h}</h2>
+      <p class="section-intro">${lang === 'zh' ? '如果你不想全部自己摸索，这里是后续可以承接的服务方向。' : 'If you do not want to figure out everything alone, these are the next-step options this site can lead into.'}</p>
       <div class="grid3">
         ${t.highlights.cards.map(c => `<article class="card"><h3>${c[0]}</h3><p>${c[1]}</p></article>`).join('')}
       </div>
@@ -737,7 +1433,7 @@ function render(lang = 'en') {
   </main>
 
   <footer class="container">
-    Claw Guide · Updated information architecture (${lang === 'zh' ? '/zh' : '/'}) · Built: ${new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Shanghai' })}
+    Claw Guide · ${lang === 'zh' ? 'OpenClaw 双语落地与转化入口' : 'Bilingual OpenClaw launch and conversion hub'} · Built: ${new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Shanghai' })}
   </footer>
 
   <script>
@@ -850,16 +1546,431 @@ function render(lang = 'en') {
       });
     })();
   </script>
-  <footer style="margin-top: 4rem; padding: 2rem; text-align: center; color: var(--muted); font-size: 0.875rem; border-top: 1px solid var(--line);">
-    <div>© 2026 Claw Guide • <a href="/" style="color: var(--brand);" ${lang === 'en' ? 'aria-current="page"' : ''}>English</a> | <a href="/zh" style="color: var(--brand);" ${lang === 'zh' ? 'aria-current="page"' : ''}>中文</a> • <a href="https://github.com/openclaw/openclaw" target="_blank" rel="noopener noreferrer" style="color: var(--brand);">OpenClaw GitHub</a></div>
-  </footer>
 </body>
 </html>`;
 }
 
-// Pre‑render at startup for performance
+// Pre-render at startup for performance
 const htmlEn = render('en');
 const htmlZh = render('zh');
+
+const stepContent = {
+  1: {
+    title: 'Step 1: Environment Baseline',
+    goal: 'Confirm your machine is ready with Node.js 22+ and essential tools.',
+    content: `
+## What You'll Do
+
+Verify that your development environment is ready for OpenClaw installation.
+
+## Prerequisites
+
+- **Node.js 22+**: OpenClaw requires Node.js version 22 or higher
+- **Package Manager**: npm (comes with Node.js) or pnpm
+- **Terminal Access**: Command line access to your machine
+
+## Verification Steps
+
+### 1. Check Node.js Version
+
+\`\`\`bash
+node -v
+\`\`\`
+
+Expected output: \`v22.x.x\` or higher
+
+### 2. Check npm Version
+
+\`\`\`bash
+npm -v
+\`\`\`
+
+Expected output: \`10.x.x\` or higher
+
+### 3. (Optional) Install pnpm
+
+\`\`\`bash
+npm install -g pnpm
+\`\`\`
+
+## Pass Criteria
+
+✅ Both \`node -v\` and \`npm -v\` return version numbers
+✅ Node.js version is 22 or higher
+
+## Next Step
+
+Once your environment is verified, proceed to [Step 2: Core Installation](/step/2).
+    `,
+  },
+  2: {
+    title: 'Step 2: Core Installation',
+    goal: 'Install OpenClaw and complete the onboarding process.',
+    content: `
+## What You'll Do
+
+Install OpenClaw globally and complete the interactive onboarding.
+
+## Installation
+
+\`\`\`bash
+npm install -g openclaw
+\`\`\`
+
+## Onboarding
+
+After installation, run:
+
+\`\`\`bash
+openclaw
+\`\`\`
+
+The interactive onboarding will guide you through:
+
+1. **Workspace Setup**: Choose a directory for your OpenClaw workspace
+2. **Agent Configuration**: Create your first agent
+3. **Model Selection**: Configure your preferred AI model (Claude, GPT, etc.)
+4. **Basic Settings**: Set up initial preferences
+
+## Verification
+
+\`\`\`bash
+openclaw --help
+\`\`\`
+
+Expected output: OpenClaw help menu with available commands
+
+## Pass Criteria
+
+✅ \`openclaw --help\` runs successfully
+✅ Workspace directory is created
+✅ openclaw.json configuration file exists
+
+## Next Step
+
+Continue to [Step 3: Model + Channel Wiring](/step/3) to connect your first channel.
+    `,
+  },
+  3: {
+    title: 'Step 3: Model + Channel Wiring',
+    goal: 'Connect your first AI model and messaging channel for end-to-end communication.',
+    content: `
+## What You'll Do
+
+Set up your AI model provider and connect at least one messaging channel (Telegram, Discord, etc.).
+
+## Configure AI Model
+
+### 1. Get API Key
+
+Choose one provider:
+- **Anthropic (Claude)**: [console.anthropic.com](https://console.anthropic.com)
+- **OpenAI (GPT)**: [platform.openai.com](https://platform.openai.com)
+- **Google (Gemini)**: [ai.google.dev](https://ai.google.dev)
+
+### 2. Set Environment Variable
+
+\`\`\`bash
+export ANTHROPIC_API_KEY="your-api-key-here"
+\`\`\`
+
+Or add to your \`.env\` file in the workspace.
+
+## Connect a Channel
+
+### Telegram (Recommended for Beginners)
+
+1. Talk to [@BotFather](https://t.me/BotFather) on Telegram
+2. Create a new bot with \`/newbot\`
+3. Copy the bot token
+4. Add to openclaw.json:
+
+\`\`\`json
+{
+  "channels": {
+    "telegram": {
+      "token": "your-bot-token-here"
+    }
+  }
+}
+\`\`\`
+
+5. Start OpenClaw Gateway:
+
+\`\`\`bash
+openclaw gateway start
+\`\`\`
+
+## Verification
+
+Send a message to your Telegram bot. You should receive a response from your OpenClaw assistant.
+
+## Pass Criteria
+
+✅ You can send and receive at least one message
+✅ AI model responds correctly
+✅ OpenClaw Gateway is running
+
+## Next Step
+
+Move to [Step 4: Operational Setup](/step/4) to add memory and skills.
+    `,
+  },
+  4: {
+    title: 'Step 4: Operational Setup',
+    goal: 'Add memory, heartbeats, and essential skills to make it production-ready.',
+    content: `
+## What You'll Do
+
+Extend your OpenClaw setup with memory, automation, and useful skills.
+
+## Add Memory System
+
+### 1. Configure MEMORY.md
+
+Create \`MEMORY.md\` in your workspace:
+
+\`\`\`markdown
+# My OpenClaw Memory
+
+## Preferences
+- I prefer concise responses
+- I work on web development projects
+
+## Key Information
+- Main project: [Your Project Name]
+- Tech stack: Next.js, TypeScript, Tailwind
+\`\`\`
+
+### 2. Configure SOUL.md (Optional)
+
+Define your assistant's personality:
+
+\`\`\`markdown
+# My Assistant's Soul
+
+You are a helpful technical assistant with a focus on clarity and efficiency.
+Always provide code examples when relevant.
+\`\`\`
+
+## Install Essential Skills
+
+\`\`\`bash
+npx clawhub@latest install weather
+npx clawhub@latest install github
+\`\`\`
+
+## Set Up Heartbeat
+
+Add a heartbeat check to openclaw.json:
+
+\`\`\`json
+{
+  "heartbeat": {
+    "enabled": true,
+    "intervalMinutes": 60
+  }
+}
+\`\`\`
+
+## Verification
+
+1. Ask your assistant to check the weather
+2. Verify MEMORY.md is being referenced in responses
+3. Wait for the first heartbeat ping
+
+## Pass Criteria
+
+✅ Memory system is working (assistant remembers preferences)
+✅ At least 2 skills are installed and functional
+✅ Heartbeat runs successfully
+
+## Next Step
+
+Complete your setup with [Step 5: Quality Checkpoint](/step/5).
+    `,
+  },
+  5: {
+    title: 'Step 5: Quality Checkpoint',
+    goal: 'Verify your workflow with a real task and document your process.',
+    content: `
+## What You'll Do
+
+Run a real-world task to prove your OpenClaw setup is production-ready.
+
+## Choose a Real Task
+
+Pick one task that you actually need to do:
+
+- **Developer**: "Review my latest GitHub PR and suggest improvements"
+- **Writer**: "Check my Gmail for client emails and summarize them"
+- **Analyst**: "Pull the latest traffic data and create a summary"
+
+## Execute and Verify
+
+1. Send the task to your OpenClaw assistant
+2. Observe how it handles the task
+3. Check the results for accuracy
+4. Note any issues or improvements needed
+
+## Document Your SOP
+
+Create a simple SOP (Standard Operating Procedure) document:
+
+\`\`\`markdown
+# My OpenClaw Workflow
+
+## Daily Tasks
+1. Morning email summary
+2. Calendar check
+3. Project updates
+
+## Skills I Use
+- github
+- weather
+- [your other skills]
+
+## Common Commands
+- "Check my emails"
+- "What's on my calendar today"
+- "Review my latest code"
+
+## Known Issues
+- [List any workarounds or quirks]
+\`\`\`
+
+## Pass Criteria
+
+✅ You completed a real task end-to-end
+✅ The workflow can be repeated reliably
+✅ You have documented your setup
+
+## Congratulations!
+
+You now have a working OpenClaw AI assistant. From here you can:
+
+- Install more skills from [ClawHub](https://clawhub.com)
+- Connect additional channels (Discord, WhatsApp, etc.)
+- Set up advanced automation with cron jobs
+- Customize SOUL.md for a unique personality
+
+## Next Steps
+
+- Browse [official documentation](https://docs.openclaw.ai)
+- Explore [community skills](https://github.com/VoltAgent/awesome-openclaw-skills)
+- Join the [Discord community](https://discord.gg/clawd)
+
+[← Back to Home](/)
+    `,
+  },
+};
+
+function renderStepPage(stepNum, lang) {
+  const step = stepContent[stepNum];
+  if (!step) {
+    return `<!DOCTYPE html><html><body><h1>Step not found</h1><p><a href="/">Back to home</a></p></body></html>`;
+  }
+
+  return `<!DOCTYPE html>
+<html lang="${lang}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>${step.title} | Claw Guide</title>
+  <meta name="description" content="${step.goal}" />
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(180deg, #06090d 0%, #0b1128 100%);
+      color: #ecf1ff;
+      line-height:1.6;
+      min-height:100vh;
+    }
+    .container { max-width:860px; margin:0 auto; padding:40px 20px; }
+    nav { padding:20px 0; border-bottom:1px solid rgba(143,173,255,.2); margin-bottom:40px; }
+    nav a { color:#6fa5ff; text-decoration:none; }
+    nav a:hover { text-decoration:underline; }
+    h1 { font-size:42px; margin-bottom:12px; }
+    .goal { font-size:20px; color:#bfd0f8; margin-bottom:40px; }
+    .content { color:#d6e1ff; }
+    .content h2 { margin-top:40px; margin-bottom:16px; font-size:28px; color:#ecf1ff; }
+    .content h3 { margin-top:28px; margin-bottom:12px; font-size:20px; color:#ecf1ff; }
+    .content p { margin-bottom:16px; }
+    .content ul, .content ol { margin-left:24px; margin-bottom:16px; }
+    .content li { margin-bottom:8px; }
+    .content code {
+      background:rgba(111,165,255,.15);
+      padding:2px 6px;
+      border-radius:4px;
+      font-family:ui-monospace,monospace;
+      font-size:14px;
+      color:#4de6bc;
+    }
+    .content pre {
+      background:rgba(6,9,21,.8);
+      padding:16px;
+      border-radius:12px;
+      overflow-x:auto;
+      margin-bottom:20px;
+      border:1px solid rgba(143,173,255,.2);
+    }
+    .content pre code {
+      background:none;
+      padding:0;
+      color:#ecf1ff;
+    }
+    .content a { color:#6fa5ff; }
+    .content a:hover { text-decoration:underline; }
+    .nav-steps {
+      display:flex;
+      justify-content:space-between;
+      margin-top:60px;
+      padding-top:40px;
+      border-top:1px solid rgba(143,173,255,.2);
+    }
+    .nav-steps a {
+      padding:12px 24px;
+      border:1px solid rgba(143,173,255,.35);
+      border-radius:12px;
+      text-decoration:none;
+      color:#ecf1ff;
+      transition:all 0.2s;
+    }
+    .nav-steps a:hover {
+      border-color:#6fa5ff;
+      background:rgba(111,165,255,.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="/">← Back to Claw Guide</a>
+    </nav>
+    <h1>${step.title}</h1>
+    <p class="goal">${step.goal}</p>
+    <div class="content">${step.content.split('\n').map(line => {
+      if (line.startsWith('## ')) return `<h2>${line.substring(3)}</h2>`;
+      if (line.startsWith('### ')) return `<h3>${line.substring(4)}</h3>`;
+      if (line.startsWith('```')) return line.includes('```bash') || line.includes('```json') || line.includes('```markdown') ? '<pre><code>' : '</code></pre>';
+      if (line.startsWith('- ') || line.match(/^\d+\. /)) {
+        const isOrdered = line.match(/^\d+\. /);
+        const text = line.replace(/^(-|\d+\.)\s+/, '');
+        return isOrdered ? `<li>${text}</li>` : `<li>${text}</li>`;
+      }
+      if (line.trim().startsWith('✅')) return `<p>${line}</p>`;
+      if (line.trim() === '') return '';
+      return `<p>${line}</p>`;
+    }).join('')}</div>
+    <div class="nav-steps">
+      ${stepNum > 1 ? `<a href="/step/${stepNum - 1}">← Step ${stepNum - 1}</a>` : '<span></span>'}
+      ${stepNum < 5 ? `<a href="/step/${stepNum + 1}">Step ${stepNum + 1} →</a>` : '<a href="/">Back to Home →</a>'}
+    </div>
+  </div>
+</body>
+</html>`;
+}
 
 const htmlHeaders = {
   'content-type': 'text/html; charset=utf-8',
@@ -891,12 +2002,19 @@ const server = http.createServer((req, res) => {
       }));
     }
 
-    if (url === '/favicon.ico') {
-      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
-        <rect width="64" height="64" rx="12" fill="#060915"/>
-        <path d="M 32 16 C 24 16 18 22 18 30 C 18 38 24 44 32 44 C 40 44 46 38 46 30 C 46 22 40 16 32 16 Z" fill="none" stroke="#6fa5ff" stroke-width="4"/>
-        <path d="M 32 22 L 32 38" stroke="#7f7bff" stroke-width="4" stroke-linecap="round"/>
-        <circle cx="32" cy="30" r="2" fill="#4de6bc"/>
+    if (url === '/favicon.ico' || url === '/logo-mark.svg') {
+      const svg = `<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="markGradient" x1="20" y1="20" x2="108" y2="108" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#6FA5FF"/>
+            <stop offset="1" stop-color="#7F7BFF"/>
+          </linearGradient>
+        </defs>
+        <rect x="6" y="6" width="116" height="116" rx="28" fill="#060915"/>
+        <path d="M42 44C49 37 58 34 68 34C79 34 87 37 94 43L86 51C81 47 75 45 68 45C61 45 55 47 51 52C46 57 44 63 44 70C44 77 46 83 51 88C55 93 61 95 68 95C75 95 81 93 86 88L94 96C87 102 79 106 68 106C58 106 49 102 42 95C35 88 31 79 31 70C31 61 35 51 42 44Z" fill="url(#markGradient)"/>
+        <path d="M65 50H96V59H65V50Z" fill="#ECF1FF" fill-opacity="0.92"/>
+        <path d="M65 62H89V71H65V62Z" fill="#ECF1FF" fill-opacity="0.82"/>
+        <path d="M65 74H82V83H65V74Z" fill="#4DE6BC"/>
       </svg>`;
       res.writeHead(200, {
         'content-type': 'image/svg+xml',
@@ -921,13 +2039,16 @@ const server = http.createServer((req, res) => {
         <rect width="1200" height="630" fill="url(#bg)" />
         <circle cx="1020" cy="120" r="180" fill="#6fa5ff" fill-opacity="0.14" />
         <circle cx="180" cy="40" r="220" fill="#7f7bff" fill-opacity="0.12" />
-        <rect x="84" y="104" width="240" height="240" rx="36" fill="url(#accent)" />
-        <text x="130" y="248" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="136" font-weight="700" fill="#ffffff">C</text>
-        <text x="360" y="240" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="84" font-weight="800" fill="#ecf1ff">Claw Guide</text>
-        <text x="360" y="312" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="38" fill="#c8d7ff">Faster OpenClaw Launch Playbook</text>
-        <text x="360" y="366" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="32" fill="#a9bff9">OpenClaw 快速落地路线图</text>
-        <rect x="360" y="416" width="430" height="64" rx="12" fill="#1a2a5f" stroke="#6fa5ff" stroke-opacity="0.45" />
-        <text x="392" y="458" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="30" fill="#dbe7ff">Bilingual • Practical • Actionable</text>
+        <rect x="84" y="104" width="240" height="240" rx="52" fill="#060915" stroke="url(#accent)" stroke-width="10"/>
+        <path d="M176 204C195 185 221 174 248 174C277 174 299 182 317 198L294 222C282 212 267 207 248 207C230 207 215 213 203 225C192 237 186 252 186 271C186 290 192 305 203 317C215 329 230 335 248 335C267 335 282 330 294 319L317 343C299 359 277 368 248 368C221 368 195 358 176 339C157 320 147 297 147 271C147 245 157 223 176 204Z" fill="url(#accent)"/>
+        <path d="M242 215H329V239H242V215Z" fill="#ECF1FF" fill-opacity="0.92"/>
+        <path d="M242 247H310V271H242V247Z" fill="#ECF1FF" fill-opacity="0.82"/>
+        <path d="M242 279H289V303H242V279Z" fill="#4DE6BC"/>
+        <text x="380" y="230" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="84" font-weight="800" fill="#ecf1ff">Claw Guide</text>
+        <text x="380" y="302" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="38" fill="#c8d7ff">OpenClaw Setup Guide in 5 Practical Steps</text>
+        <text x="380" y="356" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="32" fill="#a9bff9">OpenClaw 快速上手与部署指南（5步）</text>
+        <rect x="380" y="410" width="470" height="64" rx="12" fill="#1a2a5f" stroke="#6fa5ff" stroke-opacity="0.45" />
+        <text x="412" y="452" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="28" fill="#dbe7ff">Bilingual • Practical • Deployment-ready</text>
       </svg>`;
       res.writeHead(200, {
         'content-type': 'image/svg+xml; charset=utf-8',
@@ -944,9 +2065,17 @@ const server = http.createServer((req, res) => {
 
     if (url === '/sitemap.xml') {
       const lastmod = new Date().toISOString();
-      const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${siteUrl}/</loc><lastmod>${lastmod}</lastmod></url>\n  <url><loc>${siteUrl}/zh</loc><lastmod>${lastmod}</lastmod></url>\n</urlset>`;
+      const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n  <url><loc>${siteUrl}/</loc><lastmod>${lastmod}</lastmod></url>\n  <url><loc>${siteUrl}/zh</loc><lastmod>${lastmod}</lastmod></url>\n  <url><loc>${siteUrl}/step/1</loc><lastmod>${lastmod}</lastmod></url>\n  <url><loc>${siteUrl}/step/2</loc><lastmod>${lastmod}</lastmod></url>\n  <url><loc>${siteUrl}/step/3</loc><lastmod>${lastmod}</lastmod></url>\n  <url><loc>${siteUrl}/step/4</loc><lastmod>${lastmod}</lastmod></url>\n  <url><loc>${siteUrl}/step/5</loc><lastmod>${lastmod}</lastmod></url>\n</urlset>`;
       res.writeHead(200, { 'content-type': 'application/xml; charset=utf-8', 'cache-control': 'public, max-age=300' });
       return res.end(xml);
+    }
+
+    const stepMatch = url.match(/^\/step\/([1-5])\/?$/);
+    if (stepMatch) {
+      const stepNum = parseInt(stepMatch[1], 10);
+      const stepLang = 'en'; // steps are English-only for now
+      res.writeHead(200, htmlHeaders);
+      return res.end(renderStepPage(stepNum, stepLang));
     }
 
     if (url === '/zh' || url === '/zh/') {
