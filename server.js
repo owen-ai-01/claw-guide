@@ -1366,7 +1366,7 @@ function render(lang = 'en') {
     <div class="container">
       <nav>
         <a class="brand" href="#main" aria-label="Claw Guide Home">
-          <img class="brand-logo" src="/logo-mark.svg" alt="Claw Guide logo" />
+          <img class="brand-logo" src="/claw-guide-mark.svg" alt="Claw Guide logo" />
           <span>Claw Guide</span>
         </a>
 
@@ -1572,7 +1572,6 @@ function render(lang = 'en') {
     
     <div class="container footer-bottom">
       <p>${t.footer.copyright}</p>
-      <p>${t.footer.builtDate}: ${new Date().toLocaleDateString('en-CA', { timeZone: 'Asia/Shanghai' })}</p>
     </div>
   </footer>
 
