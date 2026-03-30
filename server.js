@@ -78,11 +78,11 @@ const data = {
       h: '5-Step Launch Roadmap',
       intro: 'Follow these 5 steps to go from zero to your first working OpenClaw workflow.',
       steps: [
-        ['⚙️', 'Step 1: Environment Baseline', 'Confirm your machine is ready with Node.js 22+ and essential tools.', '/step/1'],
-        ['📦', 'Step 2: Core Installation', 'Install OpenClaw and complete the onboarding process.', '/step/2'],
-        ['🔌', 'Step 3: Model + Channel Wiring', 'Connect your first AI model and messaging channel for end-to-end communication.', '/step/3'],
-        ['🛠️', 'Step 4: Operational Setup', 'Add memory, heartbeats, and essential skills to make it production-ready.', '/step/4'],
-        ['✅', 'Step 5: Quality Checkpoint', 'Verify your workflow with a real task and document your process.', '/step/5'],
+        ['⚙️', 'Step 1: Environment Baseline', 'Confirm your machine is ready with Node.js 22+ and essential tools.', '/step/1.html'],
+        ['📦', 'Step 2: Core Installation', 'Install OpenClaw and complete the onboarding process.', '/step/2.html'],
+        ['🔌', 'Step 3: Model + Channel Wiring', 'Connect your first AI model and messaging channel for end-to-end communication.', '/step/3.html'],
+        ['🛠️', 'Step 4: Operational Setup', 'Add memory, heartbeats, and essential skills to make it production-ready.', '/step/4.html'],
+        ['✅', 'Step 5: Quality Checkpoint', 'Verify your workflow with a real task and document your process.', '/step/5.html'],
       ],
     },
     docs: {
@@ -310,8 +310,8 @@ const data = {
       legal: 'Legal',
       links: {
         about: [
-          ['About Us', '/about'],
-          ['Contact', '/contact'],
+          ['About Us', '/about.html'],
+          ['Contact', '/contact.html'],
         ],
         quickLinks: [
           ['5-Step Guide', '#roadmap'],
@@ -320,9 +320,9 @@ const data = {
           ['FAQ', '#faq'],
         ],
         legal: [
-          ['Privacy Policy', '/privacy'],
-          ['Terms of Service', '/terms'],
-          ['Cookie Policy', '/cookies'],
+          ['Privacy Policy', '/privacy.html'],
+          ['Terms of Service', '/terms.html'],
+          ['Cookie Policy', '/cookies.html'],
         ],
       },
       copyright: '© 2026 Claw Guide. All rights reserved.',
@@ -400,11 +400,11 @@ const data = {
       h: '5 步落地路线图',
       intro: '按照这 5 步，从零到第一条可用的 OpenClaw 工作流。',
       steps: [
-        ['⚙️', 'Step 1: 环境基线', '确认机器已准备好 Node.js 22+ 和必要工具。', '/step/1'],
-        ['📦', 'Step 2: 核心安装', '安装 OpenClaw 并完成 onboarding 流程。', '/step/2'],
-        ['🔌', 'Step 3: 模型与渠道打通', '连接第一个 AI 模型和消息渠道，实现端到端通信。', '/step/3'],
-        ['🛠️', 'Step 4: 运营能力补齐', '添加 memory、heartbeat 和必备技能，让系统可投产。', '/step/4'],
-        ['✅', 'Step 5: 质量验收', '用真实任务验证工作流，并记录你的流程。', '/step/5'],
+        ['⚙️', 'Step 1: 环境基线', '确认机器已准备好 Node.js 22+ 和必要工具。', '/step/1.html'],
+        ['📦', 'Step 2: 核心安装', '安装 OpenClaw 并完成 onboarding 流程。', '/step/2.html'],
+        ['🔌', 'Step 3: 模型与渠道打通', '连接第一个 AI 模型和消息渠道，实现端到端通信。', '/step/3.html'],
+        ['🛠️', 'Step 4: 运营能力补齐', '添加 memory、heartbeat 和必备技能，让系统可投产。', '/step/4.html'],
+        ['✅', 'Step 5: 质量验收', '用真实任务验证工作流，并记录你的流程。', '/step/5.html'],
       ],
     },
     docs: {
@@ -632,8 +632,8 @@ const data = {
       legal: '法律信息',
       links: {
         about: [
-          ['关于我们', '/about'],
-          ['联系我们', '/contact'],
+          ['关于我们', '/about.html'],
+          ['联系我们', '/contact.html'],
         ],
         quickLinks: [
           ['5 步指南', '#roadmap'],
@@ -642,9 +642,9 @@ const data = {
           ['常见问题', '#faq'],
         ],
         legal: [
-          ['隐私政策', '/privacy'],
-          ['服务条款', '/terms'],
-          ['Cookie 政策', '/cookies'],
+          ['隐私政策', '/privacy.html'],
+          ['服务条款', '/terms.html'],
+          ['Cookie 政策', '/cookies.html'],
         ],
       },
       copyright: '© 2026 Claw Guide. 保留所有权利。',
@@ -2103,8 +2103,8 @@ function renderStepPage(stepNum, lang) {
       return `<p>${line}</p>`;
     }).join('')}</div>
     <div class="nav-steps">
-      ${stepNum > 1 ? `<a href="/step/${stepNum - 1}">← Step ${stepNum - 1}</a>` : '<span></span>'}
-      ${stepNum < 5 ? `<a href="/step/${stepNum + 1}">Step ${stepNum + 1} →</a>` : '<a href="/">Back to Home →</a>'}
+      ${stepNum > 1 ? `<a href="/step/${stepNum - 1}.html">← Step ${stepNum - 1}</a>` : '<span></span>'}
+      ${stepNum < 5 ? `<a href="/step/${stepNum + 1}.html">Step ${stepNum + 1} →</a>` : '<a href="/index.html">Back to Home →</a>'}
     </div>
   </div>
 </body>

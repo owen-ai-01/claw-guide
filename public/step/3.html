@@ -79,8 +79,8 @@
     <p class="goal">Connect your first AI model and messaging channel for end-to-end communication.</p>
     <div class="content"><h2>What You'll Do</h2><p>Set up your AI model provider and connect at least one messaging channel (Telegram, Discord, etc.).</p><h2>Configure AI Model</h2><h3>1. Get API Key</h3><p>Choose one provider:</p><li>**Anthropic (Claude)**: [console.anthropic.com](https://console.anthropic.com)</li><li>**OpenAI (GPT)**: [platform.openai.com](https://platform.openai.com)</li><li>**Google (Gemini)**: [ai.google.dev](https://ai.google.dev)</li><h3>2. Set Environment Variable</h3><pre><code><p>export ANTHROPIC_API_KEY="your-api-key-here"</p></code></pre><p>Or add to your `.env` file in the workspace.</p><h2>Connect a Channel</h2><h3>Telegram (Recommended for Beginners)</h3><li>Talk to [@BotFather](https://t.me/BotFather) on Telegram</li><li>Create a new bot with `/newbot`</li><li>Copy the bot token</li><li>Add to openclaw.json:</li><pre><code><p>{</p><p>  "channels": {</p><p>    "telegram": {</p><p>      "token": "your-bot-token-here"</p><p>    }</p><p>  }</p><p>}</p></code></pre><li>Start OpenClaw Gateway:</li><pre><code><p>openclaw gateway start</p></code></pre><h2>Verification</h2><p>Send a message to your Telegram bot. You should receive a response from your OpenClaw assistant.</p><h2>Pass Criteria</h2><p>✅ You can send and receive at least one message</p><p>✅ AI model responds correctly</p><p>✅ OpenClaw Gateway is running</p><h2>Next Step</h2><p>Move to [Step 4: Operational Setup](/step/4) to add memory and skills.</p></div>
     <div class="nav-steps">
-      <a href="/step/2">← Step 2</a>
-      <a href="/step/4">Step 4 →</a>
+      <a href="/step/2.html">← Step 2</a>
+      <a href="/step/4.html">Step 4 →</a>
     </div>
   </div>
 </body>
