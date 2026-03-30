@@ -1,1 +1,87 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><title>Step 3: Model + Channel Wiring</title></head><body><div class="container"><h1>Step 3: Model + Channel Wiring</h1><p>Connect AI model and channels.</p></div></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Step 3: Model + Channel Wiring | Claw Guide</title>
+  <meta name="description" content="Connect your first AI model and messaging channel for end-to-end communication." />
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(180deg, #06090d 0%, #0b1128 100%);
+      color: #ecf1ff;
+      line-height:1.6;
+      min-height:100vh;
+    }
+    .container { max-width:860px; margin:0 auto; padding:40px 20px; }
+    nav { padding:20px 0; border-bottom:1px solid rgba(143,173,255,.2); margin-bottom:40px; }
+    nav a { color:#6fa5ff; text-decoration:none; }
+    nav a:hover { text-decoration:underline; }
+    h1 { font-size:42px; margin-bottom:12px; }
+    .goal { font-size:20px; color:#bfd0f8; margin-bottom:40px; }
+    .content { color:#d6e1ff; }
+    .content h2 { margin-top:40px; margin-bottom:16px; font-size:28px; color:#ecf1ff; }
+    .content h3 { margin-top:28px; margin-bottom:12px; font-size:20px; color:#ecf1ff; }
+    .content p { margin-bottom:16px; }
+    .content ul, .content ol { margin-left:24px; margin-bottom:16px; }
+    .content li { margin-bottom:8px; }
+    .content code {
+      background:rgba(111,165,255,.15);
+      padding:2px 6px;
+      border-radius:4px;
+      font-family:ui-monospace,monospace;
+      font-size:14px;
+      color:#4de6bc;
+    }
+    .content pre {
+      background:rgba(6,9,21,.8);
+      padding:16px;
+      border-radius:12px;
+      overflow-x:auto;
+      margin-bottom:20px;
+      border:1px solid rgba(143,173,255,.2);
+    }
+    .content pre code {
+      background:none;
+      padding:0;
+      color:#ecf1ff;
+    }
+    .content a { color:#6fa5ff; }
+    .content a:hover { text-decoration:underline; }
+    .nav-steps {
+      display:flex;
+      justify-content:space-between;
+      margin-top:60px;
+      padding-top:40px;
+      border-top:1px solid rgba(143,173,255,.2);
+    }
+    .nav-steps a {
+      padding:12px 24px;
+      border:1px solid rgba(143,173,255,.35);
+      border-radius:12px;
+      text-decoration:none;
+      color:#ecf1ff;
+      transition:all 0.2s;
+    }
+    .nav-steps a:hover {
+      border-color:#6fa5ff;
+      background:rgba(111,165,255,.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="/">← Back to Claw Guide</a>
+    </nav>
+    <h1>Step 3: Model + Channel Wiring</h1>
+    <p class="goal">Connect your first AI model and messaging channel for end-to-end communication.</p>
+    <div class="content"><h2>What You'll Do</h2><p>Set up your AI model provider and connect at least one messaging channel (Telegram, Discord, etc.).</p><h2>Configure AI Model</h2><h3>1. Get API Key</h3><p>Choose one provider:</p><li>**Anthropic (Claude)**: [console.anthropic.com](https://console.anthropic.com)</li><li>**OpenAI (GPT)**: [platform.openai.com](https://platform.openai.com)</li><li>**Google (Gemini)**: [ai.google.dev](https://ai.google.dev)</li><h3>2. Set Environment Variable</h3><pre><code><p>export ANTHROPIC_API_KEY="your-api-key-here"</p></code></pre><p>Or add to your `.env` file in the workspace.</p><h2>Connect a Channel</h2><h3>Telegram (Recommended for Beginners)</h3><li>Talk to [@BotFather](https://t.me/BotFather) on Telegram</li><li>Create a new bot with `/newbot`</li><li>Copy the bot token</li><li>Add to openclaw.json:</li><pre><code><p>{</p><p>  "channels": {</p><p>    "telegram": {</p><p>      "token": "your-bot-token-here"</p><p>    }</p><p>  }</p><p>}</p></code></pre><li>Start OpenClaw Gateway:</li><pre><code><p>openclaw gateway start</p></code></pre><h2>Verification</h2><p>Send a message to your Telegram bot. You should receive a response from your OpenClaw assistant.</p><h2>Pass Criteria</h2><p>✅ You can send and receive at least one message</p><p>✅ AI model responds correctly</p><p>✅ OpenClaw Gateway is running</p><h2>Next Step</h2><p>Move to [Step 4: Operational Setup](/step/4) to add memory and skills.</p></div>
+    <div class="nav-steps">
+      <a href="/step/2">← Step 2</a>
+      <a href="/step/4">Step 4 →</a>
+    </div>
+  </div>
+</body>
+</html>
